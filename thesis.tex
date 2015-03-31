@@ -5,13 +5,15 @@
 %% This example is adapted from ucthesis.tex, a part of the
 %% UCTHESIS class package...
 %%
-\title{The Elements of Thesis} %% If you want to specify a linebreak
+\title{Learning Dynamic Motor Skills \protect\\
+  for Virtual and Real Humanoids} 
+%% If you want to specify a linebreak
                                %% in the thesis title, you MUST use
                                %% \protect\\ instead of \\, as \\ is a
                                %% fragile command that \MakeUpperCase
                                %% will break!
-\author{Perry H. Disdainful}
-\department{School of Industrial and Systems Engineering}
+\author{Sehoon Ha}
+\department{School of Computer Science}
 
 %% Can have up to six readers, plus principaladvisor and
 %% committeechair. All have the form
@@ -23,14 +25,11 @@
 %% to the department defined above and Institution defaults to Georgia
 %% Institute of Technology.
 
-\principaladvisor{Professor Alpha Betic}
-\committeechair{Professor Ignatius Arrogant}
-\firstreader{Professor General Reference}[School of Mathematics]
-\secondreader{Professor Ivory Insular}[Department of Computer Science and Operations Research][North Dakota State University]
-\thirdreader{Professor Earl Grey}
-\fourthreader{Professor John Smith}
-\fifthreader{Professor Jane Doe}[Another Department With a Long Name][Another Institution]
-%\setcounter{secnumdepth}{2}
+\principaladvisor{Professor C. Karen Liu}
+\firstreader{Professor Greg Turk}
+\secondreader{Professor Jarek Rossignac}
+\thirdreader{Professor Jun Ueda}[School of Mechanical Engineering]
+\fourthreader{Professor Katsu Yamane}[Disney Research Pittsburgh][]
 \degree{Doctor of Philosophy}
 
 %% Set \listmajortrue below, then uncomment and set this for
@@ -40,15 +39,15 @@
 
 %% \major{Algorithms, Combinatorics, and Optimization} 
 
-\copyrightyear{2010}
-\submitdate{August 2010} % Must be the month and year of graduation,
+\copyrightyear{2015}
+\submitdate{December 2015} % Must be the month and year of graduation,
                          % not thesis approval! As of 2010, this means
                          % this text must be May, August, or December
                          % followed by the year.
 
 %% The date the last committee member signs the thesis form. Printed
 %% on the approval page.
-\approveddate{1 July 2010}
+\approveddate{14 August 2015}
 
 %% \bibfiles{example-thesis}
 \bibfiles{thesis}
@@ -77,75 +76,75 @@
 {\large
 \begin{center}
 To myself,\\\vspace{12pt}
-Perry H. Disdainful,\\\vspace{12pt}
+Sehoon Ha,\\\vspace{12pt}
 the only person worthy of my company.
 \end{center}}
 \vfil\null
 \end{dedication}
-\begin{preface}
-Theses have elements.  Isn't that nice?
-\end{preface}
+%% \begin{preface}
+%% Theses have elements.  Isn't that nice?
+%% \end{preface}
 \begin{acknowledgements}
-I want to ``thank'' my committee, without whose ridiculous demands, I
-would have graduated so, so, very much faster.
+\input{acknowledgements}
 \end{acknowledgements}
 % print table of contents, figures and tables here.
 \contents
 % if you need a "List of Symbols or Abbreviations" look into
 % gatech-thesis-gloss.sty.
 \begin{summary}
-Why should I provide a summary?  Just read the thesis.
+\input{summary}
 \end{summary}
 \end{preliminary}
 %%
-\chapter{Introduction}
 
-Every dissertation should have an introduction.  You might not realize
-it, but the introduction should introduce the concepts, backgrouand,
-and goals of the dissertation.
+\input{introduction}
 
-\section{Concepts}
+%% Every dissertation should have an introduction.  You might not realize
+%% it, but the introduction should introduce the concepts, backgrouand,
+%% and goals of the dissertation.
 
-This is where we talk about the concepts behind the dissertation.
+%% \section{Concepts}
 
-\subsection{Primary Concept}
+%% This is where we talk about the concepts behind the dissertation.
 
-This is the primary concept.
+%% \subsection{Primary Concept}
 
-\subsection{Secondary Concept}
+%% This is the primary concept.
 
-This is the secondary concept.
+%% \subsection{Secondary Concept}
 
-\subsubsection{Even more secondary}
+%% This is the secondary concept.
 
-This is really not all that important.
+%% \subsubsection{Even more secondary}
 
-\begin{table}
-\caption{A table, centered.}
-\begin{center}
-\begin{tabular}{|l|r|}
-  \hline 
-Title & Author \\
-\hline
-War And Peace & Leo Tolstoy \\
-The Great Gatsby & F. Scott Fitzgerald \\ \hline
-\end{tabular}
-\end{center}
-\end{table}
-%%
-\chapter{Previous Work}
+%% This is really not all that important.
 
-Some other research was once performed.
+%% \begin{table}
+%% \caption{A table, centered.}
+%% \begin{center}
+%% \begin{tabular}{|l|r|}
+%%   \hline 
+%% Title & Author \\
+%% \hline
+%% War And Peace & Leo Tolstoy \\
+%% The Great Gatsby & F. Scott Fitzgerald \\ \hline
+%% \end{tabular}
+%% \end{center}
+%% \end{table}
+%% %%
+%% \chapter{Previous Work}
 
-\begin{figure}
-\caption{A first figure.}
-\end{figure}
+%% Some other research was once performed.
 
-\begin{figure}
-\caption{A second figure.}
-\end{figure}
-%%
-\chapter{Conclusion}
+%% \begin{figure}
+%% \caption{A first figure.}
+%% \end{figure}
+
+%% \begin{figure}
+%% \caption{A second figure.}
+%% \end{figure}
+%% %%
+%% \chapter{Conclusion}
 
 \nocite{*}
 %% We need this since this file doesn't ACTUALLY \cite anything...
