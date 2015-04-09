@@ -1,14 +1,163 @@
+%1234567890123456789012345678901234567890123456789012345678901234567890123456789
 \chapter{Introduction}
-Yeah.
+Dynamic human motions are beautiful and fundamental skills in sports,
+martial arts, and everyday life.
+Importance of dynamic motor skills are well described in the philosophy of
+Parkour, “an art of overcoming obstacles as swiftly and efficiently as
+possible using only your body”.
+As stated, dynamic motor skills can be ways of self-expression or
+efficient mechanisms of transportation and manipulation.
+Beyond the fact that highly dynamic controllers are a great milestone, 
+it is a promising method to maximize virtual characters and real robots
+capability for challenging tasks.
+In computer games, characters with dynamic motion controllers can 
+lively respond to user interactions and show optimal behaviors 
+by minimizing energy consumption in the physically simulated environment.
+In robotics, a rich set of dynamic motor skills can give more freedom of
+movements to the robot in the uneven terrain of the disaster places.
 
-\section{Approaches}
+In this dissertation, development of physics-based controllers involves
+two types of subjects: virtual characters and real humanoids.
+Since the control problems in two domains have shared properties, such as
+non-linearity, high-dimension, and discontinuity, algorithms and principles
+developed in one domain can be transferred to the other domain.
+However, different goals and assumptions in two domains often lead to
+slightly different approaches.
+The primary goal of the physics-based control in computer animation is to
+generate natural and realistic human behaviors.
+For this goal, a wide range of controllers have been developed for highly
+dynamic stunts in the level of athletes, such as leaping, vaulting, and
+flipping under the assumption that a character has enough agility to execute such motions.
+On the other hand, a humanoid controller in the robotics must be compatible 
+with the hardware, which generally has more conservative joints and torques
+limitations.
+Furthermore, robustness of the controller becomes a more important issue
+because a fall can potentially cause detrimental damage to the robot and
+enormous cost to repair.
+
+However, developing effective controllers is a very difficult and
+time-consuming task.
+First, a design process for controllers require a lot of prior knowledge
+including mechanisms, target poses, momenta, and contacts.
+One promising direction to acquire prior knowledge is a paradigm of
+``learning from demonstration''[], which still requires careful
+generalization techniques for robust control.
+Another difficulty arises when optimizing the parameters for the controllers.
+Usually, whole-body dynamic tasks typically have a cost function that is 
+multimodal and very non-smooth due to the combined challenge of contact 
+switches, dynamic balance, and high-dimensional space.
+Further, most control parameters will lead to undesired behaviors such as
+losing balance or unexpected contacts.
+These difficulties often requires the most robust optimization algorithm, 
+CMA-ES, which is designed for non-linear non-convex black-box
+optimizations.
+In addition, training policies for hardware adds another problem.
+Although a simulator is a useful tool that provides fast evaluations of the
+controllers, but controllers turned in simulation do not work on hardware due
+to the differences in two systems, so called simulation bias.
+One way to alleviate simulation bias is iteratively updating the simulation
+model [,,], so called model-based policy search, which is an on-going topic in
+robotics.
+
+In this dissertation, following problems are identified for developing 
+controllers for highly dynamic motor skills.
+
+\section{Falling Strategies for Humanoids}
+Highly dynamic motions often accompany the abrupt momentum changes, which can
+cause large contact forces to characters.
+Therefore, how to manage falls is a fundamental motor skill to reduce damages
+to humanoids and achieve fluent transitions between motor skills.
+I will present two falling strategies for falls of virtual and real humanoids,
+which are inspired by falling of Traceurs (Parkour practitioners) and robots.
+The effectiveness of the presented strategies will be validated in physics
+simulation, and experimentally tested on a small-size humanoid.
+
+\subsection{Falling and Landing Motion Control for Virtual Characters}
+In Chapter 3, I will show how to create an on-line controller for generating 
+agile and natural falling motions of the virtual character that can land from 
+various heights and velocities.
+Inspired by falling skills of Parkour, I will formulate the falling scenario
+with three phases, airborne, impact, and rolling based on the contact states 
+of the character.
+Two controllers are designed for airborne and rolling phases and a regression
+analysis is conducted to find an optimal impact angle that can connect two
+controllers.
+Finally, I will demonstrate that the algorithm induces smaller joint stress,
+which is still four times lower than a rag-doll motion at the worst cases.
+
+\subsection{Multiple Contact Planning for Humanoids}
+Chapter 4 will provide an introduction on a multiple contact planning to
+reduce the damage to the real humanoid, which provides a unified framework
+for the existing falling techniques [,,].
+Then, I will show how to efficiently optimize the multiple contact falling
+strategy to the given initial state using a simplified model and dynamic 
+programming.
+Finally, various scenarios will be tested on simulated humanoids and the
+actual hardware to show that our algorithm plans various falling strategies
+with different contact sequences.
+
+\section{Learning of Dynamic Controller for Characters}
+Teaching a physically simulated character a new motor skill entirely depends 
+on the effort of the controller designer, from the design of the control 
+architecture to the tweaking of low-level control parameters.
+To simplify the learning process, we introduce an intuitive and 
+interactive framework for developing dynamic controllers that is inspired by
+how humans learn dynamic motor skills through progressive process of coaching
+and practices.
+Further, we propose two optimization techniques that can expedite the convergence and generalize the skill to the parametrized objectives.
+
+\subsection{Iterative Design of Dynamic Controllers}
+In Chapter 5, I will describe a general framework to design dynamic
+controllers using high-level, human-readable instructions.
+In this framework, we introduce a “control rig” that can control the multiple
+joints at the same time, which can be easily created by a set of high level
+instructions.
+The details of controllers and objectives formulation using control rigs and
+instructions will be shown with examples.
+
+\subsection{Optimization with Failure Learning}
+A controller with many user constraints is difficult to optimize due to the
+relatively small feasible region.
+In Chapter 6, I will describe a new optimization algorithm based on the
+observation of human’s ability to learn from failure.
+The proposed algorithm, CMA-C (Covariance Matrix Adaptation with
+Classification) utilizes the failed simulation trials to approximate 
+an infeasible region in the space of control rig parameters, resulting a
+faster convergence than the standard CMA-ES.
+
+\subsection{Optimization for Parametrized Motor Skills}
+In Chapter 7, I will show how to optimize parametrized motor skills that are
+essential for autonomous robots operating in an unpredictable environment. 
+By evolving a parametrized probability distribution, the algorithm reduces 
+the number of samples required to optimize a parametrized skill for 
+all the tasks in the range of interest. 
+
 
 \section{Contributions}
+The control and optimization methods discussed in this dissertation provide
+several contributions to the computer animation community. 
+These contributions are as follows:
 
-\subsection{Falling}
-hm..
 
-\subsection{Learning}
-
-\subsection{Optimization}
+\begin{itemize}
+\item \textbf{A falling and landing strategy for various initial conditions}
+  The algorithm presented in the dissertation allows the character to fall from 
+  a wide range of heights and initial speeds, continuously roll on the ground, 
+  and get back on its feet, without inducing large stress on joints at any
+  moment.
+\item \textbf{A multiple contact falling strategy for humanoids}
+  We introduce a new planning algorithm to minimize the damage of humanoid 
+  falls by utilizing multiple contact points. 
+\item \textbf{An iterative learning framework for dynamic motor skills}
+  Inspired by how humans learn dynamic motor skills through progressive process 
+  of coaching and practices, we introduce an intuitive and interactive 
+  framework for developing dynamic controllers. 
+\item \textbf{An optimization technique that utilized failed samples}
+  We introduce a novel efficient optimization algorithm, CMA-C, that shows 
+  that faster convergence rate by approximating the infeasible region of a  
+  particular type of failure with Supported Vector Machines.
+\item \textbf{An optimization technique for parametrized objectives}
+  We introduces an efficient evolutionary optimization algorithm for learning
+  parametrized skills to achieve whole-body dynamic tasks. 
+\end{itemize}
 
