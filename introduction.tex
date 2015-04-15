@@ -1,47 +1,84 @@
 %1234567890123456789012345678901234567890123456789012345678901234567890123456789
 \chapter{Introduction}
-Dynamic human motions are beautiful and fundamental skills in sports,
-martial arts, and everyday life.
-Importance of dynamic motor skills are well described in the philosophy of
-Parkour, “an art of overcoming obstacles as swiftly and efficiently as
-possible using only your body”.
-As stated, dynamic motor skills can be ways of self-expression or
-efficient mechanisms of transportation and manipulation.
-Beyond the fact that highly dynamic controllers are a great milestone, 
-it is a promising method to maximize virtual characters and real robots
-capability for challenging tasks.
-In computer games, characters with dynamic motion controllers can 
-lively respond to user interactions and show optimal behaviors 
-by minimizing energy consumption in the physically simulated environment.
-In robotics, a rich set of dynamic motor skills can give more freedom of
-movements to the robot in the uneven terrain of the disaster places.
+% Our problem (=dynamic motor skills) is important
+Performing highly dynamic motions with agility and grace has been one of the
+greatest challenges for athletes, game characters, and robots.
+The philosophy of Parkour, ``an art of overcoming obstacles as swiftly and
+efficiently as possible using only your body, '' shows the importance of
+dynamic motor skills in two aspects: dynamic motions can be both artistic 
+methods of self-expression and efficient mechanisms of transportation. 
+In fact, it has been a great milestone in the various research area
+to develop physics-based controllers that can execute natural 
+and agile motions.
+For instance, dynamic motion controllers are developed 
+for game characters to generate live interactive behaviors or optimal 
+motions that minimize energy consumption.
+In robotics, dynamic motor skills allow robots to overcome obstacles and
+to move in uneven terrains, which can be often located in 
+the disaster places.
+To maximize capabilities of virtual characters and robots for 
+further challenging motor tasks, it is inevitable to develop 
+physic-based dynamic motion controllers.
 
-In this dissertation, development of physics-based controllers involves
-two types of subjects: virtual characters and real humanoids.
-Since the control problems in two domains have shared properties, such as
-non-linearity, high-dimension, and discontinuity, algorithms and principles
-developed in one domain can be transferred to the other domain.
-However, different goals and assumptions in two domains often lead to
-slightly different approaches.
-The primary goal of the physics-based control in computer animation is to
-generate natural and realistic human behaviors.
-For this goal, a wide range of controllers have been developed for highly
-dynamic stunts in the level of athletes, such as leaping, vaulting, and
-flipping under the assumption that a character has enough agility to execute such motions.
-On the other hand, a humanoid controller in the robotics must be compatible 
-with the hardware, which generally has more conservative joints and torques
-limitations.
-Furthermore, robustness of the controller becomes a more important issue
-because a fall can potentially cause detrimental damage to the robot and
-enormous cost to repair.
+% I will solve virtual and real both, to get the benefits
+Virtual characters and real robots are two main subjects of motor control
+problems in computer graphics and robotics.
+Although they have different applications and limitations,
+it is also true that control problems of both subjects have common
+properties, such as non-linearity of the objective function, 
+under-actuated characters, high-dimensional control parameters, 
+and discontinuity due to the contacts.
+Therefore, principles and algorithms developed in one domain often can be
+transferred to the other domain.
+For instance, many optimization algorithms for finding the best control
+parameters, such as PEGASUS and CMA-ES, have been successfully applied
+to the virtual characters and robots.
+Further, a virtual simulation of a robot is often used as a testbed for
+developing hardware compatible controllers due to the expensive cost and
+time-consuming trials.
+In this dissertation, I will discuss control of both virtual and real humanoids
+by demonstrating the different problem formulation and solutions, and further
+proposing the optimization technique for hardware that exploits the experience
+in the virtual simulation.
 
-However, developing effective controllers is a very difficult and
-time-consuming task.
+% The first difficulty: dynamic motion
+However, developing effective and robust controllers for dynamic motor skills 
+is a very difficult and time-consuming task, which requires a lot of manual
+efforts and computational resources.
+First, dynamic motor skills are 
+characterized by abrupt accelerations and decelerations of momentum,
+frequent changes of contacts, and explosive usage of torques near limitations.
+Due to these attributes, controllers must be able to generate efficient
+torque trajectory under constraints and handle a wide range of initial
+conditions for robustness.
+One great example of challenging motor skills is a falling motion
+of humanoids, because it accompanies huge changes of vertical momentum within 
+a very short time window.
+In addition, it is a fundamental motor skill that protects the subject from 
+severe injuries and connects the previous and next actions for fluent
+transitions.
+Therefore, the development of controllers for falling and landing motions
+will make characters and robots to operate safely in the unexpected environment,
+and its principles can be applied to the other highly dynamic motions
+with huge momentum.
+
+% The first difficulty: a design and our approach
+However, developing effective and robust controllers is a very difficult and
+time-consuming task, which requires a lot of manual efforts and computational
+resources.
 First, a design process for controllers require a lot of prior knowledge
 including mechanisms, target poses, momenta, and contacts.
 One promising direction to acquire prior knowledge is a paradigm of
-``learning from demonstration''[], which still requires careful
-generalization techniques for robust control.
+``learning from demonstration''[], but it still requires expensive motion
+captured reference motions and costly reconstruction processes [].
+On the other hand, a learning framework that can directly train policies
+without reference motion will be 
+
+In this dissertation, direct training of a virtual character does not require 
+reference motions but often needs optimizations with the manually
+designed parametrization and a
+
+% The second difficulty (optimization) and our approach
 Another difficulty arises when optimizing the parameters for the controllers.
 Usually, whole-body dynamic tasks typically have a cost function that is 
 multimodal and very non-smooth due to the combined challenge of contact 
@@ -59,10 +96,45 @@ One way to alleviate simulation bias is iteratively updating the simulation
 model [,,], so called model-based policy search, which is an on-going topic in
 robotics.
 
+
+% Reformulate as the third difficulty (simulation bias)
+In fact, a dynamic motion controller for humanoids has been
+a popular topic in many research areas, including computer graphics,
+robotics, and bio-mechanics.
+In these fields, there are two types of subjects for physics-based controllers
+: a characters in the simulation and a humanoid with read hardware.
+Since the control problems of virtual and real humanoids have shared 
+properties, such as non-linearity, high-dimension, and discontinuity, 
+algorithms and principles developed in one domain can be transferred to 
+the other domain.
+However, different goals and assumptions often lead to
+slightly different approaches.
+The primary goal of the physics-based control in computer animation is to
+generate natural and realistic human behaviors in the virtual world.
+For this goal, a wide range of controllers have been developed for highly
+dynamic stunts in the level of athletes, such as leaping, vaulting, and
+flipping, under the assumption that a character has enough agility to execute
+these motions.
+On the other hand, a humanoid controller in the robotics must be compatible 
+with the hardware, which generally has more strict joints, torques, and power
+limitations.
+Furthermore, the robustness of the controller becomes a more important issue
+because a failed motion can potentially cause detrimental damage to the robot
+and enormous cost to repair.
+% The third difficulty: simulation bias and our approach
+- Although virtual and real are similar, they are different
+- Difference may arise in many different places, such as ...
+- Model-based learning is our approach
+
+% Identify three categories problems.
 In this dissertation, following problems are identified for developing 
 controllers for highly dynamic motor skills.
+- A falling motion is selected, due to the change of momentum
+- Further, learning framework is presented for efficient training
+- Finally, 
 
 \section{Falling Strategies for Humanoids}
+% Introduction on the falling - Motivation, Description, Product, Goal
 Highly dynamic motions often accompany the abrupt momentum changes, which can
 cause large contact forces to characters.
 Therefore, how to manage falls is a fundamental motor skill to reduce damages
@@ -73,6 +145,7 @@ The effectiveness of the presented strategies will be validated in physics
 simulation, and experimentally tested on a small-size humanoid.
 
 \subsection{Falling and Landing Motion Control for Virtual Characters}
+% Goal, Method (Strength), Verification + Image
 In Chapter 3, I will show how to create an on-line controller for generating 
 agile and natural falling motions of the virtual character that can land from 
 various heights and velocities.
@@ -86,6 +159,7 @@ Finally, I will demonstrate that the algorithm induces smaller joint stress,
 which is still four times lower than a rag-doll motion at the worst cases.
 
 \subsection{Multiple Contact Planning for Humanoids}
+% Goal, Method (Strength), Verification + Image
 Chapter 4 will provide an introduction on a multiple contact planning to
 reduce the damage to the real humanoid, which provides a unified framework
 for the existing falling techniques [,,].
@@ -97,6 +171,7 @@ actual hardware to show that our algorithm plans various falling strategies
 with different contact sequences.
 
 \section{Learning of Dynamic Controller for Characters}
+% Introduction on the learning - Motivation, Description, Product, Goal
 Teaching a physically simulated character a new motor skill entirely depends 
 on the effort of the controller designer, from the design of the control 
 architecture to the tweaking of low-level control parameters.
@@ -107,6 +182,7 @@ and practices.
 Further, we propose two optimization techniques that can expedite the convergence and generalize the skill to the parametrized objectives.
 
 \subsection{Iterative Design of Dynamic Controllers}
+% Goal, Method (Strength), Verification + Image
 In Chapter 5, I will describe a general framework to design dynamic
 controllers using high-level, human-readable instructions.
 In this framework, we introduce a “control rig” that can control the multiple
@@ -116,6 +192,7 @@ The details of controllers and objectives formulation using control rigs and
 instructions will be shown with examples.
 
 \subsection{Optimization with Failure Learning}
+% Goal, Method (Strength), Verification + Image
 A controller with many user constraints is difficult to optimize due to the
 relatively small feasible region.
 In Chapter 6, I will describe a new optimization algorithm based on the
@@ -126,12 +203,15 @@ an infeasible region in the space of control rig parameters, resulting a
 faster convergence than the standard CMA-ES.
 
 \subsection{Optimization for Parametrized Motor Skills}
+% Goal, Method (Strength), Verification + Image
 In Chapter 7, I will show how to optimize parametrized motor skills that are
 essential for autonomous robots operating in an unpredictable environment. 
 By evolving a parametrized probability distribution, the algorithm reduces 
 the number of samples required to optimize a parametrized skill for 
 all the tasks in the range of interest. 
 
+\section{Model-based Learning for virtual and real characters}
+% Introduction on the bias
 
 \section{Contributions}
 The control and optimization methods discussed in this dissertation provide
