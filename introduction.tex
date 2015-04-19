@@ -1,110 +1,130 @@
 %1234567890123456789012345678901234567890123456789012345678901234567890123456789
 \chapter{Introduction}
+ 
 % Our problem (=dynamic motor skills) is important
-Performing highly dynamic motions with agility and grace has been one of the
-greatest challenges for athletes, game characters, and robots.
-The philosophy of Parkour, ``an art of overcoming obstacles as swiftly and
-efficiently as possible using only your body, '' shows the importance of
-dynamic motor skills in two aspects: dynamic motions can be both artistic 
-methods of self-expression and efficient mechanisms of transportation. 
-In fact, it has been a great milestone in the various research area
-to develop physics-based controllers that can execute natural 
-and agile motions.
-For instance, dynamic motion controllers are developed 
-for game characters to generate live interactive behaviors or optimal 
-motions that minimize energy consumption.
-In robotics, dynamic motor skills allow robots to overcome obstacles and
-to move in uneven terrains, which can be often located in 
-the disaster places.
-To maximize capabilities of virtual characters and robots for 
-further challenging motor tasks, it is inevitable to develop 
-physic-based dynamic motion controllers.
+Learning highly dynamic motions of athletes has been one of the greatest
+challenges for humanoids, from a virtual character in simulation to a real
+robot with hardware.
+The learned dynamic motor skills allow humanoids to generate more agile,
+efficient, and responsive motions that are useful in many applications.
+One notable benefit is that a humanoid can overcome obstacles as swiftly and
+efficiently as possible using only its body.
+A robot in a disaster place is likely to encounter the uneven
+terrains and discontinuous gaps, which cannot be explored by regular
+locomotion without dynamic motions such as jumping or falling.
+In addition, dynamic motor skills maximize capability of humanoids
+under the given torque and joint limitations.
+If a virtual character in a sports game cannot execute athletic movements
+of elite sports players, a game will be boring and not appealing to users.
+A game character can further adapt the acquired skills to the
+environment changes or user interactions under the valid physical assumptions,
+such as minimizing energy consumption.
+The advantages of highly dynamic motor skills lead to the
+development of techniques for learning physics-based motion controllers
+in the various areas in academia and industry.
+
 
 % I will solve virtual and real both, to get the benefits
 Virtual characters and real robots are two main subjects of motor control
-problems in computer graphics and robotics.
-Although they have different applications and limitations,
-it is also true that control problems of both subjects have common
-properties, such as non-linearity of the objective function, 
-under-actuated characters, high-dimensional control parameters, 
-and discontinuity due to the contacts.
-Therefore, principles and algorithms developed in one domain often can be
-transferred to the other domain.
-For instance, many optimization algorithms for finding the best control
-parameters, such as PEGASUS and CMA-ES, have been successfully applied
-to the virtual characters and robots.
-Further, a virtual simulation of a robot is often used as a testbed for
+problems in computer graphics and robotics, which have both common and
+different properties.
+To name a few, control problems in both areas have non-linear
+objective function, under-actuated characters, high-dimensional
+control parameters.
+There are also different assumptions and limitations
+on sensors, actuators, contacts, control mechanisms, and so on.
+It is often possible to apply the existing principles and
+algorithms developed in one domain to the other and expedite the
+design process of the controller, 
+if they are robust enough to handle different assumptions.
+For instance, a virtual simulation of a robot is often used as a testbed for
 developing hardware compatible controllers due to the expensive cost and
-time-consuming trials.
-In this dissertation, I will discuss control of both virtual and real humanoids
-by demonstrating the different problem formulation and solutions, and further
-proposing the optimization technique for hardware that exploits the experience
-in the virtual simulation.
+time-consuming trials [,,].
+The techniques that are designed to control noisy hardware systems 
+can be applied to virtual characters for creating more robust controllers.
+In this dissertation, I will develop control techniques for both virtual and
+real humanoids to demonstrate how the algorithms in two different systems can
+benefit each other.
 
-% The first difficulty (dynamic motion) and our approach
-However, developing effective and robust controllers for dynamic motor skills 
-requires a lot of manual efforts and computational resources.
-Dynamic motor skills are characterized by abrupt accelerations and 
-decelerations of momentum,
-frequent changes of contacts, and explosive usage of torques near limitations.
-Due to these attributes, controllers must be able to generate efficient
-and feasible torque trajectories that can be applied to a wide range of initial
-conditions for robustness.
-In this dissertation, I thoroughly investigate a falling motion of humanoid 
-as an example of highly dynamic motions due to several reasons.
-First, it is a fundamental motor skill that protects the subject from 
-severe injuries and connects the previous and next actions for fluent
-transitions.
-In addition, it is one of the most challenging motor skills because 
-it accompanies huge changes of vertical momentum within 
-a very short time window.
-Therefore, the development of falling controllers will make virtual 
-characters and robots to execute the motion fluently
+% Dynamic motor skills itself is very difficult
+Highly dynamic motor skills are difficult tasks for humanoids.
+Execution of dynamic motions accompanies abrupt accelerations and decelerations
+of momentum, frequent changes of contacts, and explosive usage of torques near
+limitations.
+Therefore, control becomes a very sensitive problem because small errors can
+quickly accumulate and generate a disastrous result to the humanoid, such as
+loosing it balance and hitting the ground.
+One of very challenging motions is safe falling of a humanoid, which is 
+a fundamental motor skill that protects the subject from severe
+injuries and connects the previous and next actions for fluent transitions.
+A falling motion requires very accurate control because a robot must decelerate
+huge vertical momentum within a very short time window, and a minor failure
+will cause huge damage to the body parts.
+In addition, a wide range of initial conditions must be considered 
+for robustness because falling can be initiated by unexpected situations.
+The development of falling controllers will make virtual 
+characters and robots to execute motions safely and smoothly,
 and its principles can be applied to the other highly dynamic motions
 with huge momentum.
 
+% The first difficulty: the design of the controller
+There are several issues when a user develops physics-based controllers
+for difficult dynamic motor skills.
+The first problem arises when the user designs objectives, control 
+mechanisms, and control parameters, which require a lot of prior knowledge.
+Since a large portion of controller designs remains unknown until testing
+the implementation, the design process is often driven by trial-and-errors.
+This can be very tedious and time-consuming, especially in the traditional
+monolithic optimization setting that may take several hours to days.
+Thus, it is important to develop a simple and intuitive design process
+that allows the user to train controllers within a short amount of time.
+An iterative learning can be more efficient due to 
+short feedback loops that can easily test and modify the controller,
+and more intuitive because it is similar how human learn motor skills
+through progressive process of coaching and practicing.
+
 % The second difficulty (optimization) and our approach
-Another difficulty arises when optimizing input parameters for controllers.
+Optimizing control parameters for dynamic motions is another time-consuming
+step that requires a lot of computing power.
 Typically, whole-body dynamic tasks typically have a cost function
 that is multimodal, non-linear, non-convex, and discontinuous due to 
 an under-actuated system and discrete contacts.
-Further, its control parameters are likely to be in a high dimensional
+Further, control parameters are likely to be in a high dimensional
 space with small feasible regions that does not generate undesired behaviors.
-These difficulties often requires the most robust optimization algorithm.
+These difficulties often require the most robust optimization algorithm.
 In computer animation, a robust black-box sampling-based method, 
 Covariance Matrix Adaption Evolution Strategy (CMA-ES) [], has been frequently
 applied to discontinuous control problems, such as biped locomotion [],
 parkour-style stunts[], or swimming [].
-In this dissertation, I focus on improving the performance of the baseline
-algorithm, CMA-ES, for more difficult tasks with smaller feasible regions
-by training classifiers to exclude infeasible samples.
+However, CMA-ES is not the most effective algorithm for
+optimizing dynamic motor skills when they have small feasible regions
+or high-dimensional control space due to the parametization.
+This motivated me to work on improving the performance of the baseline
+algorithm, CMA-ES, for more difficult tasks with many user constraints
 I further extend CMA-ES for a parametrized motor skill, which is essential
 for operating a robot in the unpredictable environment.
 
 % The third difficulty (simulation bias) and our approach
-Unlikely the optimization for virtual characters
+Unlikely the optimization for virtual characters,
 a control policy search for hardware with many trials is often infeasible
 because conducting hardware experiment can be expensive and time-consuming.
 Moreover, an execution of a bad controller on a robot can potentially cause
 disastrous damage to the robot and enormous cost to repair.
 To reduce the number of trials on the hardware, a virtual simulation 
 is used as a practical solution that provides a fast and safe evaluation
-of the controller.
+of the control parameters.
 However, it suffers from \emph{simulation bias} in which
 controllers developed for a virtual character do not work on hardware due
 to differences in the two systems.
 The \emph{simulation bias} is hard to explicitly model because it can
-be caused by many reasons, such as modeling errors, sensor and actuator noises,
-or command delays.
-A data-driven model-based policy search, which iteratively updates the simulation
-using collected hardware data, is a promising method to 
-model the simulation bias.
-In this dissertation, I will discuss how can we reduce the number of hardware
-experiments for robots using our iterative model-based policy search that
-exploits the virtual simulation as a testbed.
+be caused by many reasons, such as different mass-distributions, sensor 
+and actuator noises, command delays, and more.
+Therefore, a data-driven model-based policy search, which iteratively 
+updates the simulation using collected hardware data, is a promising method 
+to model the simulation bias, which will be discussed in this dissertation.
 
 % Identify three categories problems.
-In this dissertation, following problems are identified for developing 
+I will present the following identified problems for developing 
 controllers for highly dynamic motor skills.
 
 \section{Falling Strategies for Humanoids}
@@ -216,23 +236,52 @@ framework will be shown with example parkour motions.
 % Goal, Method (Strength), Verification + Image
 A controller with many user constraints is difficult to optimize due to the
 relatively small feasible region.
-In Chapter 6, I will describe a new optimization algorithm based on the
-observation of human’s ability to learn from failure.
+In Chapter 6, I will describe a new optimization algorithm for
+highly-constrained problems based on the observation of human’s ability 
+to learn from failure.
 The proposed algorithm, CMA-C (Covariance Matrix Adaptation with
 Classification) utilizes the failed simulation trials to approximate 
-an infeasible region in the space of control rig parameters, resulting a
-faster convergence than the standard CMA-ES.
+an infeasible region in the space of control rig parameters 
+so that it can predict the quality of the samples,
+resulting a faster convergence than the standard CMA-ES.
 
 \subsection{Optimization for Parametrized Motor Skills}
 % Goal, Method (Strength), Verification + Image
-In Chapter 7, I will show how to optimize parametrized motor skills that are
-essential for autonomous robots operating in an unpredictable environment. 
-By evolving a parametrized probability distribution, the algorithm reduces 
-the number of samples required to optimize a parametrized skill for 
-all the tasks in the range of interest. 
+In Chapter 7, I will explain the optimization of parametrized motor skills.
+The parametrization of the learned motor skills is an essential ability
+because a robot can reinterpret the skill to a new situation, without
+learning from scratch.
+Instead of maintaining a single Gaussian distribution, 
+the algorithm reduces the number of samples by evolving a parametrized
+probability distribution for a range of skills.
+I will test the algorithm on a simulated humanoid
+robot learning three parametrized dynamic motor skills, 
+including vertical jump, kick a ball, and walk.
 
-\section{Model-based Learning for virtual and real characters}
-% Introduction on the bias
+\section{Model-based Learning for Virtual and Real Characters}
+% Goal, Method (Strength), Verification + Images
+\begin{wrapfigure}{l}{0.5\textwidth}
+ \vspace{-10pt}
+  \begin{center}
+    \includegraphics[width=0.48\textwidth]{images/intro_bongo.jpg}
+  \end{center}
+   \vspace{-25pt}
+  \caption{Bongo Board balance toy.}
+  \label{fig:intro_bongo}
+   \vspace{-10pt}
+\end{wrapfigure}
+In Chapter 8, I will describe an iterative approach for for learning 
+hardware models and optimizing control policies with 
+as few hardware experiments as possible.
+Instead of learning hardware models from scratch, the proposed approach only
+learns the difference from a simulation model.
+Similarly to the previous work, Gaussian Process is used to model 
+the difference between dynamics of virtual and real characters
+based on the collected hardware data.
+To prove the concept, I will validate the algorithm on two different 
+simulation models, one with perfect contacts and one with realistic contacts,
+by finding a balancing controller for a bipedal robot on a bongo board
+(\figref{intro_bongo}).
 
 \section{Contributions}
 The control and optimization methods discussed in this dissertation provide
@@ -241,24 +290,39 @@ These contributions are as follows:
 
 
 \begin{itemize}
-\item \textbf{A falling and landing strategy for various initial conditions}
-  The algorithm presented in the dissertation allows the character to fall from 
-  a wide range of heights and initial speeds, continuously roll on the ground, 
-  and get back on its feet, without inducing large stress on joints at any
-  moment.
-\item \textbf{A multiple contact falling strategy for humanoids}
-  We introduce a new planning algorithm to minimize the damage of humanoid 
-  falls by utilizing multiple contact points. 
+\item \textbf{A falling and landing strategy for virtual characters}
+  The falling strategy presented in the dissertation allows the character to
+  fall from a wide range of heights and initial speeds, continuously roll 
+  on the ground, and get back on its feet, without inducing large stress on
+  joints at any moment.
+\item \textbf{A multiple contact falling strategy for robots}
+  I also introduce a new falling strategy that can optimize a sequence
+  of contacts, which optimizes the number and locations of contacts
+  for the given initial state.
 \item \textbf{An iterative learning framework for dynamic motor skills}
-  Inspired by how humans learn dynamic motor skills through progressive process 
-  of coaching and practices, we introduce an intuitive and interactive 
-  framework for developing dynamic controllers. 
-\item \textbf{An optimization technique that utilized failed samples}
-  We introduce a novel efficient optimization algorithm, CMA-C, that shows 
-  that faster convergence rate by approximating the infeasible region of a  
-  particular type of failure with Supported Vector Machines.
-\item \textbf{An optimization technique for parametrized objectives}
-  We introduces an efficient evolutionary optimization algorithm for learning
-  parametrized skills to achieve whole-body dynamic tasks. 
+  Unlikely previous monolithic design processes in the literature,
+  I proposed an iterative and interactive learning framework 
+  using human readable instructions.
+  Starting from a basic controller, the proposed framework allows a user 
+  to easily train complex dynamic motion controllers within minutes,
+  with only a few high-level instructions from the user.
+\item \textbf{An optimization technique for highly constrained problems}
+  I introduce a novel efficient optimization algorithm, CMA-C, that is 
+  designed for the problem with many constraints and smaller feasible regions.
+  The algorithm converges faster than the standard CMA-ES,
+  by approximating the infeasible region using
+  Supported Vector Machines.
+\item \textbf{An optimization technique for parametrized tasks}
+  I introduce an efficient evolutionary optimization algorithm for learning
+  parametrized skills to achieve whole-body dynamic tasks, which is much
+  faster than the baseline algorithm, CMA-ES.
+\item \textbf{A model-based policy search for reducing hardware experiments}
+  I propose an iterative approach for learning hardware model and optimizing
+  policies with as few hardware experiments as possible by learning the
+  difference between a simulation model and hardware.
 \end{itemize}
 
+\rule{\textwidth}{1pt}
+
+In the next chapter, I will discuss the related work conducted by other
+researchers to address similar problems.
