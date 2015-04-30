@@ -2,34 +2,55 @@
 \chapter{Introduction}
  
 % Our problem (=dynamic motor skills) is important
-Learning highly dynamic motions of athletes has been one of the greatest
-challenges for humanoids, from a virtual character in simulation to a real
-robot with hardware.
-The learned dynamic motor skills allow humanoids to generate more agile,
-efficient, and responsive motions that are useful in many applications.
-One notable benefit is that a humanoid can overcome obstacles as swiftly and
-efficiently as possible using only its body.
-A robot in a disaster place is likely to encounter the uneven
-terrains and discontinuous gaps, which cannot be explored by regular
-locomotion without dynamic motions such as jumping or falling.
-In addition, dynamic motor skills maximize capability of humanoids
-under the given torque and joint limitations.
-If a virtual character in a sports game cannot execute athletic movements
-of elite sports players, a game will be boring and not appealing to users.
-A game character can further adapt the acquired skills to the
-environment changes or user interactions under the valid physical assumptions,
-such as minimizing energy consumption.
-The advantages of highly dynamic motor skills lead to the
-development of techniques for learning physics-based motion controllers
-in the various areas in academia and industry.
+% Learning highly dynamic motions of athletes has been one of the greatest
+% challenges for humanoids, including a virtual character in simulation 
+% and a real robot with hardware.
+% The learned dynamic motor skills allow humanoids to generate more agile,
+% efficient, and responsive motions that are useful in many applications.
+% One notable benefit is that a humanoid can overcome obstacles as swiftly and
+% efficiently as possible using only its body.
+% A robot in a disaster place is likely to encounter the uneven
+% terrains and discontinuous gaps, which cannot be explored by regular
+% locomotion without dynamic motions such as jumping or falling.
+% In addition, dynamic motor skills maximize capability of humanoids
+% under the given torque and joint limitations.
+% If a virtual character in a sports game cannot execute athletic movements
+% of elite sports players, a game will be boring and not appealing to users.
+% A game character can further adapt the acquired skills to the
+% environment changes or user interactions under the valid physical assumptions,
+% such as minimizing energy consumption.
+% The advantages of highly dynamic motor skills lead to the
+% development of techniques for learning physics-based motion controllers
+% in the various areas in academia and industry.
+Over the last decades, humanoids become more available in academia,
+industry, and our daily life.
+They have played important roles as indefatigable workers in factories,
+surrogate rescue parties in disaster relief scenes,
+emotional friends in home [PEPPER],
+or virtual star sport players in computer games[EA].
+And the recent development of software and hardware provides
+an opportunity to enrich their motion vocabularies with dynamic motor skills,
+which is essential for efficient and agile task achievements.
+One notable benefit of dynamic motions is that a humanoid can advance to
+desired locations as swift as possible using only its body,
+like a practitioner of free-running.
+Moreover, a humanoid can operate on the irregular terrain by overcoming
+obstacles with jumping and falling, which is often observed in disaster
+paces.
+Development of physics-based controllers for virtual and real
+humanoids are popular but yet challenging topics in many disciplines
+due to their large momentum and frequent changes of contacts.
+An in-depth understanding of mechanisms of dynamic motions and 
+their controller would shed light on general motor control problems
+of humanoids.
 
 
 % I will solve virtual and real both, to get the benefits
 Virtual characters and real robots are two main subjects of motor control
 problems in computer graphics and robotics, which have both common and
 different properties.
-To name a few, control problems in both areas have non-linear
-objective function, under-actuated characters, high-dimensional
+To name a few common properties, control problems in both areas have 
+non-linear objective function, under-actuated characters, high-dimensional
 control parameters.
 There are also different assumptions and limitations
 on sensors, actuators, contacts, control mechanisms, and so on.
@@ -53,12 +74,12 @@ of momentum, frequent changes of contacts, and explosive usage of torques near
 limitations.
 Therefore, control becomes a very sensitive problem because small errors can
 quickly accumulate and generate a disastrous result to the humanoid, such as
-loosing it balance and hitting the ground.
-One of very challenging motions is safe falling of a humanoid, which is 
+loosing it balance and hitting the ground severely.
+One of challenging motions is safe falling of a humanoid, which is 
 a fundamental motor skill that protects the subject from severe
 injuries and connects the previous and next actions for fluent transitions.
 A falling motion requires very accurate control because a robot must decelerate
-huge vertical momentum within a very short time window, and a minor failure
+huge vertical momentum within a fraction of a second, and a minor failure
 will cause huge damage to the body parts.
 In addition, a wide range of initial conditions must be considered 
 for robustness because falling can be initiated by unexpected situations.
@@ -327,7 +348,7 @@ These contributions are as follows:
   difference between a simulation model and hardware.
 \end{itemize}
 
-\rule{\textwidth}{1pt}
+\rule{0.95\textwidth}{1pt}
 
 In the next chapter, I will discuss the related work conducted by other
 researchers to address similar problems.
