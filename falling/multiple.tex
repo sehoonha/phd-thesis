@@ -25,11 +25,11 @@ hands. Furthermore, these contact points can only be applied in
 certain sequences due to the hardware design and kinematic
 constraints. 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \center
   %% \includegraphics[width=3.0in]{images/contact_graph.png}
   %% \includegraphics[width=3.0in]{images/four_contact_graphs.png}
-  \includegraphics[width=3.1in]{images/all_contact_graphs.png}
+  \includegraphics[width=0.8\textwidth]{images/all_contact_graphs.png}
   \caption{Contact graphs}
   \label{fig:falling_contact_graph}
 \end{figure}
@@ -190,7 +190,7 @@ range of $\Delta t$ depends on a forward simulation process
 graph and the corresponding range of $\theta_2$ for each candidate is
 determined by the kinematic limits of the robot. $c_2$ and $\theta_2$
 together define a set of feasible stoppers, $\mathcal{S}$, for the
-next contact (\lineref{falling_collect}). \algref{stopper} describes the
+next contact (\lineref{falling_collect}). \algref{falling_stopper} describes the
 details on generating the feasible stopper set.
 
 The feasibility of the stopper depends on whether the robot can
