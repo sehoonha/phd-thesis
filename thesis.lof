@@ -1,4 +1,18 @@
-\contentsline {figure}{\numberline {1}{\ignorespaces A falling motion of Parkour.}}{4}
+\contentsline {figure}{\numberline {1}{\ignorespaces A falling motion of Parkour.}}{5}
 \contentsline {figure}{\numberline {2}{\ignorespaces Hardware of BioloidGP robot.}}{5}
 \contentsline {figure}{\numberline {3}{\ignorespaces The proposed learning frame uses human readable instructions to teach motions.}}{6}
 \contentsline {figure}{\numberline {4}{\ignorespaces Bongo Board balance toy.}}{7}
+\contentsline {figure}{\numberline {5}{\ignorespaces A cat is able to right itself as it falls to land on its feet, irrespective of its initial orientation.}}{13}
+\contentsline {figure}{\numberline {6}{\ignorespaces Difference between a real robot and its simulation model results different motions from same controllers.}}{16}
+\contentsline {figure}{\numberline {7}{\ignorespaces A simulated character lands on the roof of a car, leaps forward, dive-rolls on the sidewalk, and gets back on its feet, all in one continuous motion.}}{19}
+\contentsline {figure}{\numberline {8}{\ignorespaces Three stages in the landing phase.}}{23}
+\contentsline {figure}{\numberline {9}{\ignorespaces The left and middle are the desired landing poses for the hands-first strategy and the feet-first strategy, respectively. The right is the ready-to-roll pose for the feet-first strategy, which we track only the upper body. }}{24}
+\contentsline {figure}{\numberline {10}{\ignorespaces Samples for hands-first landing strategy. Successful samples are bounded between top and bottom planes along $\theta ^{(T)}$ axis. The middle plane, average of the two, indicates the linear relation of the ideal landing condition. }}{25}
+\contentsline {figure}{\numberline {11}{\ignorespaces Samples in the space of $v_z^{(T)}$, $\omega _y^{(T)}$, and $\theta ^{(T)}$. The spinning velocity $\omega _y^{(T)}$ has minimal effect on the success of a sample. }}{26}
+\contentsline {figure}{\numberline {12}{\ignorespaces Among 16 poses in $\ensuremath {\mathbf {Q}}$, pose 1, 2, 9, and 13 are frequently selected by the airborne controller }}{29}
+\contentsline {figure}{\numberline {13}{\ignorespaces Landing phase controller.}}{30}
+\contentsline {figure}{\numberline {14}{\ignorespaces Two-step impact stage for the feet-first strategy.}}{31}
+\contentsline {figure}{\numberline {15}{\ignorespaces Hands-first landing motion.}}{34}
+\contentsline {figure}{\numberline {16}{\ignorespaces Left: The character model used for most examples. Right: A character with a disproportionately large torso and short legs. }}{37}
+\contentsline {figure}{\numberline {17}{\ignorespaces Maximal stress for each joint from a hands-first landing motion. Results are quantitatively similar across all of our simulations. Green: Ragdoll motion. Blue: Our motion. Orange: Joint stress scaled by mass.}}{38}
+\contentsline {figure}{\numberline {18}{\ignorespaces Feet-first landing motion.}}{40}

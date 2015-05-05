@@ -11,7 +11,7 @@ $(R).bbl: $(R).bib
 	bibtex $(R)
 	pdflatex $(R)
 
-$(R).pdf: *.tex $(STY) $(FIG) $(R).bbl
+$(R).pdf: *.tex */*.tex $(STY) $(FIG) $(R).bbl
 	pdflatex $(R)
 
 clean:
