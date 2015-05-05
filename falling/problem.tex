@@ -1,0 +1,34 @@
+\section{The Problem}
+Consider a biped humanoid on the ground with an unstable initial state
+due to a large initial velocity. If the robot cannot recover its
+balance, what is the least damaging way to fall on the ground? It is
+well known that the damage incurred at the instance of impact is
+mainly due to the sudden change of momentum, which requires a large
+impulse applied in a very short period of time. To completely stop a
+fall, the robot has no choice but to absorb the initial momentum in
+its entirety. However, the change of momentum needs not to happen so
+suddenly. With an ideal control policy, the robot should be able to
+reduce the magnitude of the impulse at peak by distributing one large
+impulse to multiple smaller impulses over multiple contacts with the
+ground.
+
+In the discretized time domain, we define the
+\emph{instantaneous impulse} at each time step $n$ as 
+\begin{equation}
+j_n = \int_{hn}^{h(n+1)} f_y(t) dt = h f_y(hn)
+\end{equation} 
+where $h$ is the
+discretized time interval and $f_y(t)$ is the sum of the vertical
+contact forces at time $t$. Because the robots considered in this
+work are made of hard materials, the contacts between the robot and
+the ground can be approximated as collisions between two ideal rigid
+bodies. With this assumption, the largest instantaneous impulse during
+each contact period typically occurs at the \emph{impact moment}, the
+instance when the contact first establishes. The maximum impulse for
+the entire falling process can then be defined as
+$\max j_n, \; n\in\mathcal{T}$, where $\mathcal{T} = \{\hat{t}^{(i)}
+| i = 1 \cdots k\}$. We denote an impact moment for the contact $i$
+as $\hat{t}^{(i)}$ and the total number of contacts as $k$. Using this
+expression, the goal of our problem is to find a sequence of contact
+locations on the robot and their timing, such that $\max j_n$ is
+minimized.

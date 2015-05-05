@@ -17,6 +17,7 @@
 
 %% ignore text
 \long\def\ignorethis#1{}
+\mathchardef\mhyphen="2D
 
 %% abbreviations
 \newcommand{\etal}{{\em{et~al.}\ }}
@@ -30,6 +31,9 @@
 \newcommand{\eqnref}[1]{Equation~(\ref{eq:#1})}
 %\renewcommand{\eqref}[1]{Equation~(\ref{eq:#1})}
 \newcommand{\secref}[1]{Section~\ref{sec:#1}}
+\newcommand{\algref}[1]{Algorithm~\ref{alg:#1}}
+\newcommand{\lineref}[1]{Line~\ref{alg:line:#1}}
+\newcommand{\linealgref}[2]{Line~\ref{alg:line:#1}~in~Alg.~\ref{alg:#2}}
 
 %% frequently used mathematical structures
 \newcommand{\vc}[1]{\ensuremath{\mathbf{#1}}}

@@ -1,0 +1,110 @@
+\section{Motivation}
+%% \karen{First paragraph: Motivating the importance of fall recovery for
+%%   biped humanoids by describing how falls usually happen and what
+%%   types of damages they cause. What are the hardware solutions in
+%%   practice? Harness? Structural support? What are the drawbacks?}
+A humanoid in an interactive environment is often exposed to the
+risk of falling due to unexpected contacts or perturbations. A fall
+can potentially cause detrimental damage to the robot and enormous
+cost to repair. To reduce the likelihood of damaging robots during
+online operations, researchers and engineers often cover the robot
+exterior with soft guards to absorb the impact of falls
+\cite{Missura:2011:DEH,Kobayashi:2011:DHD}. Though practical, these
+extra parts can potentially limit the range of motion or change the
+contact behaviors.
+
+%% \karen{Second paragraph: An alternative approach inspiring by humans
+%%   is for robots to learn basic motor skills to recover from
+%%   falls. What are the existing papers in this area? Can be more
+%%   thorough since we are not going to have a separate related work
+%%   section.}
+Alternatively, the robot can learn how to fall safely like humans
+do. Fujiware \etal
+\cite{Fujiwara:2002:UFM,Fujiwara:2003:FHH,Fujiwara:2004:SKL,Fujiwara:2006:TOF,Fujiwara:2007:OPF}
+proposed fall strategies inspired by \emph{Ukemi}, a set of techniques
+used in \emph{Judo}.  Ogata \etal \cite{Ogata:2007:FMC,Ogata:2008:RSG}
+evaluated the risk of falls using predicted the zero moment point
+(ZMP) and optimized the center of mass trajectory to reduce damage.
+Ruiz-del-Solar \etal \cite{Ruiz:2009:LTF,Ruiz:2010:FDM} designed
+falling sequences for simulated robots playing soccer.
+%% Wang \etal \cite{Wang:2012:WTO} formulated an optimization of whole body
+%% trajectories as a nonlinear programming problem and solved it with
+%% heuristics \karen{this one doesn't say anything.}. 
+Wang \etal \cite{Wang:2012:WTO} directly solved joint trajectories
+of a three-link robot subject to the full-body dynamics.
+Lee and Goswami \cite{Lee:2012:FOB} proposed a control strategy that
+reorients the robot to fall on its backpack.
+Yun and Goswami \cite{Yun:2014:TFC} described a ``Tripod'' strategy that
+utilizes a swing foot and two hands to stop the fall with an
+elevated center of mass.  Goswami \etal \cite{Goswami:2014:DCF}
+proposed a direction-changing fall control strategy that utilizes
+foot placement and inertia shaping to protect both the 
+robot and objects/humans in the surroundings.
+  
+%% \karen{Third paragraph: These existing methods are designed for specific
+%%   scenarios. Switching between methods requires an additional decision
+%%   maker and carefully designed conditions. We hypothesize that there
+%%   exists a continuous space of fall recovery strategies that can be
+%%   characterized by the sequence of contact positions and the total
+%%   number of contacts. As such, we view existing methods as special cases
+%%   in this space. For example, stepping, tripod, Judo, etc...}
+These existing methods are effective for specific scenarios in which
+the perturbations are assumed within certain range. To select the best
+method for the given scenario, an additional decision making process
+that classifies initial conditions is required. In this chapter, we
+hypothesize that there exists a continuous space of falling strategies
+which can be characterized by the sequence of contact positions on the
+robot. In this hypothesized space, the existing falling techniques can
+be viewed as special cases. For example, the strategy proposed by
+Ogata \etal~\cite{Ogata:2007:FMC} employed a single contact at
+hands. Fujiwara \etal \cite{Fujiwara:2007:OPF} proposed to use two
+contacts, knees and hands, to stop a fall with higher initial
+momentum. In \emph{Judo}, multiple contact points from shoulders to
+hips are used during a forward roll to break a high-speed fall \cite{ZenpoUkemi:2014:URL}. 
+
+% \updated{These existing methods are designed for specific scenarios including
+%   directions and magnitudes of perturbations.
+%   Therefore, an additional decision layer that classifies initial conditions
+%   is required to select the best strategy for the given scenario.
+%   We hypothesize that there exists a continuous space of fall recovery
+%   strategies that can be characterized by the sequence of contact positions and
+%   the total number of contacts.
+%   In this space, we view the existing falling techniques as special cases.
+%   For example, the strategy proposed by Ogata \etal~\cite{Ogata:2007:FMC} uses
+%   a single contact at hands. 
+%   The larger initial momentum requires more contacts, such as knees and hands
+%   \cite{Fujiwara:2007:OPF} or a foot and hands \cite{Yun:2014:TFC}.
+%   In \emph{Judo}, a forward roll from shoulders to hips is used when being
+%   thrown forward \cite{ZenpoUkemi:2014:URL}. } 
+
+  
+%% \karen{Fourth paragraph: Based on this hypothesis, we introduce a
+%%   general fall recovery control algorithm which unifies all the individual
+%%   strategies previously proposed. Details on the key ideas.}
+We introduce a general algorithm that unifies the existing techniques
+for falling strategies. Our algorithm reacts to a wide range of
+initial perturbations by automatically determining the total number of
+contacts, the order of contacts, and the position and timing of
+contacts. The sequence of contact is optimized such that the initial
+momentum is dissipated with minimal damage on the robot. We introduce
+an abstract model, which consists of an inverted pendulum and a
+telescopic ``stopper'', to approximate the reactive motion when humans
+fall. The efficient optimization is achieved by recursive planning in
+the space of abstract model using dynamic programming. We demonstrate
+that our algorithm plans various falling strategies with different
+contact sequences on simulated humanoids and on the actual hardware.
+
+% \updated{Based on the hypothesis, we introduce a general damage reduction
+%   algorithm for humanoid falls that provides a unified framework for existing
+%   falling strategies. 
+%   For the given initial state and possible contacts, our algorithm produces
+%   the optimal sequence of contacts and target poses that can break a
+%   fall with minimal impulses. 
+  %% To make a search in the infinite contact space feasible, our algorithm finds
+  %% a sequence in a user-provided contact candidate graph that defines potential
+  %% transtions  between contacts, such as ``feet to knees'' or ``hips to hands''.  
+  % The efficient optimization is achieved by recursive planning in the space of
+  % abstract model using dynamic programming.
+  % We demonstrate that our algorithm produces various falling strategies with
+  % different contact sequences for a wide range of perturbations.}
+

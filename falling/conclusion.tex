@@ -1,0 +1,16 @@
+\section{Conclusion}
+
+We presented a general algorithm to minimize the damage of humanoid
+falls by utilizing multiple contact points. For an initial state with
+arbitrary planar momentum, our algorithm optimizes the contact
+sequence using abstract models and dynamic programming. Unlike
+previous methods, our algorithm automatically determines the total
+number of contacts, the order of contacts, and the position and timing
+of contacts, such that the initial momentum is dissipated with minimal
+damage to the robot.
+
+% For future consideration, we plan on implementing a realtime falling
+% controller on a small humanoid, BioloidGP. First, the realtime
+% control needs to be achieved by caching the cost-to-go function for a
+% wide range of states. The robot also requires sensors to identify the
+% state in realtime, such as additional IMUs or contact sensors.
