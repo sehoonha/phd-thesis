@@ -1,0 +1,38 @@
+\section {Discussion}
+
+We introduced a real-time physics-based technique to simulate
+strategic falling and landing motions. 
+Our control algorithm reduces
+joint stress due to landing impact and allows the character to
+efficiently recover from the fall.
+ Given an arbitrary initial position
+and velocity in the air, our control algorithm determines an
+appropriate landing strategy and an optimal sequence of actions to
+achieve the desired landing velocity and angle of attack. The
+character utilizes virtual forces and joint-tracking control
+mechanisms during the landing phase to successfully turn a fall into a
+roll. We demonstrated that our control algorithm is general,
+efficient, and robust by simulating motions from different initial
+conditions, characters with different body shapes, different physical
+environments, and scenarios with real-time user perturbations.  The
+algorithm guides the character to land safely without introducing the
+large stress at every joint except for the contacting end-effectors.
+
+Freerunning is a great exemplar to demonstrate human athletic
+skills. Those wonderfully simple yet creative movements provide a
+rich domain for future research directions. Based on the contribution
+of this work, we would like to explore other highly dynamic skills in
+freerunning, such as cat crawl, underbar, or turn vault. These motions
+are extremely interesting and challenging to simulate because they
+involve sophisticated planning and control in both cognitive and motor
+control levels, as well as complex interplay between the performer and
+the environment.
+
+The landing strategies described in this work are suitable for highly
+dynamic activities, but not optimal for low-clearance falls from
+standing height. There is a vast body of research work in biomechanics
+and kinesiology studying fall mechanics of human from standing
+height. One future direction of interest is to integrate this domain
+knowledge with physical simulation tools to explore new methods for
+fall prevention and protection.
+
