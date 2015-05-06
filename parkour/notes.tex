@@ -1,0 +1,120 @@
+Teaching a virtual character a new motor skill requires designing a
+new controller. 
+Designing a motor controller for a robot or a physically simulated
+character requires much expertise and trial-and-errors. 
+In contrast, teaching a real person a new motor skill
+is a gradual and interactive process via instructions, demonstration,
+and feedback.
+Learning is a gradual process with interleaving coaching and practicing steps. The coach gives high-level instructions, and the trainee interprets the instructions via many practice trials. Based on the trainee's updated skill, the coach gives new instructions to incrementally refine the motion. This cycle repeats until the trainee's skill reaches the coach's requirements.
+
+We believe that designing a controller can be largely improved by
+methodologies used by real humans. 
+When humanlike learning can be done efficiently, controller design
+becomes much more easily for everyone and the controller can be easily
+adapted, extended, and concatenated; very much like how humans
+internalize learned motor skills for new tasks.
+
+Our goal is to come up with an algorithmic framework to resemble human
+learning process, such that the character can easily acquire new
+skills or concatenate existing skills. Our approach is to design
+algorithms capturing the iterative process of coaching and
+practicing. We focus on two aspect of human learning behaviors. First,
+during coaching stage, the character learns motor skills from
+high-level instructions, such as ``extend legs'' or ``lean forward'',
+rather than specific description of joint angles. Second, during
+practicing stage, the character accumulates experience via trial and
+error. Our algorithm particularly utilizes human's ability to learn
+from failures. For example, falling on the ground or hitting obstacles
+when learning to jump or vault can be very valuable experience in the
+learning process.
+
+
+
+
+Designing a motor controller for a robot or a physically simulated
+character requires much expertise and trial-and-errors. In most
+practical cases, the controllers developed for a particular task, say
+walking, do not help other similar tasks, say running. In contrast,
+humans learn motor skills via a gradual and accumulative process. Once
+a simpler skill is acquired, more complex skills can be built upon
+it. 
+We believe that designing a controller can be largely improved by
+methodologies used by real humans. 
+
+When humanlike learning can be done efficiently, controller design
+becomes much more easily for everyone and the controller can be easily
+adapted, extended, and concatenated; very much like how humans
+internalize learned motor skills for new tasks.
+
+Our approach allows the user to train a virtual character via
+high-level, human-interpretable instructions. Through iterative
+process of coaching and practicing, the character incrementally refines
+its motor skill. Because our algorithm captures important aspects
+of human learning process, the character can learn more efficiently
+without depending on motion data, parameter tuning, or massive amount
+of simulation.
+
+
+
+goal:
+Design motor controllers from human instructions
+
+Model the process of human learning motor skills
+
+approach: 
+Design algorithms analogous to iterative learning process via coaching
+and practicing steps
+
+How do toddlers learn to walk?
+How do athletes learn to improve their skills?
+Learning motor skills is an accumulative and gradual process. Two
+examples. Developing motor controllers for robots or physically
+simulated characters follows 
+
+Motor controllers designed for robots or characters are carefully crafted by programmers via parameter tuning and trial simulation. They simulate the end results, but they do not capture the process of learning itself.
+Consequently, these learned controllers operate independently, rather than becoming an internal repertoire of motor skills that can be adapted, refined, or concatenated. 
+
+The methodologies used to design a controller are very different from the way humans learn motor skills.
+Learning is a gradual process with interleaving coaching and practicing steps. The coach gives high-level instructions, and the trainee interprets the instructions via many practice trials. Based on the trainee's updated skill, the coach gives new instructions to incrementally refine the motion. This cycle repeats until the trainee's skill reaches the coach's requirements.
+
+Our goal is to come up with an algorithmic framework to resemble human
+learning process, such that the character can easily acquire new
+skills or concatenate existing skills. Our approach is to design
+algorithms capturing the iterative process of coaching and
+practicing. We focus on two aspect of human learning behaviors. First,
+during coaching stage, the character learns motor skills from
+high-level instructions, such as ``extend legs'' or ``lean forward'',
+rather than specific description of joint angles. Second, during
+practicing stage, the character accumulates experience via trial and
+error. Our algorithm particularly utilizes human's ability to learn
+from failures. For example, falling on the ground or hitting obstacles
+when learning to jump or vault can be very valuable experience in the
+learning process.
+
+
+Technical details
+
+
+Learning from failures: In reality, failing has a high cost of injury and pain. Each failure experience is thus very valuable. The trainee quickly build a mental model to categorize the bad motor commands and the resulting failures. 
+
+
+Monday:
+toy example section
+instruction interpreter
+citations
+
+Tuesday:
+edit section 1-6
+proofread assignment
+write conclusion section
+
+Wednesday:
+edit result section
+
+Thursday:
+incorporate feedback
+
+overview figure
+result figures
+teaser figure
+CMA examples figures

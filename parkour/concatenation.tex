@@ -1,0 +1,92 @@
+\section{Parameterization and Concatenation}
+Once a controller is developed, generalizing it to a family of similar controllers can be done easily by parameterizing the task objective function (\eqnref{parkour_costfunc}):
+\begin{equation}
+f(\mathcal{P}, \vc{u}) = \sum_{i=1}^n\|h_i(\vc{q}_f) - \hat{h}_i(\vc{q}_f, \vc{u})\|
+\end{equation}
+\ignorethis{
+\begin{equation}
+  \begin{aligned}
+    f(\vc{x}_f, \vc{u}) 
+     = \vc{w}_C\| \hat{\vc{C}}(\vc{u}) - \vc{C}(\vc{x}_f) \|
+    &+ \vc{w}_P \|\hat{\vc{P}}(\vc{u}) - \vc{P}(\vc{x}_f) \| \\
+     + \vc{w}_L\| \hat{\vc{L}}(\vc{u}) - \vc{L}(\vc{x}_f) \|
+    &+ \vc{w}_S\|\hat{\vc{S}}(\vc{u}) - \vc{S}(\vc{x}_f) \| 
+  \end{aligned}
+  \label{eq:parkour_costfunc2}
+\end{equation}
+}
+where $\vc{u}$ is the varying task parameter among the parameterized controllers. For example, if $\vc{u}$ represents the forward leaning angle and $h_i$ evaluates the center of mass position at the final state, we can produce a family of new targets for the center of mass by varying $\vc{u}$ in $\hat{h}_i(\vc{q}_f, \vc{u})$. Because all the controllers share the same constraints, the SVMs built for the original controller can be reused. As a result, optimizing a family of parameterized controllers can be done efficiently without additional user effort.
+
+Our framework also supports concatenation of controllers by utilizing the parameterized controllers. 
+%% \revtwo{
+%% When the result of the previous controller does not have a significant impact
+%% on the next motion, we can just train the next motion from
+%% the end of the previous motion. 
+%% However, it does not hold in most cases, especially when it comes to dynamic motions.
+%% For instance, both the thrusting speed (thrusting phase) and the landing angle 
+%% (airborne phase) should be adjusted simultaneously to land safely.
+%% Therefore, we cannot optimize these consecutive motions separately.
+%% }
+\revtwo{
+Given two controller A and B, the naive way to optimize both controllers is 
+putting them together in one big problem and optimizing control parameters
+$\mathcal{P}_A$ and $\mathcal{P}_B$ simultaneously.
+To resolve the issue of increasing dimensionality, 
+we first parameterize A with the task parameter $\vc{u}$ to generate a family of controllers $\mathcal{A}$. 
+%% When optimizing B, we include $\vc{u}$ as a free variable and obtain its optimal value $\vc{u}^*$. 
+When optimizing B, we include $\vc{u}$ as a free variable along with
+other rig parameters for B. The simulated motions depend on $\vc{u}$
+because different $\vc{u}$ results in different initial states of the
+simulation. Once the optimizer obtains an optimal value $\vc{u}^*$, we
+choose one controller whose task parameter is the closest to
+$\vc{u}^*$ from $\mathcal{A}$. Finally we concatenate the chosen controller and B to generate a longer motion sequence.
+}
+\ignorethis{
+given two controllers A and B, we first parameterize A with the task parameter $\vc{u}$ to generate a family of controllers $\mathcal{A}$. 
+When optimizing B, we include $\vc{u}$ as a free variable and obtain its optimal value $\vc{u}^*$. 
+From $\mathcal{A}$, we choose one controller whose task parameter is the closest to $\vc{u}^*$. Finally we concatenate the chosen controller and B to generate a longer motion sequence.}
+
+
+\ignorethis{
+In character animation, continuation usually means starting from the well 
+known solution for the specific task, adapting the controller for the
+similar tasks with different task parameters. For more variety of motions,
+we also formulate teh continuation problem by parametrizing the task
+function (\eqnref{parkour_costfunc}). For a set of parametrized tasks, we provide
+a python script engine which taks a lambda function for generating a
+task vectors. The user provided function reads the task parameter $\vc{p}$,
+and generates similar but slightly different tasks.
+
+\begin{equation}
+  \begin{aligned}
+    f(x_f, \vc{p}) 
+     = \left|\vc{w_C} (\hat{\vc{C}}(\vc{p}) - \vc{C}(x_f)) \right|_2
+    &+ \left|\vc{w_P} (\hat{\vc{P}}(\vc{p}) - \vc{P}(x_f)) \right|_2 \\
+     + \left|\vc{w_L} (\hat{\vc{L}}(\vc{p}) - \vc{L}(x_f)) \right|_2
+    &+ \left|\vc{w_T} (\hat{\vc{T}}(\vc{p}) - \vc{T}(x_f)) \right|_2 
+  \end{aligned}
+  \label{eq:parkour_costfunc2}
+\end{equation}
+
+One thing important here is that we only change the evaluation function
+: still all the constraints are remain exactly same. Therefore,
+all the continuation problems share the identical valid region which
+does not violate any constraint. For instance, loosing balance
+during the landing will be located in the error region for all the 
+tasks, no matter what is the desired landing height.
+
+
+Concatenation is connecting multiple controllers sequentially
+for generating a longer sequence of motion. We also support the concatenation
+of controllers by executing the second controller from the final state
+of the first controller. For instance, by taking a leaning motion and a
+thrusting motion sequentially, a character can jump with the desired momentum
+$\hat{P}$. However, the best intermediate state will remain unknown when we
+train the first controller. Therefore, we starting from training the
+first controller with parametrized tasks. And when we optimize the second
+controller, we make the task parameter of the previous controller subject
+to the optimization. For instance, we parametrize the leaning motion with
+a leaning angle $\theta$, and include it when we train the thrust controller.
+During the optimization, the best leaning angle $\hat{\theta}$ for achieving
+the desired momentum $\hat{P}$ will be automatically selected by our optimizer.
+}

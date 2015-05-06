@@ -1,0 +1,31 @@
+\section{Conclusion}
+We present a novel framework for controller design using human
+coaching and learning techniques. The framework takes in a blackbox
+controller and improves it through an iterative learning process of
+coaching and practicing. The user can directly give high-level
+instructions to the virtual character using control rigs while the
+character can efficiently optimize its motor skill using a new
+sampling-based optimization method, CMA-C. Once a controller is
+developed, parameterizing it to a family of similar controllers for
+concatenation can be done without additional effort from the user.
+
+In this work, we demonstrated that developing complex motor
+controllers does not need any motion trajectories. However, if the
+user wishes to utilize motion examples to train the virtual character,
+instead of verbal instructions, our framework can be adapted by
+including a control rig that modulates the reference trajectories,
+similar to the sampling approach proposed by Liu \etal
+\cite{Liu:2010:SCM,Liu:2012:TRC}. 
+
+Our current implementation requires the user to construct
+instructions as a script according to the template grammars. One
+possible future direction is to augment our framework with a natural
+language processor so the user can use more colloquial
+commands to train the character, such as ``Lower your body a bit
+more'', instead of ``MOVE COM down BY 0.2m''. In addition, we would
+like to explore Kinet-like sensors to enable the possibility of ``teaching by demonstration''.
+Therefore, one possible future direction is to augment our framework
+with two different types of interfaces: a natural language processor
+and a Kinect-like sensor. These two interfaces will allow the user to
+train the character by describing the motion in human language while
+demonstrating the movement using his/her own body.

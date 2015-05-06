@@ -1,0 +1,26 @@
+Inspired by how humans learn dynamic motor skills through progressive
+process of coaching and practices, we introduce an intuitive and
+interactive framework for developing dynamic controllers. The user
+only needs to provide 
+a primitive initial controller and
+high-level, human-readable instructions as if
+s/he is coaching a human trainee, while the character has the ability
+to interpret the abstract instructions, accumulate the knowledge from
+the coach, and improve its skill iteratively. We introduce ``control
+rigs'' as an intermediate layer of control module to facilitate the
+mapping between high-level instructions and low-level control
+variables. Control rigs also utilize the human coach's knowledge to
+reduce the search space for control optimization. In addition, we
+develop a new sampling-based optimization method, Covariance Matrix
+Adaptation with Classification (CMA-C), to efficiently compute control
+rig parameters. Based on the observation of human ability to ``learn
+from failure'', CMA-C utilizes the failed simulation trials to
+approximate an infeasible region in the space of control rig
+parameters, resulting a faster convergence for the CMA
+optimization. 
+%% or 
+%% %% \original{tuning any parameters}
+%% \revised{tuning complex control parameters}
+We demonstrate the design process of complex dynamic
+controllers using our framework, including precision jumps, turnaround
+jumps, monkey vaults, drop-and-rolls, and wall-backflips.
