@@ -1,4 +1,6 @@
 \contentsline {table}{\numberline {1}{\ignorespaces Control parameters. }}{32}
 \contentsline {table}{\numberline {2}{\ignorespaces Initial conditions of the examples shown in the video (in order of appearance) }}{35}
 \contentsline {table}{\numberline {3}{\ignorespaces The initial conditions and the results of BioloidGP simulations. }}{54}
-\contentsline {table}{\numberline {4}{\ignorespaces The initial conditions and the results of Atlas simulations.}}{55}
+\contentsline {table}{\numberline {4}{\ignorespaces The initial conditions and the results of Atlas simulations.}}{56}
+\contentsline {table}{\numberline {5}{\ignorespaces Parameters used for the experiments.}}{70}
+\contentsline {table}{\numberline {6}{\ignorespaces Average number of experiments required at different noise levels and inertial parameter errors.}}{73}

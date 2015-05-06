@@ -17,7 +17,14 @@
 \contentsline {figure}{\numberline {17}{\ignorespaces Maximal stress for each joint from a hands-first landing motion. Results are quantitatively similar across all of our simulations. Green: Ragdoll motion. Blue: Our motion. Orange: Joint stress scaled by mass.}}{38}
 \contentsline {figure}{\numberline {18}{\ignorespaces Feet-first landing motion.}}{40}
 \contentsline {figure}{\numberline {19}{\ignorespaces The abstract model consists of a telescopic inverted pendulum and a massless stopper.}}{45}
-\contentsline {figure}{\numberline {20}{\ignorespaces Contact graphs}}{47}
+\contentsline {figure}{\numberline {20}{\ignorespaces Contact graphs}}{48}
 \contentsline {figure}{\numberline {21}{\ignorespaces First row: BioloidGP forward falling from a one-foot stance due to a $5.0$N push. Second row: BioloidGP forward falling from a one-foot stance due to a $8.0$N push. Third row: Atlas forward falling from a two-feet stance due to a $1000$N push. Fourth row: Atlas forward falling from a two-feet stance due to a $2000$N push.}}{53}
 \contentsline {figure}{\numberline {22}{\ignorespaces COM trajectories between the abstract model (Blue) and the robot (Red). Top left: BioloidGP forward falling from a one-foot stance due to a $5.0$N push. Top right: BioloidGP forward falling from a one-foot stance due to a $8.0$N push. Bottom left: Atlas forward falling from a two-feet stance due to a $1000$N push. Bottom right: Atlas forward falling from a two-feet stance due to a $2000$N push.}}{55}
-\contentsline {figure}{\numberline {23}{\ignorespaces We measured the acceleration at the head of BioloidGP (Left). For both $0.0$N (Middle) and $0.5$N (Right) cases, the planned motions (Red) yielded about 68\% of the maximum acceleration of the unplanned motions (Blue).}}{56}
+\contentsline {figure}{\numberline {23}{\ignorespaces We measured the acceleration at the head of BioloidGP (Left). For both $0.0$N (Middle) and $0.5$N (Right) cases, the planned motions (Red) yielded about 68\% of the maximum acceleration of the unplanned motions (Blue).}}{57}
+\contentsline {figure}{\numberline {24}{\ignorespaces Framework of our approach.}}{61}
+\contentsline {figure}{\numberline {25}{\ignorespaces Direct policy search.}}{62}
+\contentsline {figure}{\numberline {26}{\ignorespaces Robot balancing on a bongoboard.}}{69}
+\contentsline {figure}{\numberline {27}{\ignorespaces Simulation result of a policy optimized for the Lagrangian model (left column) and Box2D model (right column). In each snapshot, the left and right figures are the Box2D and Lagrangian model simulations respectively.}}{71}
+\contentsline {figure}{\numberline {28}{\ignorespaces Velocity field of the learned dynamics model. Cyan: training data; red: prediction; blue: ground truth.}}{72}
+\contentsline {figure}{\numberline {29}{\ignorespaces Change of cost function value in Box2D simulations over iterations.}}{73}
+\contentsline {figure}{\numberline {30}{\ignorespaces Balancing success rate in Box2D simulation with noise, starting from various initial wheel and board angles. (a) The policy has been optimized with Box2D simulation without noise. (b) The policy has been optimized with Box2D simulation with noise.}}{75}
