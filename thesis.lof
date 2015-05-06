@@ -28,10 +28,15 @@
 \contentsline {figure}{\numberline {28}{\ignorespaces Contour of the trained SVMs for the second toy problem (Table 7\hbox {}). The feasible region classified by SVMs is filled with red. The ground truth feasible region is outlined by the dashed lines. For clarity, the figure is zoomed into the region from $[-5,5]^2$ to $[3, 5]^2$ . }}{78}
 \contentsline {figure}{\numberline {29}{\ignorespaces We use these three target poses for all the initial controllers, except for the rolling phase of drop-and-roll. }}{81}
 \contentsline {figure}{\numberline {30}{\ignorespaces Monkey vault and wall-backflip. }}{83}
-\contentsline {figure}{\numberline {31}{\ignorespaces Framework of our approach.}}{90}
-\contentsline {figure}{\numberline {32}{\ignorespaces Direct policy search.}}{91}
-\contentsline {figure}{\numberline {33}{\ignorespaces Robot balancing on a bongoboard.}}{97}
-\contentsline {figure}{\numberline {34}{\ignorespaces Simulation result of a policy optimized for the Lagrangian model (left column) and Box2D model (right column). In each snapshot, the left and right figures are the Box2D and Lagrangian model simulations respectively.}}{100}
-\contentsline {figure}{\numberline {35}{\ignorespaces Velocity field of the learned dynamics model. Cyan: training data; red: prediction; blue: ground truth.}}{101}
-\contentsline {figure}{\numberline {36}{\ignorespaces Change of cost function value in Box2D simulations over iterations.}}{102}
-\contentsline {figure}{\numberline {37}{\ignorespaces Balancing success rate in Box2D simulation with noise, starting from various initial wheel and board angles. (a) The policy has been optimized with Box2D simulation without noise. (b) The policy has been optimized with Box2D simulation with noise.}}{104}
+\contentsline {figure}{\numberline {31}{\ignorespaces Top: Vertical jump with parameterized target height, $3cm$ to $8cm$ ($8cm$ is shown). Middle: Kick with parameterized target distance, $0.3m$ to $0.6m$ ($0.6m$ is shown). Bottom: Walk with parameterized target speed, $6.7cm/s$ to $13.3cm/s$ ($13.3cm/s$ is shown). }}{100}
+\contentsline {figure}{\numberline {32}{\ignorespaces Comparison on three parameterized control problems. The cost (Equation\nobreakspace {}(38\hbox {})) is computed by averaging seven optimization trials. In all problems, our algorithm converges faster than CMA-ES, especially when the parameterized skill function is of cubic form.}}{102}
+\contentsline {figure}{\numberline {33}{\ignorespaces The impact of task discretization on convergence. More discrete tasks slow down the convergence of CMA-ES significantly, while it has negligible impact on our algorithm.}}{105}
+\contentsline {figure}{\numberline {34}{\ignorespaces Comparison between our algorithm and the individual learning approach. The quality of the low-resolution policy (shown in green) is comparable with the high-resolution one (shown in blue) for those six tasks used for training (dotted vertical lines). However, for those tasks corresponding to interpolated policy parameters, there is a significant discrepancy between the quality of low-resolution and high-resolution policies. In contrast, our policy (shown in red) learned with only six tasks (M = 6) is comparable to the high-resolution one.}}{107}
+\contentsline {figure}{\numberline {35}{\ignorespaces BioloidGP hardware. }}{108}
+\contentsline {figure}{\numberline {36}{\ignorespaces Framework of our approach.}}{112}
+\contentsline {figure}{\numberline {37}{\ignorespaces Direct policy search.}}{113}
+\contentsline {figure}{\numberline {38}{\ignorespaces Robot balancing on a bongoboard.}}{119}
+\contentsline {figure}{\numberline {39}{\ignorespaces Simulation result of a policy optimized for the Lagrangian model (left column) and Box2D model (right column). In each snapshot, the left and right figures are the Box2D and Lagrangian model simulations respectively.}}{122}
+\contentsline {figure}{\numberline {40}{\ignorespaces Velocity field of the learned dynamics model. Cyan: training data; red: prediction; blue: ground truth.}}{123}
+\contentsline {figure}{\numberline {41}{\ignorespaces Change of cost function value in Box2D simulations over iterations.}}{124}
+\contentsline {figure}{\numberline {42}{\ignorespaces Balancing success rate in Box2D simulation with noise, starting from various initial wheel and board angles. (a) The policy has been optimized with Box2D simulation without noise. (b) The policy has been optimized with Box2D simulation with noise.}}{126}

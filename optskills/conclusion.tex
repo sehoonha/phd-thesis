@@ -1,0 +1,39 @@
+\section{Conclusion} 
+\label{sec:optskills_conclusion}
+
+We presented a new evolutionary optimization algorithm for
+  learning parameterized dynamic motor skills.
+  Instead of individually acquiring optimal policies for each task,
+  our algorithm simultaneously learns the policies for the entire range of
+  tasks.
+  The key insight of our algorithm is to sample in the space of policy
+  parameters rather than directly sample in the high-dimensional space
+  of parameterized skill function parameters. Since the solution in
+  a parameterized problem is a curve segment rather than a point,
+  our approach maintains a parameterized probability distribution along the
+  mean segment and evolves it using selected elite samples.
+  We demonstrated that our algorithm shows faster convergence when
+  comparing to the baseline algorithm, CMA-ES, especially when using a
+  cubic parameterized skill function.
+  %% Since we learned an explicit mapping from a task parameter to policy
+  %% parameters, the trained model will produce better control parameters for
+  %% unseen tasks than the model from individual learning approach.}
+
+  Although our algorithm optimizes parameterized tasks automatically, it is the user's
+  responsibility to set a feasible task range achievable by the given
+  parameterization of the control policy. If the range is too wide,
+  the optimization will not converge to a good solution due to the
+  intrinsic limitations of the space of policy parameters. 
+% One
+%   potential remedy is to simultaneously adapt the task
+%   range when fitting the mean segment.
+
+  For future consideration, we plan on extending the task
+  interpolation parameters into higher dimensions, which may afford
+  greater flexibility of the resultant motor skills considerably.  For
+  example, currently we parameterize the jump controller to act in the
+  vertical direction only, which obviates its use in general
+  navigation applications. A consequence of increasing the dimension
+  of the task parameter is that it will require the mean function be
+  extended to the hyperplane in this new parameter space instead of a
+  segment.

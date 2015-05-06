@@ -8,5 +8,6 @@
 \contentsline {table}{\numberline {8}{\ignorespaces CMA-C on the toy problem I (Table 7\hbox {}) with various ratios of the infeasible area to the feasible area. All other conditions are the same.}}{77}
 \contentsline {table}{\numberline {9}{\ignorespaces CMA-C on the toy problem II (Table 7\hbox {}) with various magnitude and frequency of noise. All other conditions are the same.}}{77}
 \contentsline {table}{\numberline {10}{\ignorespaces Instructions used to train a precision jump.}}{80}
-\contentsline {table}{\numberline {11}{\ignorespaces Parameters used for the experiments.}}{99}
-\contentsline {table}{\numberline {12}{\ignorespaces Average number of experiments required at different noise levels and inertial parameter errors.}}{102}
+\contentsline {table}{\numberline {11}{\ignorespaces Results on Parameterized CEC'15 Problems}}{105}
+\contentsline {table}{\numberline {12}{\ignorespaces Parameters used for the experiments.}}{121}
+\contentsline {table}{\numberline {13}{\ignorespaces Average number of experiments required at different noise levels and inertial parameter errors.}}{124}

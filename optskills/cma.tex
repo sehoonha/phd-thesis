@@ -1,0 +1,22 @@
+\section{Review:CMA-ES}
+CMA-ES is a sampling-based, derivative-free evolutionary
+algorithm for solving optimization problems. In each generation, $\lambda$ new
+candidates are sampled from a multivariate normal distribution,
+\begin{equation}
+  \begin{aligned}
+    \vc{x}_k \mytilde \vc{m} + \sigma \mathcal{N}(\vc{0},
+    \mat{C}) \text{ for } k = 1 .. \lambda
+  \end{aligned}
+\end{equation} 
+where $\vc{m}$ is a mean, $\sigma$ is a step-size, and
+$\mathcal{N}(\vc{0}, \mat{C})$ is a multivariate normal 
+distribution with zero mean and covariance matrix $\mat{C}$. Various
+methods are introduced to recombine the new candidates with the old
+samples from the previous generation. One common strategy is to create
+a pool of samples that consists of $\lambda$ new samples and $\mu$ old
+samples from the previous generation, and select the best $\mu$
+samples from this pool. These new samples are used to update the mean
+and the covariance matrix for the next generation.
+
+\karen{If this is all we want to talk about CMA, we can combine it
+  with the next section.}

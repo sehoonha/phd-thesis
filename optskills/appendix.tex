@@ -1,0 +1,97 @@
+\section*{Appendix: Update of Covariance in (1+1)-CMA-ES}
+\label{sec:optskills_appendix}
+
+In this section, we review the update procedure for covariance matrix
+in (1+1)-CMA-ES, \textbf{updateCov} in \cite{Igel:2006:CEG}.  Unlikely
+the standard ($\mu$,$\lambda$)-CMA-ES, (1+1)-CMA-ES generates a single
+offspring per iteration and accepts if it is better than its parent.
+When it is accepted, \textbf{updateCov} takes the difference between
+the offspring and the parent as the input and evolves the covariance
+matrix.
+
+For each iteration, the success variable $\lambda_s$ is defined to be $1$
+  if the new offspring $\vc{x}$ is better than the parent $\vc{x}'$, and $0$
+  otherwise.  
+  Based on $\lambda_s$, the algorithm keeps track of the average success rate
+  $\bar{p}_s$, which estimates how successful the past iterations is
+  in accepting new offsprings.
+  \begin{equation}
+    \bar{p}_s = (1 - c_p)\bar{p}_s + c_p \lambda_s
+  \end{equation}
+  where $c_p$ is the learning rate for $\bar{p}_s$.
+
+When a new offspring is successful, \textbf{updateCov} routine is invoked.
+  It begins with learning an evolution path $\vc{p}_c$, a smoothed mean
+  trajectory over past iterations, from the vector
+  $\vc{y}=\vc{x}-\vc{x}'$, the difference between the parent and the offspring. 
+  \begin{equation}
+    \vc{p}_c =\begin{cases} 
+      (1 - c_c) \vc{p}_c + \sqrt{c_c(2-c_c)} \vc{y} & \text{if } \bar{p}_{s} <
+    \hat{p}_{s} \\
+      (1 - c_c) \vc{p}_c & \text{otherwise }
+    \end{cases} \\
+    \label{eq:optskills_cma_path}
+  \end{equation}  
+  where $c_c$ is the learning rate for $\vc{p}_c$ and $\hat{p}_s$ is the given
+  threshold probability.
+  When the success rate $\bar{p}_s$ is higher than $\hat{p}_s$, the update of
+  path is halted to prevent excessive learning.
+  The update of the covariance matrix is done using the rank-one update from
+  the original, non-elitist CMA-ES.
+  \begin{equation}
+    \mat{C} = \begin{cases} 
+      (1 - c_{v}) \mat{C} + c_{v} \vc{p}_c\vc{p}_c^T & \text{if } \bar{p}_{s} < \hat{p}_{s}\\
+      (1 - c_{v}) \mat{C} + c_{v} \Big(\vc{p}_c\vc{p}_c^T  + 
+      c_c(2-c_c)\mat{C} \Big) & \text{otherwise } 
+    \end{cases}
+  \end{equation}  
+  where $c_c$ is the learning rate for $\mat{C}$.
+  Note that ehe last term in the second case compensates the shrinkage of the path in
+  \eqnref{optskills_cma_path}. 
+  
+%% \updated{Among different strategies, (1+1)-CMA-ES
+%%   \cite{Igel:2006:CEG} is the simplest version that adapts a
+%%   multivariave normal distribution. 
+%%   In this section, we will quickly review its procedure for updating
+%%   covariance matrix from one new sample, \emph{updateCov}. 
+%%   %% Instead of generating $\lambda$ new samples, it tests only one new candidate
+%%   %% accepts only when the new sample is better than the previous solution, which is 
+%%   %% called \emph{``elitist selection.''}
+%%   %% \sehoon{We will describe \emph{updateCov} function.}
+%%   For adapting distribution, (1+1)-CMA-ES updates an evolution path $\vc{p}_c$
+%%   using the current path $\vc{y}$ that difference between the current and
+%%   previous mean. 
+%%   \sehoon{- First, an average success rate is learned.
+%%   - Equation is .. where ..
+%%   - Based on the difference vector, we update the cumulative path that is..}
+%%   \begin{equation}
+%%     \vc{p}_c =\begin{cases} 
+%%       (1 - c_c) \vc{p}_c + \sqrt{c_c(2-c_c)} \vc{y} & \text{if } \bar{p}_{s} < p_{th}\\
+%%       (1 - c_c) \vc{p}_c & \text{otherwise }
+%%     \end{cases} \\
+%%   \end{equation}  
+%%   where $c_c$ is a learning rate.
+%%   \sehoon{Especially, learning is halt when the success rate is too high:
+%%     this prevents too fast increase of ..}
+%%   The update of the covariance matrix is done using the rank-one update from
+%%   the original, non-elitist CMA-ES.
+%%   \begin{equation}
+%%     \mat{C} = \begin{cases} 
+%%       (1 - c_{v}) \mat{C} + c_{v} \vc{p}_c\vc{p}_c^T & \text{if } \bar{p}_{s} < p_{th}\\
+%%       (1 - c_{v}) \mat{C} + c_{v} \Big(\vc{p}_c\vc{p}_c^T  + 
+%%       c_c(2-c_c)\mat{C} \Big) & \text{otherwise } 
+%%     \end{cases}
+%%   \end{equation}  
+%%   where $\bar{p}_{s}$ is a success rate and $p_{th}$ is a threshold value. 
+%%   Intuitively, the above equation prevents the update of evolution path
+%%   $\vc{p}_c$ when the success rate $\bar{p}_{s}$ is too high.
+%%   Lastly, a step-size is controlled using a smoothed 1/5-success-rule to
+%%   achieve the competetive convergenc rate. 
+%%   \begin{equation}
+%%     \sigma = \sigma \cdot exp\Big(\frac{1}{d}\big(\bar{p}_s  -
+%%     \frac{\hat{p}_s}{1 - \hat{p}_s}(1 - \bar{p}_s)\big)\Big)
+%%   \end{equation}
+%%   where $\hat{p}$ is a target success probability, $1/5$.
+%%   Simply, 1/5-success-rule increases the step-size if more than 20\% of the new
+%%   solutions are successful,  decreases otherwise. 
+%%   }

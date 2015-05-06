@@ -1,0 +1,158 @@
+\section{Parameterized Optimization Problems}
+
+% \karen{I don't this a glossary is needed.}
+% \sehoon{This is only for internal clarification between you and me.}
+
+% \sehoon{Glossary:
+%   \begin{itemize}
+%   \item $f$: an evaluation function
+%   \item $\hat{f}$: an aggregated discretized evaluation function
+%   \item $g$: a control function
+%   \item $\vc{x}$: a vector of a control parameters
+%   \item $w \in \vc{w}$: a task interpolation parameter
+%   \item $\vc{m}_{\boldsymbol{\phi}}(w)$: a parameterized mean function
+%   \item $\mat{C}(w)$: a parameterized cov function
+%   \item $\boldsymbol{\phi}$: a vector of mean segment coefficients
+%   \item $\bar{\vc{x}}_i^j$ : $j$th best sample for $i$th task parameter
+%     ($w_i$) 
+%   \end{itemize}
+% }
+
+% In this section, we will describe a control problem of parameterized motor
+% skills.
+% We will start from a mathematical definition of a parameterized optimization
+% problem (Section \ref{sec:optskills_param_opt_prob}), and formulate a control problem
+% of parameterized motor skills (Section \ref{sec:optskills_param_motor_prob}).  
+
+%\subsection{Parameterized Optimization Problems}
+\label{sec:optskills_param_opt_prob}
+Let us begin with a general optimization problem, whose goal is to
+find a point in $\mathcal{R}^n$ that minimizes a given objective
+function $f(\vc{x})$.  By varying some parameters in the objective
+function, we can create a family of similar optimization problems,
+whose objective functions are denoted as $f(\vc{x}; w)$. We define the
+varying parameter $w \in [0, 1]$ as \emph{task interpolation
+  parameter}, which controls the values of some parameters in
+$f(\vc{x})$. The solution to such a parameterized problem is no longer
+a point in $\mathcal{R}^n$, but rather a closed segment of curve,
+which can be represented by a function of the task interpolation
+parameter, $\vc{x}(w)$, with a closed domain $[0,1]$. The function
+form of the solution segment, $\vc{x}(w)$ is unknown in many cases but
+can be approximated by a simpler function. We assume this simple
+function is continuous and can be represented by some function
+parameters $\boldsymbol{\phi} \in \mathcal{F}$. For example, we can
+assume that $\vc{x}(w)$ is a linear line segment,
+\begin{equation}
+  \vc{x}_{\boldsymbol{\phi}}(w) = (1-w)\boldsymbol{\phi}_0 + w\boldsymbol{\phi}_1
+  \label{eq:optskills_linear_mean}
+\end{equation}
+where $\boldsymbol{\phi}=[\boldsymbol{\phi}_0^T, \boldsymbol{\phi}_1^T]^T$ are the
+parameters that define the solution segment. Likewise, we can assume
+that $\vc{x}(w)$ is a cubic curve segment:
+  \begin{multline}
+    \vc{x}_{\boldsymbol{\phi}}(w) = (1-w)^3 \boldsymbol{\phi}_0 + 3w(1-w)^2
+    \boldsymbol{\phi}_1 + 3w^2(1-w) \boldsymbol{\phi}_2
+    + w^3 \boldsymbol{\phi}_3
+    \label{eq:optskills_cubic_mean}
+  \end{multline}
+  where $\boldsymbol{\phi}$ is $[\boldsymbol{\phi}_0^T,.., \boldsymbol{\phi}_3^T]^T$.
+
+Our goal is to develop an efficient optimization method to find the
+solution segment (parameterized by $\boldsymbol{\phi}$) for the entire family of problems
+simultaneously. To this end, we define a new objective function which
+evaluates the integral of the parameterized objective function over the closed
+domain:
+\begin{eqnarray}
+  \hat{f}(\boldsymbol{\phi}) = \int_0^1 f(\vc{x}_{\boldsymbol{\phi}}(w); w) dw.
+  %% \bar{\boldsymbol{\phi}} = \argmin_{\boldsymbol{\phi}} \hat{f}(\boldsymbol{\phi})
+\end{eqnarray}
+In practice, however, $\hat{f}(\boldsymbol{\phi})$ can only be numerically approximated
+in most dynamic control problems, whose objective function $f$ is usually not closed-form. To this end, we discretize $\hat{f}(\boldsymbol{\phi})$ as follows: 
+\begin{eqnarray}
+  \label{eq:optskills_discretized}
+  \hat{f}(\boldsymbol{\phi}) = \frac{1}{M}\sum_{w_i \in \vc{w}} f(\vc{x}_{\boldsymbol{\phi}}(w_i); w_i)
+  %% \bar{\boldsymbol{\phi}} = \argmin_{\boldsymbol{\phi}} \hat{f}(\boldsymbol{\phi})
+\end{eqnarray}
+where $\vc{w}$ is a set of real values evenly discretizing the range
+$[0,1]$ and $M$ is the size of the set $\vc{w}$.  For example, if $M=6$,
+$\vc{w}$ is $\{0.0, 0.2, 0.4, 0.6, 0.8, 1.0\}$.
+
+\subsection{Parameterized Motor Skills}
+\label{sec:optskills_param_motor_prob}
+The parameterized optimization problem provides a general framework
+for learning parameterized motor skills for robots. We will begin with the notations
+of a standard control problem and extend them to a parameterized
+problem. A controller $\vc{C}=\{\pi, f\}$ consists
+of a policy function $\pi$ and a cost function $f$. A policy function
+outputs the control force $\boldsymbol{\tau}_t$ for a given state $\vc{s}_t$,
+\begin{equation}
+\boldsymbol{\tau}_t = \pi(\vc{s}_t; \vc{x})
+\end{equation}
+where $\vc{x}$ is the vector of policy parameters. Starting from the
+initial state of the robot $\vc{s}_0$, a physics simulator generates a
+sequence of motions $\mathcal{S}(\vc{x}) = \{\vc{s}_0, \cdots,
+\vc{s}_{T}\}$ according to the equations of motion and the policy parameters $\vc{x}$. The
+motion quality produced by the policy parameters can be
+evaluated by the cost function:
+\begin{equation}
+  \begin{aligned}
+    %% f(\mathcal{S}) = \sum_{i=1}^n \| h_i(\vc{s}) - \hat{h}_i \|^2
+    f(\vc{x}) 
+    = \sum_j \| \vc{h}_j(\mathcal{S}(\vc{x})) - \hat{\vc{h}}_j \|^2
+    \label{eq:optskills_costfunc}
+  \end{aligned}
+\end{equation} 
+where $f$ evaluates a set of features
+$\vc{h}_j(\mathcal{S}(\vc{x}))$, at a given
+state of the motion ($\vc{s} \in \mathcal{S}(\vc{x})$). The desired
+value of each feature is denoted as $\hat{\vc{h}}_j$.  For
+example, a feature $\vc{h}_j(\vc{s}_t)$ can be the center
+of mass of the robot at the state $\vc{s}_t$ and $\hat{\vc{h}}_j$ can
+be the desired position of the center of mass.
+
+To create controllers that can achieve a range of tasks, rather than
+specializing in only one specific task, we redefine the policy
+parameters as $\vc{x}_{\boldsymbol{\phi}}(w)$, a mapping between a
+given task interpolation parameter $w$ and the policy parameter
+$\vc{x}$. We define $\vc{x}_{\boldsymbol{\phi}}(w)$ as \emph{parameterized
+  skill function}. Likewise, we represent the desired target value
+$\hat{\vc{h}}_j$ as a function of the task interpolation parameter,
+$w$, between two desired values $\hat{\vc{h}}_{j}^{0}$ and
+$\hat{\vc{h}}_{j}^{1}$:
+\begin{equation}
+\begin{aligned}
+\hat{\vc{h}}_j(w) &= (1-w)\hat{\vc{h}}_{j}^{0} + w \hat{\vc{h}}_{j}^{1}
+\\
+&\mathrm{where\;\;} 0 \leq w \leq 1.
+\end{aligned}
+\label{eq:optskills_paramtarget}
+\end{equation}
+
+The parameterization redefines the policy function and the cost
+function as follows: 
+\begin{eqnarray}
+  \label{eq:optskills_paramcon}
+  \boldsymbol{\tau}_t = \pi(\vc{s}_t; \vc{x}_{\boldsymbol{\phi}}(w)),
+\end{eqnarray}
+%% \begin{eqnarray}
+%%   \label{eq:optskills_paramcost}
+%%   &f(\vc{x}_{\boldsymbol{\phi}}(w); w) = \nonumber \\
+%%   &\sum_j \| \vc{h}_j(\mathcal{S}(\vc{x}_{\boldsymbol{\phi}}(w)))
+%%   - ((1-w)\hat{\vc{h}}_{j}^{0} + w \hat{\vc{h}}_{j}^{1}) \|^2.
+%% \end{eqnarray}
+\begin{eqnarray}
+    \label{eq:optskills_paramcost}
+    &f(\vc{x}_{\boldsymbol{\phi}}(w); w) = 
+    &\sum_j \| \vc{h}_j(\mathcal{S}(\vc{x}_{\boldsymbol{\phi}}(w)))
+    - \hat{\vc{h}}_{j}(w) \|^2
+  \end{eqnarray}
+
+%% \karen{Use $\boldsymbol{x}_\phi(w)$ instead of $m_{\vc{\phi}}(\omega)$.}
+Analogous to \eqnref{optskills_discretized}, the goal of the
+parameterized optimization is to find the best mapping parameters
+$\boldsymbol{\phi}$ that minimizes the objective function,
+\begin{equation}
+  \label{eq:optskills_disccost}
+  \hat{f}(\boldsymbol{\phi}) = \frac{1}{M}\sum_{w_i \in \vc{w}}
+  f(\vc{x}_{\boldsymbol{\phi}}(w_i); w_i). 
+\end{equation}

@@ -1,0 +1,256 @@
+\section{Motivation}
+
+Being able to reinterpret learned motor skills to create and perform
+appropriate motions in new situations is an essential ability for
+autonomous robots. One promising approach to achieving skill
+generalization is to teach robots not just the skill for a specific
+task, but a parameterized skill, the ability to tackle a family of
+related tasks varying by some parameters. Instead of switching from
+policy to policy as the task description varies, a parameterized skill
+automatically maps the task parameters to appropriate policy
+parameters and executes the control policy optimally according to the
+task.
+
+The challenge of learning a parameterized skill lies in learning the
+mapping between task parameters and policy parameters. Many existing
+techniques (\cite{Stulp:2013:LCP,DaSilva:2014:LPM}) learn a policy for
+each example task individually and construct a regression model to map
+between task and policy parameter spaces. Successful learning of
+parameterized skills for manipulation tasks, such as throwing darts
+\cite{Kober:2010:RLA,DaSilva:2012:LPS}, reaching objects
+\cite{Ude:2010:TSG,Matsubara:2011:LPD,Forte:2012:OMS}, or hitting a
+table tennis ball \cite{Kober:2010:RLA}, have been demonstrated.
+However, it is unclear whether these techniques can be applied to
+learning whole-body dynamic skills, such as jumping or walking, which
+involve the challenges of handling discrete contacts and balancing an
+under-actuated system under gravity.  Because a whole-body dynamic
+task can often be achieved by multiple distinctive policies, learning
+each task individually might lead to a set of incoherent policies
+which invalidates the regression model. This is equivalent to solving
+a set of highly nonconvex optimization problems and attempting to
+interpolate all the arbitrarily chosen local minima.
+
+This paper aims to develop new algorithms for learning parameterized
+skills for whole-body dynamic tasks. Instead of learning each task
+individually and later building a regression model, we propose to
+simultaneously learn the policies for a range of tasks. A naive
+approach to achieve this goal is to formulate the search of the
+mapping function between task parameters and policy parameters as an
+nonconvex (due to dynamic differential equations) and
+nondifferentiable (due to contacts) optimization and apply a
+sampling-based, gradient-free solver, such as CMA-ES \cite{Hansen:2003:CMA}, to
+find the solution. This approach can be highly ineffective when the mapping
+function is complex and sample generation is computationally
+expensive.
+
+In this paper, we develop a new evolutionary optimization algorithm to
+tackle above issues arise from learning parameterized skills. Similar
+to CMA-ES, our optimization algorithm draws samples from the current
+probability distribution and selects elite samples to update the
+probability distribution for the next generation. Unlike CMA-ES,
+however, we maintain a parameterized probability distribution for the
+entire range of tasks, instead of a single distribution for only one
+task. Solving multiple tasks simultaneously, our algorithm is able to
+better exploit each sample, greatly reducing the number of samples
+required to optimize a parameterized skill for all the tasks in the
+range of interest.
+
+We demonstrate the algorithm on a simulated humanoid robot, BioloidGP
+\cite{BioloidGP:2014:URL}, learning three parameterized dynamic motor
+skills, including vertical jump, kick a ball, and walk. We also deploy
+the walking policy to the hardware of BioloidGP. Furthermore, we
+demonstrate the sample efficiency of our algorithm by comparing with
+CMA-ES on solving four CEC'15 benchmark problems \cite{Chen:2015:CEC}.
+
+
+% \karen{We are better at dynamic tasks. Why? We greatly reduce the
+%   number of samples. The sampling space is invariant of the complexity
+% of parameterized mapping function.}
+% \karen{I think the nature of dynamic problems makes the assumption
+%   that the policy space is smoothly varying with the task space
+%   questionable. Individually solving each policy and then interpolate
+%   them is a bad idea. If we perturb the policy a little, it is likely
+%   to produce an infeasible policy instead of a new policy for another goal.}
+
+
+% One of the important features for building a versatile robot is
+% parameterization of a controller so that it can execute a family of
+% related motor skills.  Without parameterization, a controller needs to
+% be reconfigured for a new context that accompanies tedious adaptation
+% and expert knowledge.  Instead, a parameterized motor skill can adapt
+% itself to reproduce the desired behaviors in different situations by
+% adjusting its task parameter, e.g.  a speed of locomotion or a target
+% location of a manipulation task.  Furthermore, a parameterized motor
+% skill can be an important building component for a high dimensional
+% controller by replacing lower level control parameters into an
+% abstract command.
+
+% \updated{However, optimizing control parameters for a parameterized task is a
+%   very challenging problem.
+%   A notable change is that a form of a solution becomes a mapping function
+%   from a task parameter to control parameters instead of a single point.
+%   Therefore, the optimization becomes a higher dimensional optimization problem
+%   with a more complex objective function. 
+%   To solve this problem, existing techniques
+%   (\cite{Stulp:2013:LCP,DaSilva:2014:LPM}) take an approach that constructs a
+%   manifold from a set of optimal control parameters for all tasks.
+%   But this approach requires time consuming procedures for acquiring
+%   optimal controllers, such as sampling-based optimizations or
+%   user-demonstrations.
+%   Moreover, there is no guarantee that acquired optimal controllers can
+%   be formulated into a continuous manifold, especially when each task has
+%   multiple solutions.
+%   If the optimal control parameters are discontinuous,
+%   we need to reoptimize few controllers from the scratch and
+%   repeat the manifold construction.}
+
+% \updated{Instead, we propose an optimization technique that simultaneously
+%   finds the best control parameters for all tasks, i.e. the optimal mapping
+%   function from task parameters to control parameters.
+%   Our technique is inspired by Schmidt's Variability Practice Hypothesis 
+%   \cite{Wulf:1997:VPI} that variable tasks (e.g. changing task or environment
+%   parameters during practice) lead to more generalizable motor skills in
+%   contrast to constant practice. 
+%   Similarly, we utilize one simulation sample to improve all the parameterized
+%   tasks instead of contributing to a single specific task.
+%   This mechanism saves unnecessary samples by sharing the result of simulations
+%   and preventing the repetitive evaluations of similar simulations.
+% }
+% \karen{
+% We take an entirely different approach. Instead of innovating
+% regression technique, we invent a new evolutionary optimization method
+% for learning parameterized skills. This method can be applied in
+% conjunction with other regression approach in a hierarchical
+% manner. Each training data becomes a segment pair instead of a point
+% pair. }
+
+% \updated{In this paper, we extend the popular optimization technique, CMA-ES,
+%   to efficiently solve a parameterized task. 
+%   Instead of maintaining a Gaussian distribution of samples for a particular
+%   task, we maintain a parameterized distribution along a mapping function that
+%   we want to optimize.
+%   For each iteration, we generate simulation samples based on the parameterized
+%   distribution and select the best sample to directly update the distribution.
+%   %% By sharing the sample across the entire tasks, our algorithm solves the
+%   %% parameterized control problem without evaluating many simulation samples.   
+%   We demonstrate that our algorithm is capable of optimizing dynamic motor
+%   skills for humanoid, including jumping, kicking, and walking.
+%   Furthermore, we demonstrate the sample efficiency of our algorithm to the
+%   baseline algorithm, CMA-ES, by comparing the performance of solving control
+%   problems and CEC15 benchmark problems.
+%   }
+
+\subsection{Related work}
+
+There is a large body of research work on generalization of learned
+motor skills to achieve new tasks. da Silva \etal
+\cite{DaSilva:2012:LPS,DaSilva:2014:LPM,DaSilva:2014:ACP} introduced a
+framework to represent the policies of related tasks as a
+lower-dimensional piecewise-smooth manifold. Their method also
+classifies example tasks into disjoint lower-dimensional charts and
+model different sub-skills separately. Much research aimed to
+generalize example trajectories to new situations using dynamic
+movement primitives (DMPs) to represent control policies
+\cite{Ijspeert:2002:LAL}. A DMP defines a form of control policies
+which consists of a feedback term and a feedforward forcing
+term. Ude \etal \cite{Ude:2010:TSG} used supervised learning to train a set of
+DMPs for various tasks and built a regression model to map task
+parameters to the policy parameters in DMPs. Muelling \etal \cite{Muelling:2010:LTT}
+proposed a mixture of DMPs and used a gate network to activate the
+appropriate primitive for the given target parameters.
+Kober\etal \cite{Kober:2010:RLA} trained a mapping between task parameters and
+meta-parameters in DMPs using a cost-regularized kernel
+regression. Through reinforcement learning framework, they computed a
+policy which is a probability distribution over meta-parameters.
+Matsubara \etal \cite{Matsubara:2011:LPD} trained a parametric DMP by shaping a
+parametric-attractor landscape from multiple demonstrations.
+Stulp \etal \cite{Stulp:2013:LCP} proposed to integrate the task parameters as
+part of the function approximator of the DMP, resulting in more
+compact model representation which allows for more flexible
+regression. Neumann \etal \cite{Neumann:2013:IMS} modified the existing learning
+algorithm (REPS) to learn a hierarchical controller that has
+parameterized options.
+
+All these methods described above depend on collecting a set of
+examples. This presents a bottleneck to learning because an individual
+control policy needs to be learned for each task example drawn from
+the distribution of interest. da Silva \etal further proposed using
+unsuccessful policies as additional training samples to accelerate the
+learning process \cite{DaSilva:2014:LPM}. For dynamic motor skills
+which involve intricate balance tasks, unsuccessful policies generated
+during training a particular task are of no use to other tasks because
+they often lead to falling motion. Hausknecht \etal \cite{Hausknecht:2010:LPK}
+demonstrated a quadruped robot kicking a ball to various distances,
+but whole-body balance was not considered in their work.  Another
+challenge regarding dynamic tasks is that each task can be achieved by
+a variety of policies, some of which might be overfitting the
+task. Interpolating these overfitted policies can lead to unexpected
+results. Our method tends to generate more coherent mapping between
+task parameters and policy parameters because we simultaneously learn
+the policies for the entire range of the tasks.
+
+Various optimization techniques have been applied to improve the
+motion quality or the robustness of the controller. In computer
+animation, a sampling-based method, Covariance Matrix Adaption
+Evolution Strategy (CMA-ES) \cite{Hansen:2003:CMA}, has been
+frequently applied to discontinuous control problems, such as biped
+locomotion \cite{Wang:2010:OWC,Wang:2012:OLC},
+parkour-style stunts\cite{Liu:2012:TRC,Ha:2014:ITD}, or swimming
+\cite{Tan:2011:ASC}.  To compensate the expensive cost of
+sampling-based algorithm, different approaches have been proposed,
+including exploiting the domain knowledge
+\cite{Wang:2010:OWC,Wang:2012:OLC}, shortening the
+problem horizons \cite{Sok:2007:SBB}, or using a classifier to exclude
+infeasible samples \cite{Ha:2014:ITD}. Based on the previous success
+of CMA-ES, we developed a new sampling-based algorithm tailored to
+optimizing parameterized motor skills.
+
+% Learning from examples.
+% Reinforcement learning approach.
+% Supervised learning approach.
+
+% dasilva
+% It is also learning a mapping between task parameters and policy parameters. But it assumes the task space can be any Euclidean space while we assume that the task space is bounded one dimensional space.
+
+% Second, it uses multiple continuous mappings between task and policy parameters. It also provides an automatic way to identify the mapping given an arbitrary task parameter. We only consider one mapping. This is sufficient because we only consider a small task space (1D).
+
+% Third, it uses linear regression between task and task and policy
+% parameters. We allow arbitrary function form. Although this is
+% probably a minor point.
+
+% Fourth, they need to learn policy for each task in the training
+% set. It is time consuming for learning dynamic task using
+% sampling-based method. Further, learning each policy separately and
+% interpolate them later only work under the assumption that the policy
+% parameter space is smooth. In contrast, we leverage the samples used for training each individual task for training a parameterized skill. Since we need to generate samples for training each individual task, why not use all these samples collectively and train all the tasks at once.
+
+% It makes more sense to compare our method with their method for
+% training an individual low-dimensional chart. In fact, our method can
+% seamlessly replace their method and still work with their high-level
+% method that classifies the tasks.
+
+% They also tried to reuse the samples when training individual policy,
+% by not throwing out the policy which fails the task at the hand but
+% succeeds other tasks. Our method automatically leverage the samples
+% good for neighboring tasks. I suspect that their method will not be
+% too effective for more difficult tasks like jumping. Most failing
+% cases are due to imbalanced not due to jumping too high or too low,
+
+% Stulp,Learning Compact Parameterized Skills with a Single Regression
+% This paper uses a specific form of controller, DMP, to control manipulation tasks. Their idea is to make the task parameters part of the control function. It's also noticeable that they use a set of Gaussian basis function to represent the mapping function between the task space to the policy space.
+
+
+% Kober, Reinforcement learning to adjust robot movements to new
+% situations
+% Learn the mapping between task and meta-parameters via
+% reinforcement learning; finding a stochastic policy that outputs the
+% optimal meta-parameters given a task parameter. 
+
+% Ude, Task-specific generalization of discrete and periodic dynamic
+% movement primitives,
+% employ supervised learning to learn a mapping from desired outcomes to
+% meta- parameters for tasks such as reaching, throwing, drumming, and
+% mini-golf.
+% Ude et al. [5] perform this second regression with a combi- nation of Locally Weighted Regression (LWR) for the shape parameters w, and Gaussian Process Regression (GPR) for the other skill parameters
+
+
