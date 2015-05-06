@@ -183,8 +183,8 @@ before we simulate it. If a sample is predicted to satisfy all the
 constraints, we evaluate its cost and assign a label for each SVM:
 $+1$ if the sample indeed satisfies the corresponding constraint and
 $-1$ otherwise. At the end of each CMA iteration, we refine the
-boundary of each SVM using all the samples. Algorithm \ref{alg:ccma}
-and \ref{alg:selection} outline the procedure of CMA-C.
+boundary of each SVM using all the samples. Algorithm \ref{alg:parkour_ccma}
+and \ref{alg:parkour_selection} outline the procedure of CMA-C.
 
 \begin{algorithm}
   %% \SetAlgoLined

@@ -305,7 +305,7 @@ Most dynamic motor skills are subject to constraints, such as maintaining
 balance or contact conditions.  When the character's motion fails to
 meet any of the constraints, the simulation will terminate
 immediately. The failed motion adds a penalty term, $K (T_{max} - t)
-$, to the objective function (Equation \ref{eq:costfunc}) to penalize early
+$, to the objective function (Equation \ref{eq:parkour_costfunc}) to penalize early
 failure. $t$ indicates the time when failure occurs, and $K$ and
 $T_{max}$ are set to $1000$ and $2$ respectively. $T_{max}$ can be
 adjusted based on the expected duration of the successful motion.
