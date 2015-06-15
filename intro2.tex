@@ -111,20 +111,21 @@ In Chapter 3, I will show how to create a robust controller for generating
 agile and natural falling motions of the virtual character that can land from 
 various heights and velocities.
 The goals of the controller are to reduce the joint stress at the impact and
-get back on its feet to prepare the next action.
+get back on its feet to prepare the next action (\figref{intro_landing}).
 
 \begin{wrapfigure}{r}{0.5\textwidth}
  \vspace{-25pt}
   \begin{center}
-    \includegraphics[width=0.48\textwidth]{images/intro_landing.jpg}
+    %% \includegraphics[width=0.48\textwidth]{images/intro_landing.jpg}
+    \includegraphics[width=0.48\textwidth]{images/intro_falling_sequence.png}
   \end{center}
    \vspace{-25pt}
-  \caption{A falling motion of Parkour.}
+  \caption{A fall of a virtual character.}
   \label{fig:intro_landing}
    \vspace{-10pt}
 \end{wrapfigure}
 
-Inspired by falling skills of Parkour(\figref{intro_landing}), 
+Inspired by falling skills of Parkour, 
 I formulate the falling problem
 with three phases, \emph{airborne}, \emph{impact}, and \emph{rolling}
 based on the contact states of a virtual character.
@@ -139,16 +140,17 @@ than a uncontrolled rag-doll motion.
 
 
 \subsection{Multiple Contact Planning for Humanoid falls}
-\begin{wrapfigure}{l}{0.5\textwidth}
- \vspace{-25pt}
+\begin{figure}[h]
+ %% \vspace{-25pt}
   \begin{center}
-    \includegraphics[width=0.48\textwidth]{images/intro_hardware.jpg}
+    %% \includegraphics[width=0.48\textwidth]{images/intro_hardware.jpg}
+    \includegraphics[width=1.0\textwidth]{images/intro_gp_tripod}
   \end{center}
-   \vspace{-25pt}
-  \caption{Hardware of BioloidGP robot.}
-   \vspace{-10pt}
+   %% \vspace{-25pt}
+  \caption{A two-step falling strategy of a humanoid robot}
+   %% \vspace{-10pt}
   \label{fig:intro_hardware}
-\end{wrapfigure}
+\end{figure}
 % Goal, Method (Strength), Verification + Image
 Chapter 4 will describe a robust falling strategy which plans for appropriate 
 responses to a wide variety of falls, from a single step to recover a gentle
@@ -191,22 +193,36 @@ and to optimize a parametrized objective function.
 
 \subsection{Iterative Design of Dynamic Controllers}
 % Goal, Method (Strength), Verification + Image
-\begin{wrapfigure}{r}{0.6\textwidth}
- \vspace{-10pt}
+\begin{figure}[h]
+ %% \vspace{-25pt}
   \begin{center}
-    \includegraphics[width=0.58\textwidth]{images/intro_teach.png}
+    %% \includegraphics[width=0.48\textwidth]{images/intro_hardware.jpg}
+    \includegraphics[width=1.0\textwidth]{images/intro_drop_roll}
   \end{center}
-   \vspace{-25pt}
-  \caption{The proposed learning frame uses human readable instructions
-    to teach motions.}
-  \label{fig:intro_teach}
-   \vspace{-10pt}
-\end{wrapfigure}
+   %% \vspace{-25pt}
+  \caption{A challenging stunt that a character jumps twice and rolls
+    on the ground.}
+   %% \vspace{-10pt}
+  \label{fig:intro_drop_roll}
+\end{figure}
+%% \begin{wrapfigure}{r}{0.6\textwidth}
+%%  \vspace{-10pt}
+%%   \begin{center}
+%%     \includegraphics[width=0.58\textwidth]{images/intro_teach.png}
+%%   \end{center}
+%%    \vspace{-25pt}
+%%   \caption{The proposed learning frame uses human readable instructions
+%%     to teach motions.}
+%%   \label{fig:intro_teach}
+%%    \vspace{-10pt}
+%% \end{wrapfigure}
 
-In Chapter 5, we will describe an iterative framework to design dynamic
-controllers using high-level, human-readable instructions,
-inspired by a training process of athletes that consists of
-interactive coaching and repetitive practices (\figref{intro_teach})
+In Chapter 5, we will describe an iterative framework to design physics-based
+controllers that executes very agile stunts (\figref{intro_drop_roll}).
+The aim of this chapter is to design an intuitive and interactive framework
+that a user can easily design complex controllers only using high-level,
+human-readable instructions, 
+which is inspired by a human learning process of coaching and practicing stages.
 To enable interactive coaching, we introduce ``control rigs'' as
 an intermediate layer of control module which allows more coordinated control
 of the low level control variables and and provides more intuitive mapping to
@@ -250,16 +266,6 @@ kicking, and walking.
 
 \section{Model-based Learning for Virtual and Real Characters}
 % Goal, Method (Strength), Verification + Images
-\begin{wrapfigure}{l}{0.5\textwidth}
- \vspace{-10pt}
-  \begin{center}
-    \includegraphics[width=0.48\textwidth]{images/intro_bongo.jpg}
-  \end{center}
-   \vspace{-25pt}
-  \caption{Bongo Board balance toy.}
-  \label{fig:intro_bongo}
-   \vspace{-10pt}
-\end{wrapfigure}
 
 In Chapter 8, I will describe an iterative approach for for learning 
 hardware models and optimizing control policies, which is designed for
@@ -269,6 +275,16 @@ but it is difficult to obtain accurate simulation models and
 simulation-optimized control policies are not likely to work on hardware.
 To fill the gap between two system, we propose an algorithm for learning
 hardware models and optimizing policies. 
+\begin{wrapfigure}{l}{0.5\textwidth}
+ \vspace{-10pt}
+  \begin{center}
+    \includegraphics[width=0.40\textwidth]{images/intro_simple_robot.png}
+  \end{center}
+   \vspace{-25pt}
+  \caption{A simple legged robot on the bongoboard.}
+  \label{fig:intro_bongo}
+   \vspace{-10pt}
+\end{wrapfigure}
 Instead of learning hardware models from scratch, the proposed approach only
 learns the difference from a simulation model using Gaussian 
 As a proof of concept, I will validate the algorithm on two different 
