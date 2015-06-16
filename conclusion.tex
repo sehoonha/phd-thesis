@@ -1,0 +1,99 @@
+%1234567890123456789012345678901234567890123456789012345678901234567890123456789
+\chapter{Conclusion}
+
+Within this dissertation, we have presented methods for developing agile motor
+skills on virtual and real humanoids.
+The disseration started from designing controllers for the specific tasks,
+falling strategies and covered a set of general computational tools to develop
+various motor skills on virtual and real humanoids.
+Using the proposed techniques, various motor skills can be intuitivey designed
+in virtual simulation and easily transferred to physical systems.
+Several optimization algorithms are also designed to develop more versatile and
+robust physics-based controlllers for humanoids within short amount of time.
+Further, falling of virtual and real humanoids are extensively studied to
+ensure safety of humanoids and to achieve smooth transitions between motor
+skills.
+
+Chapter 3 described a method to generate agile falling and landing motions of
+virtual characters in real-time via physical simulation
+without using motion capture data or pre-scripted animation.
+By designing novel controllers based on three landing principles informally
+developed in freerunning community, we can develop a general controller that
+allows the character to fall from a wide range of heights and initial speeds,
+roll on the ground, and get back on its feet, without inducing large stress on
+joints at any moment.
+
+Chapter 4 introduced a new planning algorithm to minimize the damage
+of humanoid falls by utilizing multiple contact points.
+Instead of selecting among a collection of manually designed control
+strategies, we propose a novel algorithm which plans for appropriate
+falling motions to a wide variety of falls.
+Our algorithm covers various falling stratigies from a single step to recover a
+gentle nudge, to a rolling motion to break a high-speed fall.
+
+The iterative learning framework of Chapter 5 allows users to intuitively
+develop dynamic controllers for virtual characters only using high-level,
+human-readable instructions.
+The implementation of instructions uses ``control rigs'', which is an
+intermediate layer of control module 
+for facilitating mapping between high-level instructions and manipulating
+low-level control variables.
+The control rigs also utilizes the human coach's knowledge to reduce the search
+space for control optimization.
+
+The optimization problems formulated in Chapter 5 can be efficiently solved
+using a new sampling-based optimization method, Covariance Matrix
+Adaptation with Classification (CMA-C), explained in Chapter 6.
+Based on the human ability to learn from failure,
+CMA-C utilizes the failed simulation samples to approximate infeasible regions
+parameters, resulting a faster convergence for the CMA
+optimization.
+
+Chapter 7 shows how to optimize a parameterized motor skill which
+is essential for autonomous robots operating in an unpredictable environment.
+Our algorithm achieves the faster convergence rate by evolving a parameterized
+probability distribution for the entire range of tasks.
+
+The method described in Chapter 8 provide us a framework for reducing hardware
+experiments which is often very costly.
+The goal of this method is to learn the difference between simulation and
+hardware systems, and optimize control policy that works on the target system.
+Instead of learning the model from scratch, our method learns only the
+difference between a simulation model and hardware, which results the reduced
+numbers of hardware experiments.
+
+In conclusion, this dissertation proposed a set of algorithms and framework
+that can be important steps toward the development of agile motions on virtual
+and real humanoids.
+However, the entire pipeline is yet exhaustively tested for real robots.
+For instance, the proposed iterative learning framework of Chapter 5 is only
+tested on a virtual character and not verified on a humanoid.
+Because a robot has different body and joint structures
+a user may have a difficulty to teach a robot with previously
+designed high-level instructions and control rigs.
+An interesting future direction is to resolve these issues by revising
+the design of framework components to expedite the direct communication
+between a user and a real robot.
+
+We previously demonstrated a framework for learning dynamic bias
+a simple legged robot in Chapter 8, but it is not fully verified on a
+full-scale humanoid.
+Because humanoid robots usually have much higher degrees of freedom ranging
+from 16 to 34 [GP, Atlas, Sarcos], a na\"{\i}ve approach will require
+tremendous amount of data which is infeasible to be obtained.
+Thereare several possible approaches for resolving this curse of
+dimensionality, such as projecting into a lower dimensional space using a
+simplified model or adopting active learning to maximize the amount of
+information from a single hardware experiment.
+
+
+
+
+
+
+
+
+
+
+
+
