@@ -6,40 +6,41 @@ dated back to ancient Greece.
 The ancient Olympic Games celebrated the glory of physical dominance of
 athletic strength and agility, to achieve the goals faster and more
 effortlessly. 
-In modern days, physical agility continue to captivate our imagination in
-various areas, such as sports, entertainments, or robots.
-In the film or game industries, agile motions are important contents to make
-their games or movies more fun and entertainings, from an iconic game
+Today, physical agility continues to captivate our imagination in
+various areas, such as sports, entertainment, or robot industry.
+In the film or game industries, agile motions are important content to make
+their games or movies more fun and entertaining, from an iconic game
 Prince of Persia [PP] to a recent big hit animation, Frozen [FR].
 Besides entertainment values, being agile and strong also holds great practical
-values, such as recovering disaster scenes with robots.
-When there was a nuclear melt down that was too dangerous to be recovered
-by human due to high radiation levels, few robots were entered to measure
+values, such as rescuing individual people and reclaiming locations hit by
+disasters with robots.
+When there was a nuclear meltdown that was too dangerous to be recovered
+by human due to high radiation levels, a few robots were entered to measure
 temperature and radioactivity but failed due to limited speed and range of
 operations [WIKIPEDIA].
-Although even the state-of-arts humanoids are not as agile as human athelets
+Although even state-of-the-art humanoids are not as agile as human athletes
 or virtual characters in animations, their software and hardware specification
-have made substantial progress in past few dacades and will have enough agility
-to execute athletic motor skills in near future.
+have made substantial progress in the past few decades and will have enough 
+agility to execute athletic motor skills in the near future.
 
 Although the word ``agile'' has similar meaning in everyone's mind,
 it needs a more clear definition to be discussed in this dissertation.
 According to many dictionaries [DICT], the language definition of ``agile''
-is ``able to move quickly, easily, effortlessly, and gracefully.''.
+is ``able to move quickly, easily, effortlessly, and gracefully''.
 It is more straightforward to associate a concrete physical meaning to the
 first word ``quickly'' because its meaning can be directly mapped into
 high momentum.
 However, the other descriptors, ``easily'', ``effortlessly'', and
 ``gracefully'' are more difficult to be translated because they can be due to
-different reasons, such as the innate strengh of the subject, the accumulated
+different reasons, such as the innate strength of the subject, the accumulated
 experience, or the ability to negotiate with the environment.
 Instead of this loose verbal definition, I will use a narrow definition of the
 word ``agile'' in the context of motions, ``able to move quickly and
-effortlessly in a complex environment.'', which highlights torque efficiency
-and well-coordinated strategies that exploits the environment.
+effortlessly in a complex environment'', which highlights torque efficiency
+and well-coordinated strategies that exploit the environment.
 Great examples of agile motions are motor skills of Parkour, such as
 vaults, jumps, or flips which are developed to move from the current location
-to destination in the most efficient path.
+to the destination in the most efficient path.
 Those skills are well aligned with the previous definition because they are
 executed with high linear and angular momentum, and planned to negotiate
 environmental features such as walls, guard rails, or stairs. 
@@ -47,18 +48,18 @@ environmental features such as walls, guard rails, or stairs.
 The aim of this dissertation is to design a set of computational tools to
 develop agile motor skills on virtual and real humanoids.
 Although the grand goal would be to achieve agile motor skills on humanoid
-robots, but there are many unsolved practical issues to directly design aigle
+robots, but there are many unsolved practical issues to directly design agile
 motions on the hardware, such as delays, noises, or safety concerns.
-Especially unlike biped walking where adequate models and control theories are
+Unlike biped walking where adequate models and control theories are
 already available, agile motions have not been studied extensively in the
 literature of computer animation and robotics.
-Thefore, the appropriate approach toward agile real humanoids is to first
+Therefore, the appropriate approach toward agile real humanoids is to first
 develop theoretical models and control algorithms on the physics-based
-simulation where researchers in compter graphics can accomplish complex and
+simulation where researchers in computer graphics can accomplish complex and
 stunning tasks, and then transfer the solution to the real hardware
 with the careful adjustment.
 Although there are intrinsic differences between virtual and real systems on
-models, sensors, actuators, and so on, simulation-developed solutions will
+models, sensors, actuators, et cetera, simulation-developed solutions will
 greatly reduce the expensive cost of hardware experiments and prevent
 unexpected dangerous situations.
 
@@ -67,38 +68,38 @@ General characteristics of agile motions, high momentum or frequent changes
 of contacts, increase difficulties of most existing issues in motor control
 problems tremendously.
 For instance, simple motion trajectories that are developed in virtual
-simulation are more likely not to work on physical systems
-because small errors can be quickly accumulated and result drastic deviations
+simulation are less likely to work on physical systems
+because small errors can be quickly accumulated and result in drastic deviations
 from the original agile motions.
-On the top of existing issues, agile motions generate few unique challenges
-need to be addressed.
-Unlikely well-defined motions such as running or reaching, agile motions cover
+In addition to existing issues, agile motions generate few unique challenges
+that need to be addressed.
+Unlike well-defined motions such as running or reaching, agile motions cover
 a wide range of diverse skills, such as jumping, vaulting, or rolling which are
-governed by different control mechanisms and principals.
+governed by different control mechanisms and principles.
 Because it is infeasible to manually design controllers for all tasks, we want
 to develop a set of general tools for learning a variety of agile motions.
 In addition, safety of humanoids must be ensured by learning how to fall
 both intentionally and inadvertently, which are fundamental motor skills
 required by various agile motions. 
-These additional, unique challenges motivated me to address following problems
-in this dissertation, as steps to achieve agile motions on virtual and real
-humanoids.
+These additional, unique challenges motivated me to address the following 
+problems in this dissertation, as steps to achieve agile motions 
+on virtual and real humanoids.
 
 \section{Falling Strategies for Humanoids}
 % Introduction on the falling - Motivation, Description, Goal
 Falling and landing motions are a set of fundamental motor skills
 in various agile motions to protect humanoids themselves.
-Because atheletic movements frequently involves
+Because athletic movements frequently involves
 transitions between airborne and contact phases, they must know how to
 absorb the shock at the landing moment and avoid damage to the body parts.
 In addition, well-executed falling motions will lead a smooth transition to the
 next motor skill. 
-In this dissertation, I will discuss two different scenarios of fallings, 
-for  virtual and real humanoids.
+In this dissertation, I will discuss two different falling scenarios, 
+of virtual and real humanoids.
 For a virtual humanoid, I will describe a physics-based controller that allows
 the character to fall from a wide range of heights and initial speed, 
-which are inspired by agile falling and landing of Parkour practioners.
-For a real humanoid, I wiill propose a falling strategy for managing unexpected
+which are inspired by agile falling and landing of Parkour practitioners.
+For a real humanoid, I will propose a falling strategy for managing unexpected
 falls due to a wide range of perturbations.
 The effectiveness of both presented strategies are validated by measuring
 amounts of joint stresses or contact forces to body parts in physics
@@ -136,7 +137,6 @@ an optimal landing angle that can connect two sub controllers at the
 I will demonstrate that the motion generated by the proposed controller
 looks natural and induces smaller joint stress, which is still four times lower
 than a uncontrolled rag-doll motion.
-
 
 
 \subsection{Multiple Contact Planning for Humanoid falls}
@@ -230,7 +230,7 @@ high-level human instructions.
 During the practicing stage, control parameters are efficiently determined
 using CMA-ES, which will be further improved in the following chapters.
 The details of controllers development process using our iterative learning
-framework will be shown with example iterative training procedures of parkour
+framework will be shown with example iterative training procedures of Parkour
 motions.
 
 \subsection{Optimization with Failure Learning}
@@ -246,7 +246,7 @@ trying to avoid the same mistakes in the future.
 Under the concept of ``learning from failure'', The proposed algorithm CMA-C
 (Covariance Matrix Adaptation with Classification) utilizes the failed
 simulation trials to approximate an infeasible region in the space of control
-rig parameters so that it can predict validities of newly generated samples,
+rig parameters so that it can predict validity of newly generated samples,
 resulting a faster convergence than the standard CMA-ES.
 
 \subsection{Optimization for Parametrized Motor Skills}
@@ -281,7 +281,7 @@ hardware models and optimizing policies.
     \includegraphics[width=0.40\textwidth]{images/intro_simple_robot.png}
   \end{center}
    \vspace{-25pt}
-  \caption{A simple legged robot on the bongoboard.}
+  \caption{A simple legged robot on a bongoboard.}
   \label{fig:intro_bongo}
    \vspace{-10pt}
 \end{wrapfigure}

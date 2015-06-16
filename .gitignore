@@ -110,6 +110,3 @@ sympy-plots-for-*.tex/
 
 # xindy
 *.xdy
-
-# Mac
-.DS_Store
