@@ -75,7 +75,8 @@ and well-coordinated strategies that exploit the environment.
 The aim of this dissertation is to design a set of computational tools to
 develop agile motor skills on virtual and real humanoids.
 Although the grand goal would be to achieve agile motor skills on humanoid
-robots, but there are many unsolved practical issues to directly design agile
+robots, \revised{\st{but}} there are many unsolved practical issues to directly
+design agile 
 motions on the hardware, such as delays, noises, or safety concerns.
 Unlike biped walking where adequate models and control theories are
 already available, agile motions have not been studied extensively in the
@@ -85,29 +86,41 @@ develop theoretical models and control algorithms on the physics-based
 simulation where researchers in computer graphics can accomplish complex and
 stunning tasks, and then transfer the solution to the real hardware
 with the careful adjustment.
-Although there are intrinsic differences between virtual and real systems on
-models, sensors, actuators, et cetera, simulation-developed solutions will
+\revised{\st{Although there are intrinsic differences between virtual and real
+    systems on models, sensors, actuators, et cetera,}}
+Simulation-developed solutions will
 greatly reduce the expensive cost of hardware experiments and prevent
 unexpected dangerous situations.
 
 Agile motor skills are difficult tasks for humanoids.
 General characteristics of agile motions, high momentum or frequent changes
 of contacts, increase difficulties of most existing issues in motor control
-problems tremendously.
-For instance, simple motion trajectories that are developed in virtual
+problems tremendously
+\revised{by requiring more accurate control routines and efficient planning
+  algorithms.} 
+In addition to the existing issues, agile motions generate few more unique
+challenges that need to be addressed. 
+% First: falling and landing motions
+\revised{The first issue is to ensure the safty of humanoids.
+  Because learning and executing agile motions often accompany both intentional
+  and inadvertent falls, it is necessary to learn how to fall safely without
+  introducing large damage.}
+% Second: general learning
+\revised{Secondly, agile motions are not well-defined unlike other motions,
+  running or reaching:
+  they cover a wide range of diverse skills, such as jumping, vaulting, or
+  rolling which are governed by different control mechanisms and principles.}
+we want to develop a set of general computational tools for learning a variety
+of agile motions \revised{instead of manually designing all controllers
+  individually.} 
+% Third: export
+Finally, simple agile motion trajectories that are developed in virtual
 simulation are less likely to work on physical systems
 because small errors can be quickly accumulated and result in drastic deviations
 from the original agile motions.
-In addition to existing issues, agile motions generate few unique challenges
-that need to be addressed.
-Unlike well-defined motions such as running or reaching, agile motions cover
-a wide range of diverse skills, such as jumping, vaulting, or rolling which are
-governed by different control mechanisms and principles.
-Because it is infeasible to manually design controllers for all tasks, we want
-to develop a set of general tools for learning a variety of agile motions.
-In addition, safety of humanoids must be ensured by learning how to fall
-both intentionally and inadvertently, which are fundamental motor skills
-required by various agile motions. 
+\revised{The discrepancy between virtual and real systems must be handled
+  systematically for utilizing simulation-optimized solutions.}
+% Therefore..
 These additional, unique challenges motivated me to address the following 
 problems in this dissertation, as steps to achieve agile motions 
 on virtual and real humanoids.
@@ -196,7 +209,7 @@ To verify our framework, a variety of scenarios are tested on simulated
 humanoids and the actual hardware (\figref{intro_hardware}) to show that our
 algorithm plans versatile falling strategies with different contact sequences.
 
-\section{Learning of Dynamic Controller for Characters}
+\section{Learning Framework for General Agile Motions}
 % Introduction on the learning - Motivation, Description, Goal
 Unlikely well-defined tasks such as reaching or walking,
 agile motions cover a wide range of diverse skills such as vaulting, flipping,
@@ -291,12 +304,14 @@ I will test the proposed optimization algorithm for learning three parametrized
 dynamic motor skills on a simulated humanoid robot, including jumping,
 kicking, and walking. 
 
-\section{Model-based Learning for Virtual and Real Characters}
+%% \section{Model-based Learning for Virtual and Real Characters}
+\section{Transferring Controllers from Simulation to Hardware}
 % Goal, Method (Strength), Verification + Images
 
-In Chapter 8, I will describe an iterative approach for for learning 
-hardware models and optimizing control policies, which is designed for
-reducing the number of expensive hardware experiments.
+In Chapter 8, I will describe an iterative approach for learning 
+hardware models and optimizing control policies using \revised{simulation.
+  The learning framework is designed for reducing the number of expensive
+  hardware experiments.} 
 Computer simulation is often used to replace hardware experiments,
 but it is difficult to obtain accurate simulation models and
 simulation-optimized control policies are not likely to work on hardware.
@@ -313,7 +328,7 @@ hardware models and optimizing policies.
    \vspace{-10pt}
 \end{wrapfigure}
 Instead of learning hardware models from scratch, the proposed approach only
-learns the difference from a simulation model using Gaussian 
+learns the difference from simulation \revised{models} using Gaussian process.
 As a proof of concept, I will validate the algorithm on two different 
 simulation models, one with perfect contacts and one with realistic contacts,
 by finding a balancing controller for a simple bipedal robot on a bongo board
@@ -325,33 +340,36 @@ several contributions to the computer animation and robotics community.
 These contributions are as follows:
 
 \begin{itemize}
-\item \textbf{A falling and landing strategy for virtual characters}
+\item \textbf{A falling and landing strategy for virtual characters.}
   The falling strategy presented in the dissertation generates a natural falling
   and landing motion that falls from a wide range of heights and initial
   speeds, continuously rolls on the ground, and gets back on its feet without
   inducing large stress on joints at any moment.
-\item \textbf{A multiple contact falling strategy for robots}
-  We introduce a falling strategy for humanoid robots which can break a
-  fall with minimal damage to the body parts by optimizing the number and
-  locations of contacts for the given initial state. 
-\item \textbf{An iterative learning framework for dynamic motor skills}
+\item \textbf{A multiple contact falling strategy for robots.}
+  We introduce a falling strategy for humanoid robots \revised{\st{which can}
+    to} break a
+  fall with minimal damage to the body parts
+  \revised{by utilizing multiple contact points.}
+  %% by optimizing the number and
+  %% locations of contacts for the given initial state. 
+\item \textbf{An iterative learning framework for dynamic motor skills.}
   We propose an iterative and interactive learning framework 
   using human readable instructions that can teach a variety of agile motions
   to virtual characters.
   Starting from a basic controller, the proposed framework allows a user 
   to easily train complex physics-based controllers 
   with only intuitive high-level instructions from the user.
-\item \textbf{An optimization technique for highly constrained problems}
+\item \textbf{An optimization technique for highly constrained problems.}
   We introduce a novel efficient optimization algorithm, CMA-C, that is 
   designed for the problem with many constraints and smaller feasible regions.
   The algorithm converges faster than the standard CMA-ES,
   by approximating the infeasible region using learned classifiers.
-\item \textbf{An optimization technique for parametrized tasks}
+\item \textbf{An optimization technique for parametrized tasks.}
   We introduce an efficient evolutionary optimization algorithm for learning
   parametrized whole-body dynamic tasks.
   By evolving parameterized sample distributions, our algorithm
   converges faster than the baseline algorithm, CMA-ES.
-\item \textbf{A model-based policy search for reducing hardware experiments}
+\item \textbf{A model-based policy search for reducing hardware experiments.}
   We propose an iterative approach for learning hardware model and optimizing
   policies with as few hardware experiments as possible by learning
   \emph{dynamics bias}, which is difference between simulation and hardware
