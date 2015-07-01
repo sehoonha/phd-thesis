@@ -1,26 +1,45 @@
 %1234567890123456789012345678901234567890123456789012345678901234567890123456789
-\chapter{Related work}
+\chapter{Background}
 
-In this section, I will review relevant previous work done in 
-computer graphics, robotics, and bio-mechanics.
-In \secref{related_dynamic}, I will start with a brief introduction on
-popular animation techniques to generate highly dynamic motions
-of biped characters in the physics-based simulation.
-In \secref{related_falling}, I will review previous methods for controlling
-falling motions of humanoids to reduce damage to body parts.
-In \secref{related_hitl}, I will briefly summarize prior interactive
-interfaces for selecting parameters, especially under the 
-\emph{human-in-the-loop optimization} paradigm, which is
-adopted in this dissertation for incorporating interactive user interventions
-in a controller design process.
-In \secref{related_policy}, I will review various policy search techniques and
-optimization algorithms in both computer graphics and robotics that find
-optimal control parameters for humanoids.
+\revised{The aim of this chapter is to review relevant prior work done in
+  computer graphics and robotics, and biomechanics. 
+  We will start with a brief discussion on various physics-based animation
+  techniques for generating realistic and agile motions of virtual humanoids. 
+  We then briefly outline control strategies for reducing damage of humanoid
+  falls in both robotics and graphics, which inspired the proposed falling 
+  strategies in this dissertation. 
+  Afterward, we will review the \emph{human-in-the-loop} principle, which is
+  adopted for designing our learning framework for general agile motions. 
+  Because this dissertation proposes several policy search algorithms for
+  optimizing the controllers in simulation and deploying them on hardware, we
+  will conclude this chapter with a review of relevant prior optimization
+  techniques in computer graphics and robotics. }
 
-\section{Physics-based simulation of dynamic motor skills}
+%% In \secref{related_dynamic}, I will start with a brief introduction on
+%% popular animation techniques to generate highly dynamic motions
+%% of biped characters in the physics-based simulation.
+%% In \secref{related_falling}, I will review previous methods for controlling
+%% falling motions of humanoids to reduce damage to body parts.
+%% In \secref{related_hitl}, I will briefly summarize prior interactive
+%% interfaces for selecting parameters, especially under the 
+%% \emph{human-in-the-loop optimization} paradigm, which is
+%% adopted in this dissertation for incorporating interactive user interventions
+%% in a controller design process.
+%% In \secref{related_policy}, I will review various policy search techniques and
+%% optimization algorithms in both computer graphics and robotics that find
+%% optimal control parameters for humanoids.
+
+\section{Physics-based simulation of agile motor skills}
 \label{sec:related_dynamic}
 
-\subsection{Physics-based animation}
+\revised{Throughout the entire sessions, this dissertation utilizes physics
+  simulation to generate agile motions of virtual characters and test control
+  policies before deploying on real robots.
+  Various physics-based animation techniques have been proposed in computer
+  graphics to plan and control various motor skils, ranging from locomotion to
+  agile stunts of Parkour. }
+
+\subsection{Physics-based simulation for character animation}
 Physics-based character animation is a promising approach to creating
 realistic and interactive animations, but designing controllers
 remains difficult largely due to the complex relationship between the
@@ -57,7 +76,11 @@ demonstrated the effectiveness of the Jacobian transpose control on
 dynamic stunts 
 \cite{Liu:2010:SCM,Ha:2012:FAL,Ha:2014:ITD}.
 
-\subsection{Physics-based animation of highly dynamic motions}
+\subsection{Physics-based controllers for agile motions}
+\revised{Physics-based controllers for agile motions are more extensively
+  developed in virtual simulation due to the limitation of hardware.
+  The work presented in Chapter 3, 5, and 6 was inspired by prior
+  animation techniques designed for various motor tasks.}
 Previous work has demonstrated that highly
 dynamic motions with a long ballistic phase can be synthesized using
 physics simulation or kinematic approaches. Hodgins \etal
@@ -82,18 +105,29 @@ known, spacetime optimization techniques can also generate compelling
 dynamic motions
 \cite{Liu:2002:SCD,Fang:2003:ESP,Safonova:2004:SPR,Sulejmanpavic:2004:APB}.
 This thesis the approach of physical simulation, 
-but I seek for a more general and robust control algorithm such that the
+but we seek for a more general and robust control algorithm such that the
 controller can operate under a wide range of initial conditions and
 allow for runtime perturbations. 
 
 
 
-\section{Control of falling motions}
+\section{Control of humanoid falls}
 \label{sec:related_falling}
+\revised{A goal of falling strategies is to minimize damage or joint stress to
+  humanoid when it falls.
+  This is an important problem to protect virtual and real humanoids during
+  learning and executing agile motor skills, which has
+  been well studied within a variety of research areas, such as computer
+  graphics, robotics, biomechanics, and martial arts}
 
 \subsection{Falling detection techniques}
-To activate a falling controller, a robot first predicts a fall and
-try to recover the balance if it is possible.
+\revised{Although the falling strategies proposed in Chapter 3 and 4 majorly
+  focus on reducing damage to body parts, they require a fall detection module
+  for predicting and estimating falls, which is assumed in this disseration.
+  It will predict a fall and try to recover the balance if it is possible,
+  and activate a falling controller if it is needed.}
+%% To activate a falling controller, a robot first predicts a fall and
+%% try to recover the balance if it is possible.
 Various machine learning techniques has been proposed to detect falls, such as
 Principal Component Analysis \cite{Karssen:2008:FDW} or 
 Supported Vector Machine \cite{Kim:2011:MLA}.
@@ -108,8 +142,12 @@ on control of falling motions to reduce damage when the
 robot detects falling, presumably with one of the above techniques. 
 
 \subsection{Falling damage reduction strategies}
-When a robot is pushed hard and falling is inevitable, 
-various techniques has been proposed to minimize damage on humanoid. 
+\revised{In this section, we will review the related work on the falling
+  strategies proposed in Chapter 3 and 4.
+  Various techniques in different disciplines have been proposed to minimize
+  damage on humanoid when falling is inevitable. }
+%% When a robot is pushed hard and falling is inevitable, 
+%% various techniques has been proposed to minimize damage on humanoid. 
 Fujiwara \etal
 \cite{Fujiwara:2002:UFM,Fujiwara:2003:FHH,Fujiwara:2006:TOF,Fujiwara:2007:OPF}
 proposed falling techniques inspired by Japanese martial arts (\emph{Ukemi}).
@@ -132,10 +170,12 @@ shaping.
 % \cite{Ogata:2007:FMC}, ``knee-and-hands'' \cite{Fujiwara:2007:OPF}, or
 % ``foot-and-hands'' \cite{Yun:2014:TFC}. 
 
-In contrast to the related work for falls caused by external perturbations,
-there are more works that focus on falls from higher
-places. In those cases, control strategies during long airborne phase
-become critical for safe landing. I draw inspiration from
+\revised{Besides the related work for falls caused by external perturbations,
+  there are additional works that focus on falls from higher
+  places.}
+In those cases, control strategies during long airborne phase
+become critical for safe landing.
+\revised{The falling algorithm in Chapter 3 draws} inspiration from
 kinesiology literature and sport practitioners. In particular, the
 techniques developed in freerunning and parkour community are of
 paramount importance for designing landing control algorithms capable
@@ -146,7 +186,7 @@ that leverages nonholonomic trajectory planning inspired by the
 falling cat to orient an articulated robot through configuration
 changes to achieve a pose that reduces the impact at landing.
 
-\subsection{Falling strategies of animals}
+%% \subsection{Falling strategies of animals}
 \begin{figure}[htbp]
 \center
   \includegraphics[width=\linewidth]{images/related_cat.jpg}
@@ -167,34 +207,49 @@ to develop intelligent devices and control algorithms. This dissertation has a
 similar goal that we study how human body can change shape in the
 air to reduce damage at landing.
 
-\section{Interactive interfaces}
+%% \section{Interactive interfaces}
+
+%% \subsection{Parameter selection interfaces}
+%% \karen{What is the context of this section?}
+%% \karen{Doesn't sound relevant your thesis}
+%% A common approach in parameter selection interfaces is 
+%% to present the parameter space (or a collection of samples thereof) in an explorable way,
+%% through 2D layout of results \cite{Marks:1997:DGA};
+%% careful selection of sliders \cite{Ovsjanikov:2011:Shapes,Lindow:2012:PLP};
+%% or (in a physics context) direct manipulation \cite{Popovic:2000:IMR}
+%% %Possibly cite mesh keyframing here as well
+%% or in-situ visualization \cite{Twigg:2007:MWB}.
+%% Both \cite{WFR:2010:WL,WFR:2011:NOR} represent simulations as tracks (or word lines) 
+%% where each parameter change corresponds to branches that spawn new tracks, and 
+%% \cite{WFR:2010:WL} describes how to incorporate uncertain parameter values into this explorable visualization.  
+%% Meanwhile \cite{BM:2010:RDE} clusters outcomes from different timelines to suppress minor variations and to highlight entire outcome categories. 
+%% These methods help a designer understand the effects of parameter variation 
+%% on a single set of initial conditions.
+
+\section{Human-in-the-loop interfaces}
 \label{sec:related_hitl}
+%% Without human guidance, fully automated optimization algorithms
+%% sometimes produce undesired solutions due to unexpected factors or
+%% situations \revised{which are not considered in the objective function or
+%%   constraints.}
 
-\subsection{Parameter selection interfaces}
-A common approach in parameter selection interfaces is 
-to present the parameter space (or a collection of samples thereof) in an explorable way,
-through 2D layout of results \cite{Marks:1997:DGA};
-careful selection of sliders \cite{Ovsjanikov:2011:Shapes,Lindow:2012:PLP};
-or (in a physics context) direct manipulation \cite{Popovic:2000:IMR}
-%Possibly cite mesh keyframing here as well
-or in-situ visualization \cite{Twigg:2007:MWB}.
-Both \cite{WFR:2010:WL,WFR:2011:NOR} represent simulations as tracks (or word lines) 
-where each parameter change corresponds to branches that spawn new tracks, and 
-\cite{WFR:2010:WL} describes how to incorporate uncertain parameter values into this explorable visualization.  
-Meanwhile \cite{BM:2010:RDE} clusters outcomes from different timelines to suppress minor variations and to highlight entire outcome categories. 
-These methods help a designer understand the effects of parameter variation 
-on a single set of initial conditions.
-
-\subsection{Human-in-the-loop interfaces}
 Without human guidance, fully automated optimization algorithms
 sometimes produce undesired solutions due to unexpected factors or
-situations. To fill the gap, researchers have developed
-semi-automatic systems which involve a human in the process to provide
-prior knowledge and guidance to the
-optimization.
-\cite{Scott:2002:IHC}. 
-This type of optimization systems, called \emph{human-in-the-loop} (HITL)
-optimization, have proven effective for various problems, such as
+situations.
+\revised{For instance, finding the optimal jumping motion with the desired
+  height can be achieved in many different joint trajectories.
+  Although many trajectories can achieve lower objective values, excessive
+  usages of hips or heels make jumping motions abnormal.
+  In Chapter 5, we propose the semi-automatic learning framework which involves
+  a human in the optimization process to effiently find optimal and natural
+  motions within a short amount of time.}
+%% To fill the gap, researchers have developed
+%% semi-automatic systems which involve a human in the process to provide
+%% prior knowledge and guidance to the
+%% optimization.
+%% \cite{Scott:2002:IHC}. 
+\revised{This paradigm is so called \emph{human-in-the-loop} (HITL) 
+optimization, which has} proven effective for various problems, such as
 %% space shuttle scheduling \cite{Chien:1999:APS}, 
 vehicle planning \cite{Waters:1984:IVR} or interface optimization
 \cite{Quiroz:2007:IEX}.  The level of user interaction
@@ -203,17 +258,26 @@ varies from simply selecting of the generated solutions
 constraints \cite{Sreevalsan-Nair:2007:HGE}. Unlike
 most previous work which primarily focused on developing user
 interaction and visualization techniques for HTIL optimization
-systems, I develop a new controller design framework that exploit the nature of
+systems, we develop a new controller design framework that exploit the nature of
 HITL computation paradigm.
 
 \section{Policy search algorithms}
 \label{sec:related_policy}
+\revised{In Chapter 6, 7, and 8, we describe policy search algorithms for
+  finding optimal controllers.
+  In this section, we will review existing algorithms that are classified into
+  two categories based on the existance of simulation models.
+  We will also cover related work on special cases, optimization of
+  parameterized motor skills.}
 
 \subsection{Model-free policy search algorithms}
-In robotics, a common techniques for searching optimal policy parameters is 
-model-free policy optimization, 
-where the policy is improved through a number of hardware 
-trials~\cite{bib-morimoto-standup,bib-kober-primitives}.
+\revised{Chapter 6 and 7 are inspired by existing model-free policy
+  optimization techniques where the policy is improved through a number of
+  hardware trials~\cite{bib-morimoto-standup,bib-kober-primitives}. }
+%% In robotics, a common techniques for searching optimal policy parameters is 
+%% model-free policy optimization, 
+%% where the policy is improved through a number of hardware 
+%% trials~\cite{bib-morimoto-standup,bib-kober-primitives}.
 Unfortunately, these methods generally require hundreds of
 trials, which is unrealistic for tasks such as humanoid balancing and
 locomotion.
@@ -237,7 +301,7 @@ including exploiting the domain knowledge
 \cite{Wang:2009:OWC,Wang:2010:OWC,Wang:2012:OLC}, shortening the
 problem horizons \cite{Sok:2007:SBB}, or using a classifier to exclude
 infeasible samples \cite{Ha:2014:ITD}. Based on the previous success
-of CMA-ES, I proposed new sampling-based algorithms that resemble the
+of CMA-ES, we proposed new sampling-based algorithms that resemble the
 evolution process of distribution.
 
 \subsection{Model-based policy search algorithms}
@@ -249,9 +313,13 @@ evolution process of distribution.
  \label{fig:related_robovies}
 \end{figure}
 
-Difference between a robot and its simulation model becomes a serious
-problem when we try to use controllers obtained by model-based
-optimization or tuned in simulation (\figref{related_robovies}).
+\revised{Chapter 8 proposed a model-based policy search algorithms that
+  utilizes simulation to reduce the number of hardware trials.
+  In this category of algorithms,}
+difference between a robot and its simulation model becomes a serious 
+problem  (\figref{related_robovies}).
+%% when we try to use controllers obtained by model-based
+%% optimization or tuned in simulation (\figref{related_robovies}).
 Classical parameter identification
 techniques~\cite{bib-khalil-identification} partially solve this
 problem by fitting model parameters to experimental data, but they
@@ -291,7 +359,9 @@ survey on this topic.
 
 \subsection{Policy search algorithms for parametrized tasks}
 There is a large body of research work on generalization of learned
-motor skills to achieve new tasks. da Silva \etal
+motor skills to achieve new tasks,
+\revised{which is discussed in Chapter 7.}
+da Silva \etal
 \cite{DaSilva:2012:LPS,DaSilva:2014:LPM,DaSilva:2014:ACP} introduced a
 framework to represent the policies of related tasks as a
 lower-dimensional piecewise-smooth manifold. Their method also
@@ -336,7 +406,7 @@ but whole-body balance was not considered in their work.  Another
 challenge regarding dynamic tasks is that each task can be achieved by
 a variety of policies, some of which might be overfitting the
 task. Interpolating these overfitted policies can lead to unexpected
-results. In this dissertation, I proposed a new algorithm that
+results. In this dissertation, we proposed a new algorithm that
 tends to generate more coherent mapping between
 task parameters and policy parameters because we simultaneously learn
 the policies for the entire range of the tasks.
