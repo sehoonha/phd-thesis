@@ -19,7 +19,7 @@ Chapter 3 described a method to generate agile falling and landing motions of
 virtual characters in real-time via physical simulation
 without using motion capture data or pre-scripted animation.
 By designing novel controllers based on three landing principles informally
-developed in Parkour community, we can develop a general controller that
+developed in Parkour community, we can develop a robust controller that
 allows the character to fall from a wide range of heights and initial speeds,
 roll on the ground, and get back on its feet, without inducing large stress on
 joints at any moment.
@@ -35,19 +35,19 @@ gentle nudge, to a rolling motion to break a high-speed fall.
 The iterative learning framework of Chapter 5 allows users to intuitively
 develop dynamic controllers for virtual characters only using high-level,
 human-readable instructions.
-The implementation of instructions uses ``control rigs'', which is an
-intermediate layer of control module 
+We introduced \emph{control rigs} that
+formulates an intermediate layer 
 for facilitating mapping between high-level instructions and manipulating
 multiple low-level control variables.
-The control rigs are design for utilizing the human coach's knowledge to reduce 
-the search space for control optimization.
+The control rigs are design for utilizing the human coach's knowledge and 
+reducing the search space for control optimization.
 
 The optimization problems formulated in Chapter 5 can be efficiently solved
-using a new sampling-based optimization method, Covariance Matrix
-Adaptation with Classification (CMA-C), explained in Chapter 6.
-Based on the human ability to learn from failure,
+using a new sampling-based optimization method, \emph{Covariance Matrix
+Adaptation with Classification} (CMA-C), explained in Chapter 6.
+Inspired by the human ability to learn from failure,
 CMA-C utilizes the failed simulation samples to approximate infeasible regions
-parameters, resulting a faster convergence for the CMA-ES optimization.
+parameters, resulting a faster convergence than the standard CMA-ES.
 
 Chapter 7 shows how to optimize a parameterized motor skill which
 is essential for autonomous robots operating in an unpredictable environment.
@@ -57,9 +57,9 @@ probability distribution for the entire range of tasks.
 The method described in Chapter 8 provide us a framework for reducing hardware
 experiments which is usually very time-consuming and costly.
 The goal of this method is to learn the difference between simulation and
-hardware systems, and optimize control policy that works on the target system.
+hardware systems, and optimize a control policy that works on the target system.
 Instead of learning the model from scratch, our method learns only the
-difference between a simulation model and hardware, which results the reduced
+difference between virtual and real systems, which results the reduced
 numbers of hardware experiments.
 
 In conclusion, this dissertation proposed a set of algorithms and framework
