@@ -9,11 +9,11 @@ and covered a set of general computational tools to develop
 various motor skills.
 Using the proposed techniques, various motor skills can be intuitively designed
 in virtual simulation and easily transferred to physical systems.
-Several optimization algorithms are also designed to develop more versatile and
+Several optimization algorithms were also designed to develop more versatile and
 robust physics-based controllers for humanoids within a short amount of time.
-Further, falls of virtual and real humanoids are extensively studied to
-ensure safety of humanoids and to achieve smooth transitions between motor
-skills.
+Further, various falling scenarios of virtual and real humanoids were
+extensively studied to ensure safety of humanoids and to achieve smooth
+transitions between motor skills.
 
 Chapter 3 described a method to generate agile falling and landing motions of
 virtual characters in real-time via physical simulation
@@ -27,45 +27,45 @@ joints at any moment.
 Chapter 4 introduced a new planning algorithm to minimize the damage
 of humanoid falls by utilizing multiple contact points.
 Instead of selecting among a collection of manually designed control
-strategies, we propose a novel algorithm which plans for appropriate
+strategies, we proposed a novel algorithm which plans for appropriate
 falling motions to a wide variety of falls.
-Our algorithm covers various falling strategies from a single step to recover a
-gentle nudge, to a rolling motion to break a high-speed fall.
+Our algorithm covers various falling strategies from a single step to recover
+from a gentle nudge, to a rolling motion to break a high-speed fall.
 
 The iterative learning framework of Chapter 5 allows users to intuitively
 develop dynamic controllers for virtual characters only using high-level,
 human-readable instructions.
-We introduced \emph{control rigs} that
-formulates an intermediate layer 
+We introduced control rigs that
+formulate an intermediate layer 
 for facilitating mapping between high-level instructions and manipulating
 multiple low-level control variables.
 The control rigs are design for utilizing the human coach's knowledge and 
 reducing the search space for control optimization.
 
 The optimization problems formulated in Chapter 5 can be efficiently solved
-using a new sampling-based optimization method, \emph{Covariance Matrix
-Adaptation with Classification} (CMA-C), explained in Chapter 6.
+using a new sampling-based optimization method, Covariance Matrix
+Adaptation with Classification (CMA-C), explained in Chapter 6.
 Inspired by the human ability to learn from failure,
-CMA-C utilizes the failed simulation samples to approximate infeasible regions
-parameters, resulting a faster convergence than the standard CMA-ES.
+CMA-C utilizes the failed simulation samples to approximate infeasible regions,
+resulting in a faster convergence than the standard CMA-ES.
 
 Chapter 7 shows how to optimize a parameterized motor skill which
 is essential for autonomous robots operating in an unpredictable environment.
-Our algorithm achieves the faster convergence rate by evolving a parameterized
+Our algorithm achieves a faster convergence rate by evolving a parameterized
 probability distribution for the entire range of tasks.
 
-The method described in Chapter 8 provide us a framework for reducing hardware
+The method described in Chapter 8 provides us a framework for reducing hardware
 experiments which is usually very time-consuming and costly.
 The goal of this method is to learn the difference between simulation and
 hardware systems, and optimize a control policy that works on the target system.
 Instead of learning the model from scratch, our method learns only the
-difference between virtual and real systems, which results the reduced
+difference between virtual and real system and reduces
 numbers of hardware experiments.
 
 In conclusion, this dissertation proposed a set of algorithms and framework
 that can be important steps toward the development of agile motions on virtual
 and real humanoids.
-However, the entire pipeline is yet exhaustively tested for real robots.
+However, the entire pipeline is not exhaustively tested for real robots.
 For instance, the proposed iterative learning framework of Chapter 5 is only
 tested on a virtual character and not verified on a real humanoid.
 Because a robot has different body and joint structures,
