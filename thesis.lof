@@ -35,8 +35,8 @@
 \contentsline {figure}{\numberline {35}{\ignorespaces BioloidGP hardware. }}{109}
 \contentsline {figure}{\numberline {36}{\ignorespaces Framework of our approach.}}{113}
 \contentsline {figure}{\numberline {37}{\ignorespaces Direct policy search.}}{114}
-\contentsline {figure}{\numberline {38}{\ignorespaces Robot balancing on a bongoboard.}}{120}
-\contentsline {figure}{\numberline {39}{\ignorespaces Simulation result of a policy optimized for the Lagrangian model (left column) and Box2D model (right column). In each snapshot, the left and right figures are the Box2D and Lagrangian model simulations respectively.}}{123}
+\contentsline {figure}{\numberline {38}{\ignorespaces Robot balancing on a bongoboard.}}{121}
+\contentsline {figure}{\numberline {39}{\ignorespaces Simulation result of a policy optimized for the Lagrangian model (left column) and Box2D model (right column). In each snapshot, the left and right figures are the Box2D and Lagrangian model simulations respectively.}}{122}
 \contentsline {figure}{\numberline {40}{\ignorespaces Velocity field of the learned dynamics model. Cyan: training data; red: prediction; blue: ground truth.}}{124}
-\contentsline {figure}{\numberline {41}{\ignorespaces Change of cost function value in Box2D simulations over iterations.}}{125}
-\contentsline {figure}{\numberline {42}{\ignorespaces Balancing success rate in Box2D simulation with noise, starting from various initial wheel and board angles. (a) The policy has been optimized with Box2D simulation without noise. (b) The policy has been optimized with Box2D simulation with noise.}}{127}
+\contentsline {figure}{\numberline {41}{\ignorespaces Change of cost function value in Box2D simulations over iterations.}}{126}
+\contentsline {figure}{\numberline {42}{\ignorespaces Balancing success rate in Box2D simulation with noise, starting from various initial wheel and board angles. (a) The policy has been optimized with Box2D simulation without noise. (b) The policy has been optimized with Box2D simulation with noise.}}{128}

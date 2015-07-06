@@ -507,6 +507,9 @@ We have found that the DIRECT algorithm~\cite{bib-jones-direct} works
 best for our problem.
 Theoretically, the DIRECT algorithm is capable of finding the globally
 optimal solution relatively quickly.
+\revised{Because our optimization problem has many local minima,
+  we selected the DIRECT algorithm instead of CMA-ES, which has been commonly
+  used in this dissertation.}
 We terminate the algorithm when the relative change in the cost function
 value in an optimization step is under a threshold $\epsilon$, or the
 number of cost function evaluations exceeds a threshold $N_{in}$.

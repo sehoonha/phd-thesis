@@ -46,7 +46,7 @@ This paper presents an iterative approach for model learning and
 policy optimization using as few experiments as possible.
 Instead of learning the hardware model from scratch, our method reduces
 the number of experiments by only learning the difference from a
-simulation model.
+simulation model, \revised{which provides estimations for unobserved states.}
 The policy is then optimized through simulations using the learned
 model.
 We repeat this process iteratively so that we can refine the model
@@ -259,7 +259,9 @@ parameters $\vecmat{\theta} =
 hyper-parameters. 
 
 With $N$ pairs of training inputs $\tilde{\vecmat{x}}_i$ and outputs
-$y_i$ $(i=1,2,\ldots,N)$, we can predict the output for a new
+%% $y_i$ $(i=1,2,\ldots,N)$, we can predict the output for a new
+\revised{$\vecmat{y}=[y_1y_2 \ldots y_N]^T$},
+we can predict the output for a new
 input $\tilde{\vecmat{x}}^*$ by
 \begin{equation}
 y^* = \vecmat{k}_*^T \vecmat{K}^{-1} \vecmat{y}
@@ -295,6 +297,8 @@ In our setting, however, optimizing hyper-parameters often results in
 over-fitting due to the small number of training data.
 We therefore manually adjust the hyper-parameters by looking at the
 policy optimization results.
+\revised{Once we determinte the hyper-parameters, we apply the
+  same hyper-parameters for all testing scenarios.}
 
 
 \subsection{Learning} \label{sec:learning_learning}
@@ -321,8 +325,9 @@ model accuracy.
 We then remove the samples where the robot and board are no longer
 balancing on the wheel.
 Next, we discard the samples whose states are too far away from the static
-equilibrium state or too difficult to recover balance, since designing a
+equilibrium state or too \revised{fast} to recover balance since designing a
 controller in such areas of the state space does not make much sense. 
+
 Finally, we discard the frames that are far from the prediction by the
 simulation model in order to remove outliers that may happen due to
 sensor erros in hardware experiments.
@@ -439,6 +444,9 @@ We have found that the DIRECT algorithm~\cite{bib-jones-direct} works
 best for our problem.
 Theoretically, the DIRECT algorithm is capable of finding the globally
 optimal solution relatively quickly.
+\revised{Because our optimization problem has many local minima,
+  we selected the DIRECT algorithm instead of CMA-ES, which has been commonly
+  used in this dissertation.}
 We terminate the algorithm when the relative change in the cost function
 value in an optimization step is under a threshold $\epsilon$, or the
 number of cost function evaluations exceeds a threshold $N_{in}$.
