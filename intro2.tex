@@ -1,86 +1,52 @@
 %1234567890123456789012345678901234567890123456789012345678901234567890123456789
 \chapter{Introduction}
 
-The human desire \revised{of being} physically impressive has a long history
+The human desire of being physically impressive has a long history
 dated back to ancient Greece.
 The ancient Olympic Games celebrated the glory of physical dominance of
-\revised{body strength, as well as athletic agility,} to achieve the goals
+body strength, as well as athletic agility, to achieve the goals
 faster and more effortlessly. 
 Today, physical agility continues to captivate our imagination in
 various areas, such as sports, entertainment, or robot industry.
 In film or game industries, agile motions are important content to make
 their games or movies more fun and entertaining.
-%% , from an iconic game
-%% Prince of Persia [PP] to a recent big hit animation, Frozen [FR].
 Besides entertainment values, being agile and strong also holds great practical
 values for robotic technologies,
-\revised{which can help search and rescue.}
-%%  such as rescuing individual people and reclaiming locations hit by
-%% disasters with robots.
-%%%% https://en.wikipedia.org/wiki/Fukushima_Daiichi_nuclear_disaster
-\revised{When the Fukushima Daiichi nuclear meltdown occurred in 2011,
-  it was too dangerous for human operations because of high radiation levels.}
-%% When there was a nuclear meltdown that 
-%% was too dangerous to be recovered
-%% by human due to high radiation levels,
-A few robots were \revised{deployed} to
+which can help search and rescue.
+When the Fukushima Daiichi nuclear meltdown occurred in 2011,
+it was too dangerous for human operations because of high radiation levels.
+A few robots were deployed to
 measure temperature and radioactivity but failed due to limited speed and range
-of operations [WIKIPEDIA].
-\revised{The robots would have achieved the assigned tasks if they had
-  enough agility to efficiently overcome disaster debris and locomote on uneven
-  terrains. }
+of operations \cite{Fukushima:2014:URL}.
+The robots would have achieved the assigned tasks if they had
+enough agility to efficiently overcome disaster debris and locomote on uneven
+terrains. 
 
-%% Although even state-of-the-art humanoids are not as agile as human athletes
-%% or virtual characters in animations, their software and hardware specification
-%% have made substantial progress in the past few decades and will have enough 
-%% agility to execute athletic motor skills in the near future.
-
-%% \revised{What is the definition of ``agile'' motions that includes several
-%%   examples, jumping, vaulting, or rolling.}
-\revised{Although ``agile'' motions include several examples, jumping,
-  vaulting, or rolling, they are not precisely defined to be discussed.}
-%% Although the word ``agile'' has similar meaning in everyone's mind,
-%% it needs a more clear definition to be discussed in this dissertation.
-%% According to many dictionaries [DICT], the language definition of ``agile''
-%% is 
-\revised{The word ``agile'' is defined as }
+Although ``agile'' motions include several examples, jumping,
+vaulting, or rolling, they are not precisely defined to be discussed.
+The word ``agile'' is defined as 
 ``able to move quickly, easily, effortlessly, and gracefully''.
-\revised{While move ``quickly'' can be directly associated with high-momentum
-  motions, move ``easily'', ``effortlessly'', and ``gracefully'' are more
-  difficult to attach a physical meaning.
-  For instance, move ``easily'' can be due to different reasons, such as the
-  innate strength of the subject, the accumulated 
-  experience, or the ability to negotiate with the environment.}
-%% It is more straightforward to associate a concrete physical meaning to the
-%% first word ``quickly'' because its meaning can be directly mapped into
-%% high momentum.
-%% However, the other descriptors, ``easily'', ``effortlessly'', and
-%% ``gracefully'' are more difficult to be translated because they can be due to
-%% different reasons, such as the innate strength of the subject, the accumulated
-%% experience, or the ability to negotiate with the environment.
-%% Instead of this loose verbal definition, I will use a narrow definition of the
-%% word ``agile'' in the context of motions, 
-\revised{In this disseration, we define ``agile motions'' as }
+While move ``quickly'' can be directly associated with high-momentum
+motions, move ``easily'', ``effortlessly'', and ``gracefully'' are more
+difficult to attach a physical meaning.
+For instance, move ``easily'' can be due to different reasons, such as the
+innate strength of the subject, the accumulated 
+experience, or the ability to negotiate with the environment.
+In this disseration, we define ``agile motions'' as 
 ``able to move quickly and effortlessly in a complex environment''
 , which highlights torque efficiency
 and well-coordinated strategies that exploit the environment.
-\revised{One great example that showcases a suite of agile motions is Parkour,
-  a sport that features moving from the current location to the destination in
-  the most efficient way.
-  The skills of Parkour are well aligned with our definition of agile motions
-  because they require high momentum and dynamic planning to negotiate with the
-  obstacles and features in the environment.}
-%% Great examples of agile motions are motor skills of Parkour, such as
-%% vaults, jumps, or flips which are developed to move from the current location
-%% to the destination in the most efficient path.
-%% Those skills are well aligned with the previous definition because they are
-%% executed with high linear and angular momentum, and planned to negotiate
-%% environmental features such as walls, guard rails, or stairs. 
+One great example that showcases a suite of agile motions is Parkour,
+a sport that features moving from the current location to the destination in
+the most efficient way.
+The skills of Parkour are well aligned with our definition of agile motions
+because they require high momentum and dynamic planning to negotiate with the
+obstacles and features in the environment.
 
 The aim of this dissertation is to design a set of computational tools to
 develop agile motor skills on virtual and real humanoids.
 Although the grand goal would be to achieve agile motor skills on humanoid
-robots, \revised{\st{but}} there are many unsolved practical issues to directly
+robots, there are many unsolved practical issues to directly
 design agile 
 motions on the hardware, such as delays, noises, or safety concerns.
 Unlike biped walking where adequate models and control theories are
@@ -89,10 +55,8 @@ literature of computer animation and robotics.
 Therefore, the appropriate approach toward agile real humanoids is to first
 develop theoretical models and control algorithms on the physics-based
 simulation where researchers in computer graphics can accomplish complex and
-stunning tasks, and then transfer the solution to the real hardware
+stunning tasks, and then transfer the solution to real hardware
 with the careful adjustment.
-\revised{\st{Although there are intrinsic differences between virtual and real
-    systems on models, sensors, actuators, et cetera,}}
 Simulation-developed solutions will
 greatly reduce the expensive cost of hardware experiments and prevent
 unexpected dangerous situations.
@@ -101,30 +65,30 @@ Agile motor skills are difficult tasks for humanoids.
 General characteristics of agile motions, high momentum or frequent changes
 of contacts, increase difficulties of most existing issues in motor control
 problems tremendously
-\revised{by requiring more accurate control routines and efficient planning
-  algorithms.} 
+by requiring more accurate control routines and efficient planning
+algorithms.
 In addition to the existing issues, agile motions generate few more unique
 challenges that need to be addressed. 
 % First: falling and landing motions
-\revised{The first issue is to ensure the safety of humanoids.
-  Because learning and executing agile motions often accompany both intentional
-  and inadvertent falls, it is necessary to learn how to fall safely without
-  introducing large damage.}
+The first issue is to ensure the safety of humanoids.
+Because learning and executing agile motions often accompany both intentional
+and inadvertent falls, it is necessary to learn how to fall safely without
+introducing large damage.
 % Second: general learning
-\revised{Secondly, agile motions are not well-defined unlike other motions,
-  such as running or reaching:
-  they cover a wide range of diverse skills, such as jumping, vaulting, or
-  rolling which are governed by different control mechanisms and principles.}
-\revised{We want to develop a set of general computational tools for a variety
-  of agile motion controllers, instead of manually designing all controllers
-  individually.}  
+Secondly, agile motions are not well-defined unlike other motions,
+such as running or reaching.
+They cover a wide range of diverse skills, such as jumping, vaulting, or
+rolling which are governed by different control mechanisms and principles.
+We want to develop a set of general computational tools for a variety
+of agile motion controllers, instead of manually designing all controllers
+individually.  
 % Third: export
 Finally, simple agile motion trajectories that are developed in virtual
 simulation are less likely to work on physical systems
 because small errors can be quickly accumulated and result in drastic deviations
 from the original agile motions.
-\revised{The discrepancy between virtual and real systems must be handled
-  systematically for utilizing simulation-optimized solutions.}
+The discrepancy between virtual and real systems must be handled
+systematically for utilizing simulation-optimized solutions.
 % Therefore..
 These additional, unique challenges motivated me to address the following 
 problems in this dissertation, as steps to achieve agile motions 
@@ -200,7 +164,8 @@ than a uncontrolled rag-doll motion.
 Chapter 4 will describe a robust falling strategy which plans for appropriate 
 responses to a wide variety of falls, from a single step to recover a gentle
 nudge, to a rolling motion to break a high-speed fall.
-Our key observation is that  many existing falling techniques [Wang,Yun,Ukemi]
+Our key observation is that many existing falling techniques
+\cite{Wang:2012:WTO,Yun:2014:TFC,ZenpoUkemi:2014:URL}
 assume specific sequences of contacts and aim to break specific ranges of
 falls and requires us to an additional decision layer to choose the best
 falling strategy to the given state.
@@ -313,27 +278,27 @@ kicking, and walking.
 \section{Transferring Controllers from Simulation to Hardware}
 % Goal, Method (Strength), Verification + Images
 
+\begin{wrapfigure}{l}{0.5\textwidth}
+ \vspace{-10pt}
+  \begin{center}
+    \includegraphics[width=0.35\textwidth]{images/intro_simple_robot.png}
+  \end{center}
+   \vspace{-25pt}
+  \caption{A design of a simple legged robot on a bongoboard.}
+  \label{fig:intro_bongo}
+   \vspace{-10pt}
+\end{wrapfigure}
 In Chapter 8, I will describe an iterative approach for learning 
-hardware models and optimizing control policies using \revised{simulation.
-  The learning framework is designed for reducing the number of expensive
-  hardware experiments.} 
+hardware models and optimizing control policies using simulation.
+The proposed learning framework is designed for reducing the number of
+expensive hardware experiments. 
 Computer simulation is often used to replace hardware experiments,
 but it is difficult to obtain accurate simulation models and
 simulation-optimized control policies are not likely to work on hardware.
 To fill the gap between two system, we propose an algorithm for learning
 hardware models and optimizing policies. 
-\begin{wrapfigure}{l}{0.5\textwidth}
- \vspace{-10pt}
-  \begin{center}
-    \includegraphics[width=0.40\textwidth]{images/intro_simple_robot.png}
-  \end{center}
-   \vspace{-25pt}
-  \caption{A simple legged robot on a bongoboard.}
-  \label{fig:intro_bongo}
-   \vspace{-10pt}
-\end{wrapfigure}
 Instead of learning hardware models from scratch, the proposed approach only
-learns the difference from simulation \revised{models} using Gaussian process.
+learns the difference from simulation models using Gaussian process.
 As a proof of concept, I will validate the algorithm on two different 
 simulation models, one with perfect contacts and one with realistic contacts,
 by finding a balancing controller for a simple bipedal robot on a bongo board
@@ -351,12 +316,9 @@ These contributions are as follows:
   speeds, continuously rolls on the ground, and gets back on its feet without
   inducing large stress on joints at any moment.
 \item \textbf{A multiple contact falling strategy for robots.}
-  We introduce a falling strategy for humanoid robots \revised{\st{which can}
-    to} break a
-  fall with minimal damage to the body parts
-  \revised{by utilizing multiple contact points.}
-  %% by optimizing the number and
-  %% locations of contacts for the given initial state. 
+  We introduce a falling strategy for humanoid robots
+  to break a fall with minimal damage to the body parts
+  by utilizing multiple contact points.
 \item \textbf{An iterative learning framework for dynamic motor skills.}
   We propose an iterative and interactive learning framework 
   using human readable instructions that can teach a variety of agile motions
