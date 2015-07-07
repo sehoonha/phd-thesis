@@ -68,17 +68,10 @@ difference between virtual and real system and reduces
 numbers of hardware experiments.
 
 \section{Future work}
-%% This section presents a few interesting future directions for more intuitively
-%% and effectively developing agile motor skills on virtual and real humanoids.
 This section presents a few interesting future directions for improving the
 proposed techniques in this dissertation.
-%% and effectively developing agile motor skills on virtual and real humanoids.
-Especially, they are not exhaustively examined on hardware
-of humanoids, which may require additional experiments.
-%% Although we demonstrated the preliminary results, 
-%% the entire pipeline is not exhaustively examined on hardware.
-%% This section presents a few interesting future directions for deploying 
-%% the proposed techniques on real humnaoids.
+%% Especially, they are not exhaustively examined on hardware
+%% of humanoids, which may require additional experiments.
 
 \subsection{Real-time controllers for non-planar falls}
 In Chapter 4, we presented a falling strategy that breaks a fall by
@@ -91,21 +84,22 @@ Planning of falling motions must be very efficient to provide enough time for
 executing planned motions. 
 However, the current implementation of the algorithm takes a few seconds, which
 is far from real-time that can be deployed to hardware of robots.
-One possible option for acceleration is to compute falling motions for
+One possible option is to compute falling motions for
 various initial cases in the pre-processing stage.
-When we predicts falling, we can select the optimal falling motion
+When a fall is predicted, we can simply select the optimal falling motion
 that is designed for the closest scenario to the current state,
 instead of computing it online.
 
 \paragraph{Planning of non-planar falls.}
-Also, our algorithm is limited to planar falling motions.
-Although we focus on planar falls in the sagittal plane, most of humanoid falls
-accompany all rotations in pitch, yaw, and roll axes.
+%% Our algorithm is limited to planar falling motions.
+Although we previously focus on planar falls in the sagittal plane as a proof
+of concept for the multiple contact falling strategy, humanoid falls
+can accompany all rotations in pitch, yaw, and roll axes.
 An intuitive approach for handling non-planar cases is to use a more complex
 abstract model, such as an inertia-loaded pendulum, that can account intertia
 and momentum in all axes.
 Because the proposed algorithm is not confined to the specific choice of the
-abstract model, we can easily incorporate different abstract models by
+abstract model, we can easily incorporate different models by
 augmenting state and action spaces. 
 However, the discretization of spaces and computation of dynamic programming
 must be improved for efficiency because more dimensions would increase the
@@ -117,27 +111,28 @@ In Chapter 5, we presented the learning framework for teaching
 virtual characters how to execute dynamic motor skills using only high-level
 human-readable instructions. 
 However, the current design of the framework still requires a long and
-repetitive sequence of instructions for instructing motions with a large 
+repetitive sequence of instructions for complex motions with a large 
 number of target angles, which is not straightforward for novice users. 
 Therefore, designing a more intuitive interface that can efficiently develop
 more complex motions can be an interesting future direction.
 
 \paragraph{Motion capture systems.}
-Extending the framework with motion capture systems will reduce the number of
+Extending the framework with motion capture systems may reduce the number of
 instructions to describe the motion.
-With the motion capture system, a user can simply capture his pose or motion in
-front of camera, which can be described by multiple high-level instructions.
+With the motion capture system, a user can simply capture his/her pose or
+motion in front of the camera, which can be described by multiple high-level
+instructions. 
 However, we would like to note that this is different from simply
 reconstructing the capture motions.
-A user may not be agile enough to perform the athletic target motion 
-such as a back-flip, or the captured motion cannot be reconstructed on 
-humanoids due to differences between a user and a humanoid including body
-dimensions or joint structures.
+In motion reconstruction, a user may not be agile enough to perform
+the athletic target motion such as a back-flip,
+or the captured motion cannot be executed by humanoids due to differences
+between a user and a humanoid including body dimensions or joint structures.
 
 \paragraph{Hierarchical composition of controllers.}
 Another technique to prevent the repetition of similar instructions is to
 formulate a hierarchical structure of controllers that further extends the
-current concept of ``control rigs'' for simultaneously manipulating multiple
+current concept of ``control rigs'' that simultaneously manipulates multiple
 low level controllers.
 In this concept, we can design a tree structure that a controller recursively
 has pre-defined or previously trained controllers as descendants.
@@ -145,8 +140,9 @@ For instance, a drop-and-roll motion can be decomposed into a jump, a
 transition, and a roll that are previously trained, and
 it can be served as another component for a even more complex motion.
 This hierarchical structure allows users to describe a motion in higher level
-of instructions such as ``jump further'' or ``roll faster'', which is more
-similar to the human training process. 
+of instructions such as ``jump further'' or ``roll faster''.
+%% , which is more
+%% similar to the human training process than the pre-defined instructions.
 In addition, re-optimizing controllers in this representation can be done much
 more efficiently than learning new controllers from scratch, by conducting the
 optimization in the reduced parameter space.
@@ -156,12 +152,11 @@ optimization in the reduced parameter space.
 We previously demonstrated a framework for learning dynamic bias
 a simple legged robot in Chapter 8, but it is not fully verified on a
 full-scale humanoid.
-Because humanoid robots, such as BioloidGP, DarwinOP, Atlas, or Sarcos, usually
-have much higher degrees of freedom ranging from 16 to 34
- a na\"{\i}ve approach will require
+Because humanoid robots usually have much higher degrees of freedom than simple
+robots, 
+a na\"{\i}ve approach will require
 a tremendous amount of data which is infeasible to be obtained.
-There are several possible approaches for resolving this curse of
-dimensionality.
+There are several possible approaches for resolving this issue.
 %% , such as projecting into a lower dimensional space using a
 %% simplified model or adopting active learning to maximize the amount of
 %% information from a single hardware experiment.
@@ -172,10 +167,14 @@ Another possibility is to employ the concept of active learning.
 Instead of executing the current best policy, we can find the most
 informative policy that maximizes the amount of data we can get from a
 single hardware experiment \cite{DaSilva:2014:ACP}.
-Cutler and his colleague \cite{bib-icra14-reinforcement} proposed to use
-multiple simulators to efficient solve reinforcement problems in the
-discretized grid setting.
-Although the control of humanoid must be able to handle continuous spaces,
+In addition, we can use multiple simulators as the work of Cutler and his
+colleagues \cite{bib-icra14-reinforcement} that efficient solves reinforcement
+problems in the discretized grid setting. 
+%% Finally, Cutler and his colleague \cite{bib-icra14-reinforcement} proposed to
+%% use multiple simulators to efficient solve reinforcement problems in the
+%% discretized grid setting.
+%% Although the control of humanoid requires to handle continuous spaces,
+Although it is required to extend the approach for continuous spaces,
 optimizing the policy with multiple simulators will give us a chance to obtain
 more robust controllers that work for a wider range of scenarios.
 
