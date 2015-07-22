@@ -21,6 +21,7 @@ of operations \cite{Fukushima:2014:URL}.
 The robots would have achieved the assigned tasks if they had
 enough agility to efficiently overcome disaster debris and locomote on uneven
 terrains. 
+\sehoon{Can ``overcome''=''jumping over debris''?}
 
 Although ``agile'' motions include several examples, jumping,
 vaulting, or rolling, they are not precisely defined to be discussed.
@@ -28,13 +29,13 @@ The word ``agile'' is defined as
 ``able to move quickly, easily, effortlessly, and gracefully''.
 While move ``quickly'' can be directly associated with high-momentum
 motions, move ``easily'', ``effortlessly'', and ``gracefully'' are more
-difficult to attach a physical meaning.
+difficult to attach a physical meaning. \sehoon{Check English. Adding ``to''?}
 For instance, move ``easily'' can be due to different reasons, such as the
 innate strength of the subject, the accumulated 
 experience, or the ability to negotiate with the environment.
 In this disseration, we define ``agile motions'' as 
 ``able to move quickly and effortlessly in a complex environment''
-, which highlights torque efficiency
+, which highlights \revised{high momentum}
 and well-coordinated strategies that exploit the environment.
 One great example that showcases a suite of agile motions is Parkour,
 a sport that features moving from the current location to the destination in
@@ -48,15 +49,20 @@ develop agile motor skills on virtual and real humanoids.
 Although the grand goal would be to achieve agile motor skills on humanoid
 robots, there are many unsolved practical issues to directly
 design agile 
-motions on the hardware, such as delays, noises, or safety concerns.
+motions on the hardware, such as delays, noises, \sehoon{``Noises'' plural?}
+or safety concerns.
 Unlike biped walking where adequate models and control theories are
 already available, agile motions have not been studied extensively in the
 literature of computer animation and robotics.
 Therefore, the appropriate approach toward agile real humanoids is to first
 develop theoretical models and control algorithms on the physics-based
-simulation where researchers in computer graphics can accomplish complex and
-stunning tasks, and then transfer the solution to real hardware
-with the careful adjustment.
+simulation where researchers in computer graphics can
+%% accomplish complex and stunning tasks,
+\revised{generate complex and stunning motions,}
+and then transfer the solution to real hardware
+%% with the careful adjustment.
+\revised{with additional processes, such as tuning parameters
+  or revising control mechanisms.}
 Simulation-developed solutions will
 greatly reduce the expensive cost of hardware experiments and prevent
 unexpected dangerous situations.
@@ -65,8 +71,7 @@ Agile motor skills are difficult tasks for humanoids.
 General characteristics of agile motions, high momentum or frequent changes
 of contacts, increase difficulties of most existing issues in motor control
 problems tremendously
-by requiring more accurate control routines and efficient planning
-algorithms.
+by requiring accurate control routines and efficient planning algorithms.
 In addition to the existing issues, agile motions generate few more unique
 challenges that need to be addressed. 
 % First: falling and landing motions
@@ -75,13 +80,13 @@ Because learning and executing agile motions often accompany both intentional
 and inadvertent falls, it is necessary to learn how to fall safely without
 introducing large damage.
 % Second: general learning
-Secondly, agile motions are not well-defined unlike other motions,
+Secondly, agile motions are not \revised{well-understood} unlike other motions,
 such as running or reaching.
 They cover a wide range of diverse skills, such as jumping, vaulting, or
 rolling which are governed by different control mechanisms and principles.
-We want to develop a set of general computational tools for a variety
-of agile motion controllers, instead of manually designing all controllers
-individually.  
+We want to develop a set of general computational tools for \revised{designing}
+a variety of agile motion controllers, instead of manually designing all
+controllers individually.  
 % Third: export
 Finally, simple agile motion trajectories that are developed in virtual
 simulation are less likely to work on physical systems
@@ -90,7 +95,7 @@ from the original agile motions.
 The discrepancy between virtual and real systems must be handled
 systematically for utilizing simulation-optimized solutions.
 % Therefore..
-These additional, unique challenges motivated me to address the following 
+These additional, unique challenges motivated us to address the following 
 problems in this dissertation, as steps to achieve agile motions 
 on virtual and real humanoids.
 
@@ -99,16 +104,17 @@ on virtual and real humanoids.
 Falling and landing motions are a set of fundamental motor skills
 in various agile motions to protect humanoids themselves.
 Because athletic movements frequently involves
-transitions between airborne and contact phases, they must know how to
-absorb the shock at the landing moment and avoid damage to the body parts.
+transitions between airborne and contact phases, \revised{humanoids} must know
+how to absorb the shock at the landing moment and avoid damage to the body
+parts. 
 In addition, well-executed falling motions will lead a smooth transition to the
-next motor skill. 
-In this dissertation, I will discuss two different falling scenarios, 
+next \revised{motion}.
+In this dissertation, we will discuss two different falling scenarios, 
 of virtual and real humanoids.
-For a virtual humanoid, I will describe a physics-based controller that allows
+For a virtual humanoid, we will describe a physics-based controller that allows
 the character to fall from a wide range of heights and initial speed, 
 which are inspired by agile falling and landing of Parkour practitioners.
-For a real humanoid, I will propose a falling strategy for managing unexpected
+For a real humanoid, we will propose a falling strategy for managing unexpected
 falls due to a wide range of perturbations.
 The effectiveness of both presented strategies are validated by measuring
 amounts of joint stresses or contact forces to body parts in physics
@@ -117,7 +123,7 @@ simulation, and experimentally tested on a small-size humanoid.
 \subsection{Falling and Landing Motion Control for Virtual Characters}
 % Goal, Method (Strength), Verification + Image
 
-In Chapter 3, I will show how to create a robust controller for generating 
+In Chapter 3, we will show how to create a robust controller for generating 
 agile and natural falling motions of the virtual character that can land from 
 various heights and velocities.
 The goals of the controller are to reduce the joint stress at the impact and
@@ -136,14 +142,14 @@ get back on its feet to prepare the next action (\figref{intro_landing}).
 \end{wrapfigure}
 
 Inspired by falling skills of Parkour, 
-I formulate the falling problem
+we formulate the falling problem
 with three phases, \emph{airborne}, \emph{impact}, and \emph{rolling}
 based on the contact states of a virtual character.
 First, two sub-controllers are designed for the \emph{airborne} and
 \emph{rolling} phases and a regression analysis is conducted to find 
 an optimal landing angle that can connect two sub controllers at the
 \emph{impact} phase.
-I will demonstrate that the motion generated by the proposed controller
+we will demonstrate that the motion generated by the proposed controller
 looks natural and induces smaller joint stress, which is still four times lower
 than a uncontrolled rag-doll motion.
 
@@ -162,8 +168,8 @@ than a uncontrolled rag-doll motion.
 \end{figure}
 % Goal, Method (Strength), Verification + Image
 Chapter 4 will describe a robust falling strategy which plans for appropriate 
-responses to a wide variety of falls, from a single step to recover a gentle
-nudge, to a rolling motion to break a high-speed fall.
+responses to a wide variety of falls, from a single step to recover
+\revised{from} a gentle nudge, to a rolling motion to break a high-speed fall.
 Our key observation is that many existing falling techniques
 \cite{Wang:2012:WTO,Yun:2014:TFC,ZenpoUkemi:2014:URL}
 assume specific sequences of contacts and aim to break specific ranges of
@@ -171,13 +177,15 @@ falls and requires us to an additional decision layer to choose the best
 falling strategy to the given state.
 Instead, our multiple contact planning algorithm provides a unified framework
 for various existing falling strategies, which can adjust the number and order
-of contact sequences with respect to different magnitudes of perturbations.
+of \revised{contacts} with respect to different magnitudes of perturbations.
 In the proposed continuous space of strategies, our algorithm can efficiently
-find the best falling strategy for the given initial state using a simplified
-model and dynamic  programming.
+find the best \revised{contact sequences} for the given initial state using a
+simplified model and dynamic programming.
 To verify our framework, a variety of scenarios are tested on simulated
 humanoids and the actual hardware (\figref{intro_hardware}) to show that our
-algorithm plans versatile falling strategies with different contact sequences.
+algorithm plans versatile \revised{and effective} falling strategies
+\revised{that successfully reduce damage to body parts.}
+%% with different contact sequences. 
 
 \section{Learning Framework for General Agile Motions}
 % Introduction on the learning - Motivation, Description, Goal
@@ -191,12 +199,13 @@ Design of an individual physics-based controller for a new motor skill is
 a time-consuming task  which requires a lot of manual efforts from the controller
 designer, from the design of the control mechanism to the tweaking of low-level
 control parameters. 
-To simplify the costly learning process, I will introduce an intuitive and 
+To simplify the costly learning process, we will introduce an intuitive and 
 interactive framework for developing controllers that is inspired by
 how humans learn dynamic motor skills through a iterative process of coaching
 and practicing.
 Another important component for the iterative controller design process
-is an efficient optimization to reduce a turn-around time.
+is an efficient optimization \revised{of control parameters} to reduce a
+turn-around time. 
 In this purpose, we propose two optimization techniques that can extend the
 popular policy search algorithm, CMA-ES, to accelerate the convergence rate
 and to optimize a parametrized objective function.
@@ -245,32 +254,34 @@ motions.
 
 \subsection{Optimization with Failure Learning}
 % Goal, Method (Strength), Verification + Image
-In Chapter 6, I will describe a new optimization algorithm for
-highly-constrained problems.
+In Chapter 6, we will describe a new optimization algorithm for
+\revised{highly constrained problems that usually happens when a user imposes a
+  lot of instructions to a virtual character.}
 A controller with many constraints is difficult to be optimized due to the
 relatively small feasible regions with many local minima.
 Our key idea comes from human’s ability to learn from failure. 
 Because failure in the real world is usually associated with pain or injury,
 humans tend to be very effective in characterizing the cause of failure and
 trying to avoid the same mistakes in the future. 
-Under the concept of ``learning from failure'', The proposed algorithm CMA-C
+Under the concept of ``learning from failure'', \revised{the} proposed algorithm CMA-C
 (Covariance Matrix Adaptation with Classification) utilizes the failed
 simulation trials to approximate an infeasible region in the space of control
 rig parameters so that it can predict validity of newly generated samples,
-resulting a faster convergence than the standard CMA-ES.
+resulting \revised{in} a faster convergence than the standard CMA-ES.
 
 \subsection{Optimization for Parametrized Motor Skills}
 % Goal, Method (Strength), Verification + Image
-In Chapter 7, I will explain an evolutionary optimization algorithm for
+In Chapter 7, we will \sehoon{present tense? future?}
+explain an evolutionary optimization algorithm for
 learning parameterized skills to achieve whole-body dynamic tasks.
 The parametrization of the learned motor skills is an essential ability
-because a robot can reinterpret the skill to a new situation, without
+because a robot can \revised{adapt} the skill to a new situation, without
 learning the entire motor skill from scratch.
 Instead of maintaining a single Gaussian distribution, 
 the algorithm reduces the number of samples by evolving a parametrized
 probability distribution which describes a mapping from a task parameter
 to the optimal control parameters.
-I will test the proposed optimization algorithm for learning three parametrized
+we will test the proposed optimization algorithm for learning three parametrized
 dynamic motor skills on a simulated humanoid robot, including jumping,
 kicking, and walking. 
 
@@ -288,7 +299,7 @@ kicking, and walking.
   \label{fig:intro_bongo}
    \vspace{-10pt}
 \end{wrapfigure}
-In Chapter 8, I will describe an iterative approach for learning 
+In Chapter 8, we will describe an iterative approach for learning 
 hardware models and optimizing control policies using simulation.
 The proposed learning framework is designed for reducing the number of
 expensive hardware experiments. 
@@ -299,7 +310,7 @@ To fill the gap between two system, we propose an algorithm for learning
 hardware models and optimizing policies. 
 Instead of learning hardware models from scratch, the proposed approach only
 learns the difference from simulation models using Gaussian process.
-As a proof of concept, I will validate the algorithm on two different 
+As a proof of concept, we will validate the algorithm on two different 
 simulation models, one with perfect contacts and one with realistic contacts,
 by finding a balancing controller for a simple bipedal robot on a bongo board
 (\figref{intro_bongo}).
@@ -343,8 +354,8 @@ These contributions are as follows:
   models. 
 \end{itemize}
 
-\rule{0.95\textwidth}{1pt}
+%% \rule{0.95\textwidth}{1pt}
 
-In the next chapter, I will discuss the related work conducted by other
-researchers to address similar problems.
+%% In the next chapter, we will discuss the related work conducted by other
+%% researchers to address similar problems.
 
