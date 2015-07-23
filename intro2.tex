@@ -18,7 +18,7 @@ it was too dangerous for human operations because of high radiation levels.
 A few robots were deployed to
 measure temperature and radioactivity but failed due to limited speed and range
 of operations \cite{Fukushima:2014:URL}.
-The robots would have achieved the assigned tasks if they had
+The robots would have achieved the assigned tasks if they had \revised{had}
 enough agility
 %% to efficiently overcome disaster debris and locomote on uneven terrains. 
 \revised{to locomote on uneven terrains and climb over disaster debris.}
@@ -131,12 +131,13 @@ next \revised{motion}.
 %%   In both scenarios, our falling controllers are able to handle a wide range of
 %%   initial conditions, including heights and initial speeds.}
 %% Version 1.2
-\revised{In Chapter 3 and 4, we describe two different falling
-  controllers for virtual and real humanoids.
-  For a virtual humanoid, we discuss falls with the airborne phases, which are
-  inspired agile jumping and falling motions of Parkour practitioners.
-  On the other hand, we focused on falls without the airborne phases for real
-  humanoids, which can be initiated by unexpected perturbations.
+\revised{We discuss two different falling controllers for virtual and real
+  humanoids. 
+  In Chapter 3, we discuss falls with the airborne phases for a virtual
+  humanoid, which are inspired by agile jumping and falling motions of Parkour
+  practitioners. 
+  On the other hand in Chapter 4, we focus on falls without the airborne
+  phases for real humanoids, which can be initiated by unexpected perturbations.
   In both scenarios, our falling controllers are robust enough to handle a wide
   range of initial conditions, such as heights and speeds.}
 The effectiveness of both presented strategies are validated by measuring
@@ -244,20 +245,20 @@ control parameters.
 %%   Our learning framework allows users to intuitively and interactively }
 
 %% Version 1.3
-\revised{Our goal is to design intuitive and efficient learning framework for
-  general motor skills, including jumping, flipping, vaulting, and rolling.
+\revised{Our goal is to design an intuitive and efficient learning framework
+  for general motor skills, including jumping, flipping, vaulting, and rolling.
   %% The intuitiveness of the framework is achieved by proposing a novel interactive
   %% interface that designs controllers only using human-readable instructions, which
   %% are inspired by how humans teach dynamic motor skills.
   For an easy-to-use learning framework,
-  we develop a nover interactive interface that designs controllers only using
+  we develop a novel interactive interface that designs controllers using only
   human-readable instructions inspired by how human coaches teach dynamic motor
   skills. 
   Further, the parameters of the designed controllers are efficiently optimized
   using our novel algorithms to reduce a turn-around time.
   Using the proposed interface and optimization techniques,
-  users can intuitively and easily develop controllers for general agile motor
-  skils on virtual characters. }
+  users can intuitively and easily develop physics-based controllers for
+  general agile motor skills.}
 
 %% In this purpose, we propose two optimization techniques that can extend the
 %% popular policy search algorithm, CMA-ES, to accelerate the convergence rate
@@ -296,9 +297,9 @@ that a user can easily design complex controllers only using high-level,
 human-readable instructions, 
 which is inspired by a human learning process of coaching and practicing stages.
 %% \sehoon{In the coaching stage, a user can 1) what to do 2) what not to do, constraints.}
-\revised{During the coaching stage, the user provides instructions to revise
-  the task objective, add constraints, or update control mechanisms based on
-  the current skill level.}
+\revised{During the coaching stage, the user provides instructions for revising
+  task objectives, adding constraints, or updating control mechanisms based
+  on the current skill level.}
 To enable interactive coaching, we introduce ``control rigs'' as
 an intermediate layer of control module which allows more coordinated control
 of the low level control variables and and provides more intuitive mapping to
@@ -312,8 +313,8 @@ motions.
 \subsection{Optimization with Failure Learning}
 % Goal, Method (Strength), Verification + Image
 In Chapter 6, we describe a new optimization algorithm for
-\revised{highly constrained problems, which happens when the user imposes a
-  lot of instructions to the virtual character.}
+\revised{highly constrained problems, which are formulated when the user
+  imposes a lot of instructions to the virtual character.}
 A controller with many constraints is difficult to be optimized due to the
 relatively small feasible regions with many local minima.
 Our key idea comes from human’s ability to learn from failure. 
