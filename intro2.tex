@@ -18,10 +18,10 @@ it was too dangerous for human operations because of high radiation levels.
 A few robots were deployed to
 measure temperature and radioactivity but failed due to limited speed and range
 of operations \cite{Fukushima:2014:URL}.
-The robots would have achieved the assigned tasks if they had \revised{had}
+The robots would have achieved the assigned tasks if they had had
 enough agility
 %% to efficiently overcome disaster debris and locomote on uneven terrains. 
-\revised{to locomote on uneven terrains and climb over disaster debris.}
+to locomote on uneven terrains and climb over disaster debris.
 %% \sehoon{Can ``overcome''=''jumping over debris''?}
 
 Although ``agile'' motions include several examples, jumping,
@@ -32,13 +32,13 @@ While moving ``quickly'' can be directly associated with high-momentum
 motions, moving ``easily'', ``effortlessly'', and ``gracefully'' are more
 %% difficult to attach a physical meaning. \sehoon{Check English. Adding ``to''?}
 %% \revised{difficult to define in physical terms.}
-\revised{difficult to physically quantify.}
+difficult to physically quantify.
 For instance, moving ``easily'' can be due to different reasons, such as the
 innate strength of the subject, the accumulated 
 experience, or the ability to negotiate with the environment.
 In this disseration, we define ``agile motions'' as 
 ``able to move quickly and effortlessly in a complex environment''
-, which highlights \revised{high momentum}
+, which highlights high momentum
 and well-coordinated strategies that exploit the environment.
 One great example that showcases a suite of agile motions is Parkour,
 a sport that features moving from the current location to the destination in
@@ -52,7 +52,7 @@ develop agile motor skills on virtual and real humanoids.
 Although the grand goal would be to achieve agile motor skills on humanoid
 robots, there are many unsolved practical issues to directly
 design agile motions on the hardware,
-such as \revised{control delays, sensor noises,} or safety concerns.
+such as control delays, sensor noises, or safety concerns.
 Unlike biped walking where adequate models and control theories are
 already available, agile motions have not been studied extensively in the
 literature of computer animation and robotics.
@@ -60,11 +60,11 @@ Therefore, the appropriate approach toward agile real humanoids is to first
 develop theoretical models and control algorithms on the physics-based
 simulation, where researchers in computer graphics can
 %% accomplish complex and stunning tasks,
-\revised{generate complex and impressive motions;}
-\revised{then the next step is to} transfer the solution to real hardware
+generate complex and impressive motions;
+then the next step is to transfer the solution to real hardware
 %% with the careful adjustment.
-\revised{with additional processes, such as tuning parameters
-  or revising control mechanisms.}
+with additional processes, such as tuning parameters
+or revising control mechanisms.
 Simulation-developed solutions will
 greatly reduce the expensive cost of hardware experiments and prevent
 unexpected dangerous situations.
@@ -82,11 +82,11 @@ Because learning and executing agile motions often accompany both intentional
 and inadvertent falls, it is necessary to learn how to fall safely without
 introducing large damage.
 % Second: general learning
-Secondly, agile motions are not \revised{well-understood} unlike other motions,
+Secondly, agile motions are not well-understood unlike other motions,
 such as running or reaching.
 They cover a wide range of diverse skills, such as jumping, vaulting, or
 rolling which are governed by different control mechanisms and principles.
-We want to develop a set of general computational tools for \revised{designing}
+We want to develop a set of general computational tools for designing
 a variety of agile motion controllers, instead of manually designing all
 controllers individually.  
 % Third: export
@@ -106,11 +106,11 @@ on virtual and real humanoids.
 Falling and landing motions are a set of fundamental motor skills
 in various agile motions to protect humanoids themselves.
 Because athletic movements frequently involves
-transitions between airborne and contact phases, \revised{humanoids} must know
+transitions between airborne and contact phases, humanoids must know
 how to absorb the shock at the landing moment and avoid damage to the body
 parts. 
 In addition, well-executed falling motions will lead a smooth transition to the
-next \revised{motion}.
+next motion.
 %% %% Version 1.0
 %% In this dissertation, we will discuss two different falling scenarios, 
 %% of virtual and real humanoids.
@@ -131,15 +131,15 @@ next \revised{motion}.
 %%   In both scenarios, our falling controllers are able to handle a wide range of
 %%   initial conditions, including heights and initial speeds.}
 %% Version 1.2
-\revised{We discuss two different falling controllers for virtual and real
-  humanoids. 
-  In Chapter 3, we discuss falls with the airborne phases for a virtual
-  humanoid, which are inspired by agile jumping and falling motions of Parkour
-  practitioners. 
-  On the other hand in Chapter 4, we focus on falls without the airborne
-  phases for real humanoids, which can be initiated by unexpected perturbations.
-  In both scenarios, our falling controllers are robust enough to handle a wide
-  range of initial conditions, such as heights and speeds.}
+We discuss two different falling controllers for virtual and real
+humanoids. 
+In Chapter 3, we discuss falls with the airborne phases for a virtual
+humanoid, which are inspired by agile jumping and falling motions of Parkour
+practitioners. 
+On the other hand in Chapter 4, we focus on falls without the airborne
+phases for real humanoids, which can be initiated by unexpected perturbations.
+In both scenarios, our falling controllers are robust enough to handle a wide
+range of initial conditions, such as heights and speeds.
 The effectiveness of both presented strategies are validated by measuring
 amounts of joint stresses or contact forces to body parts in physics
 simulation, and experimentally tested on a small-size humanoid.
@@ -193,7 +193,7 @@ than a uncontrolled rag-doll motion.
 % Goal, Method (Strength), Verification + Image
 Chapter 4 describes a robust falling strategy which plans for appropriate 
 responses to a wide variety of falls, from a single step to recover
-\revised{from} a gentle nudge, to a rolling motion to break a high-speed fall.
+from a gentle nudge, to a rolling motion to break a high-speed fall.
 Our key observation is that many existing falling techniques
 \cite{Wang:2012:WTO,Yun:2014:TFC,ZenpoUkemi:2014:URL}
 assume specific sequences of contacts and aim to break specific ranges of
@@ -201,14 +201,14 @@ falls and requires us to an additional decision layer to choose the best
 falling strategy to the given state.
 Instead, our multiple contact planning algorithm provides a unified framework
 for various existing falling strategies, which can adjust the number and order
-of \revised{contacts} with respect to different magnitudes of perturbations.
+of contacts with respect to different magnitudes of perturbations.
 In the proposed continuous space of strategies, our algorithm can efficiently
-find the best \revised{contact sequences} for the given initial state using a
+find the best contact sequences for the given initial state using a
 simplified model and dynamic programming.
 To verify our framework, a variety of scenarios are tested on simulated
 humanoids and the actual hardware (\figref{intro_hardware}) to show that our
-algorithm plans versatile \revised{and effective} falling strategies
-\revised{that successfully reduce damage to robots.}
+algorithm plans versatile and effective falling strategies
+that successfully reduce damage to robots.
 %% with different contact sequences. 
 
 \section{Learning Framework for General Agile Motions}
@@ -245,20 +245,20 @@ control parameters.
 %%   Our learning framework allows users to intuitively and interactively }
 
 %% Version 1.3
-\revised{Our goal is to design an intuitive and efficient learning framework
-  for general motor skills, including jumping, flipping, vaulting, and rolling.
-  %% The intuitiveness of the framework is achieved by proposing a novel interactive
-  %% interface that designs controllers only using human-readable instructions, which
-  %% are inspired by how humans teach dynamic motor skills.
-  For an easy-to-use learning framework,
-  we develop a novel interactive interface that designs controllers using only
-  human-readable instructions inspired by how human coaches teach dynamic motor
-  skills. 
-  Further, the parameters of the designed controllers are efficiently optimized
-  using our novel algorithms to reduce a turn-around time.
-  Using the proposed interface and optimization techniques,
-  users can intuitively and easily develop physics-based controllers for
-  general agile motor skills.}
+Our goal is to design an intuitive and efficient learning framework
+for general motor skills, including jumping, flipping, vaulting, and rolling.
+%% The intuitiveness of the framework is achieved by proposing a novel interactive
+%% interface that designs controllers only using human-readable instructions, which
+%% are inspired by how humans teach dynamic motor skills.
+For an easy-to-use learning framework,
+we develop a novel interactive interface that designs controllers using only
+human-readable instructions inspired by how human coaches teach dynamic motor
+skills. 
+Further, the parameters of the designed controllers are efficiently optimized
+using our novel algorithms to reduce a turn-around time.
+Using the proposed interface and optimization techniques,
+users can intuitively and easily develop physics-based controllers for
+general agile motor skills.
 
 %% In this purpose, we propose two optimization techniques that can extend the
 %% popular policy search algorithm, CMA-ES, to accelerate the convergence rate
@@ -297,9 +297,9 @@ that a user can easily design complex controllers only using high-level,
 human-readable instructions, 
 which is inspired by a human learning process of coaching and practicing stages.
 %% \sehoon{In the coaching stage, a user can 1) what to do 2) what not to do, constraints.}
-\revised{During the coaching stage, the user provides instructions for revising
-  task objectives, adding constraints, or updating control mechanisms based
-  on the current skill level.}
+During the coaching stage, the user provides instructions for revising
+task objectives, adding constraints, or updating control mechanisms based
+on the current skill level.
 To enable interactive coaching, we introduce ``control rigs'' as
 an intermediate layer of control module which allows more coordinated control
 of the low level control variables and and provides more intuitive mapping to
@@ -313,26 +313,26 @@ motions.
 \subsection{Optimization with Failure Learning}
 % Goal, Method (Strength), Verification + Image
 In Chapter 6, we describe a new optimization algorithm for
-\revised{highly constrained problems, which are formulated when the user
-  imposes a lot of instructions to the virtual character.}
+highly constrained problems, which are formulated when the user
+imposes a lot of instructions to the virtual character.
 A controller with many constraints is difficult to be optimized due to the
 relatively small feasible regions with many local minima.
 Our key idea comes from human’s ability to learn from failure. 
 Because failure in the real world is usually associated with pain or injury,
 humans tend to be very effective in characterizing the cause of failure and
 trying to avoid the same mistakes in the future. 
-Under the concept of ``learning from failure'', \revised{the} proposed algorithm CMA-C
+Under the concept of ``learning from failure'', the proposed algorithm CMA-C
 (Covariance Matrix Adaptation with Classification) utilizes the failed
 simulation trials to approximate an infeasible region in the space of control
 rig parameters so that it can predict validity of newly generated samples,
-resulting \revised{in} a faster convergence than the standard CMA-ES.
+resulting in a faster convergence than the standard CMA-ES.
 
 \subsection{Optimization for Parametrized Motor Skills}
 % Goal, Method (Strength), Verification + Image
 In Chapter 7, we explain an evolutionary optimization algorithm for
 learning parameterized skills to achieve whole-body dynamic tasks.
 The parametrization of the learned motor skills is an essential ability
-because a robot can \revised{adapt} the skill to a new situation, without
+because a robot can adapt the skill to a new situation, without
 learning the entire motor skill from scratch.
 Instead of maintaining a single Gaussian distribution, 
 the algorithm reduces the number of samples by evolving a parametrized
