@@ -64,6 +64,7 @@ covariance matrix $\mat{C}$.
 
 \subsection{Our Algorithm for Parameterized Optimization Problem}
 \label{sec:optskills_our_algorithm}
+
 Directly applying CMA-ES to solve a parameterized optimization problem
 is difficult due to the expanded dimensionality. Consider a policy
 parameter space $\mathcal{X} = \mathcal{R}^n$ and a cubic
@@ -113,10 +114,30 @@ for each discretized task interpolation parameter $w_i$.
 %%  \updated{and applying
 %%   \textbf{updateCov} routine that requires only one sample per covariance.}
 
-Three questions arise when we extend the mean from a single point to a
-segment in the policy parameter space. How do we draw samples from the
-current distribution, how do we evaluate and select samples, and how do we
-update the distribution?
+\begin{figure}[t]
+\center
+  \includegraphics[width=0.75\textwidth]{images/steps}
+  \caption{
+    \revised{
+      Steps of our algorithm for parameterized optimization problems. 
+      (a) define a parameterized distribution that maps a task parameter to
+      control parameters. (b) draw a set of samples from the parameterized
+      distribution. (c) select the elite samples for each task and update the
+      mean by applying regression. (d) update the covariances.
+    }
+  }
+  \label{fig:optskills_steps}
+\end{figure}
+
+\revised{One iteration of our algorithms consists of three steps to update the
+  parameterized distribution: drawing new samples, selecting elite samples, and
+  updating the distribution (\figref{optskills_steps}).
+  The following sections will describe details on each step.}
+
+%% Three questions arise when we extend the mean from a single point to a
+%% segment in the policy parameter space. How do we draw samples from the
+%% current distribution, how do we evaluate and select samples, and how do we
+%% update the distribution?
 
 \subsubsection{Drawing samples}
 
