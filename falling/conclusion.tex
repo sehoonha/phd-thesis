@@ -9,6 +9,22 @@ number of contacts, the order of contacts, and the position and timing
 of contacts, such that the initial momentum is dissipated with minimal
 damage to the robot.
 
+\revised{The discovered optimal falling strategies in this paper may not be
+  identical to the strategies of real humans \cite{Judoukemi:2015:URL} due to
+  the different joint structures or priorities of body parts. 
+  For instance, BioloidGP and a human take different contact sequences during a
+  forward roll. 
+  A roll of a human changes contacts continuously from shoulders to hips, while a
+  roll of BioloidGP makes discrete contacts at its head and left foot
+  (\figref{falling_motions}).
+  It can be due to the simplicity of the input contact graph, or the existence of
+  a flexible spine that helps continuous transitions of contacts. 
+  When the fall is initiated from the two feet stance, 
+  our strategy finds knees and hands as optimal but a falling strategy of Judo
+  proposes to break a forward fall with only both hands. 
+  The reason can be that humans try to avoid to make contacts at joints,
+  which are more fragile than limbs. }
+
 % For future consideration, we plan on implementing a realtime falling
 % controller on a small humanoid, BioloidGP. First, the realtime
 % control needs to be achieved by caching the cost-to-go function for a
