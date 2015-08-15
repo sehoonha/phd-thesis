@@ -11,7 +11,7 @@
 \contentsline {figure}{\numberline {11}{\ignorespaces Samples for hands-first landing strategy. Successful samples are bounded between top and bottom planes along $\theta ^{(T)}$ axis. The middle plane, average of the two, indicates the linear relation of the ideal landing condition. }}{26}
 \contentsline {figure}{\numberline {12}{\ignorespaces Samples in the space of $v_z^{(T)}$, $\omega _y^{(T)}$, and $\theta ^{(T)}$. The spinning velocity $\omega _y^{(T)}$ has minimal effect on the success of a sample. }}{27}
 \contentsline {figure}{\numberline {13}{\ignorespaces Among 16 poses in $\ensuremath {\mathbf {Q}}$, pose 1, 2, 9, and 13 are frequently selected by the airborne controller }}{30}
-\contentsline {figure}{\numberline {14}{\ignorespaces Landing phase controller.}}{31}
+\contentsline {figure}{\numberline {14}{\ignorespaces \leavevmode {\color {blue}Landing phase controller.}}}{31}
 \contentsline {figure}{\numberline {15}{\ignorespaces Two-step impact stage for the feet-first strategy.}}{32}
 \contentsline {figure}{\numberline {16}{\ignorespaces Hands-first landing motion.}}{35}
 \contentsline {figure}{\numberline {17}{\ignorespaces Left: The character model used for most examples. Right: A character with a disproportionately large torso and short legs. }}{38}
