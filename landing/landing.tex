@@ -125,7 +125,7 @@ COM.
 \center
 {
 %% \small
-\caption{Control parameters. 
+\caption{\revised{Control parameters. }
 }
 
 
@@ -133,14 +133,23 @@ COM.
 \hline
 \label{tab:landing_tracking}
 
-& {\small Hip} & {\small Lower spine } & {\small Upper spine } & {\small Neck } & {\small Knee } \\ \hline 
-\textbf{$k_p$} & {\small 90.0} & {\small 300.0}& {\small 180.0}& {\small 10.0} & {\small 60.0} \\ \hline 
-\textbf{$k_d$} & {\small 20.0} & {\small 60.0} & {\small 40.0} & {\small  2.0} & {\small 13.0} \\ \hline
+& {\small \textbf{Hip}} & {\small \textbf{Lower spine} } & {\small
+  \textbf{Upper spine} } & {\small \textbf{Neck} } & {\small \textbf{Knee} } \\ \hline 
+\textbf{$\boldsymbol{k_p}$} & {\small 90.0} & {\small 300.0}& {\small 180.0}&
+       {\small 10.0} & {\small 60.0} \\ \hline 
+\textbf{$\boldsymbol{k_d}$} & {\small 20.0} & {\small 60.0} & {\small 40.0} & {\small  2.0}
+& {\small 13.0} \\
 
+\hhline{|=|=|=|=|=|=|}
 
-& {\small Ankle } & {\small Clavicle } & {\small Shoulder} & {\small Elbow } & {\small Wrist } \\ \hline 
-\textbf{$k_p$} & {\small 15.0} & {\small 180.0}& {\small 120.0}& {\small 60.0} & {\small  9.0} \\ \hline
-\textbf{$k_d$} & {\small  6.0} & {\small 40.0} & {\small 27.0} & {\small 13.5} & {\small  4.0} \\ \hline
+& {\small \textbf{Ankle} } & {\small \textbf{Clavicle} } & {\small
+  \textbf{Shoulder}} & {\small \textbf{Elbow} } & {\small \textbf{Wrist} } \\ \hline 
+\textbf{$\boldsymbol{k_p}$} & {\small 15.0} & {\small 180.0}& {\small 120.0}&
+       {\small 60.0} & {\small  9.0} \\ \hline
+\textbf{$\boldsymbol{k_d}$} & {\small  6.0} & {\small 40.0} & {\small 27.0} &
+       {\small 13.5} & {\small  4.0} \\ 
+
+\hhline{|=|=|=|=|=|=|}
 
 %% \textbf{$k_p$} 
 %% & {\tiny 90.0} & {\tiny 300.0}& {\tiny 180.0}& {\tiny 10.0} & {\tiny 60.0} 
@@ -152,15 +161,20 @@ COM.
 %% \end{tabular}
 
 %% \begin{tabular}{|c|c|c|c|c|c|}
-\hline
-{\small \textbf{$\bar{c}_y$} } &
-{\small \textbf{$\bar{\dot{c}}_y$} } &
-{\small \textbf{$\bar{\dot{c}}_{x/z}$} } &
-{\small \textbf{$k_v$} } &
-{\small \textbf{$k_p$} (Eq \ref{eqn:landing_controlRoll}) } &  
-{\small \textbf{$\omega_{MAX}$} } \\ \hline
 
-{\small 0.4m} & {\small 0.0m/s} & {\small 4.0m/s} & {\small 500} & {\small 800} & {\small 3.3 Rad/s} \\ \hline
+&
+{\small \textbf{$\boldsymbol{\bar{c}}_y$} } &
+{\small \textbf{$\boldsymbol{\bar{\dot{c}}}_y$} } &
+{\small \textbf{$\boldsymbol{\bar{\dot{c}}}_{x/z}$} } &
+{\small \textbf{$k_v$} } &
+{\small \textbf{$k_p$} (Eq \ref{eqn:landing_controlRoll}) }   
+%% {\small \textbf{$\omega_{MAX}$} }
+\\ \hline
+
+{\small \textbf{Value}} & 
+{\small 0.4m} & {\small 0.0m/s} & {\small 4.0m/s} & {\small 500} & {\small 800}
+%% & {\small 3.3 Rad/s}
+\\ \hline
 \end{tabular}
 }
 \end{table}
@@ -215,6 +229,9 @@ desired tracking angles for the right knee as:
 \label{eqn:landing_controlLeg}
 \theta_R = max( (1 - \omega_x / \omega_{MAX}) \pi, 0 )
 \end{equation}
+
+\revised{where we set $\omega_{MAX}$ as $3.3RAD/s$ for all experiments.}
+
 \ignorethis{
 Our algorithm applies PD control on head,
 torso and legs to track some desired joint angles. Head and torso are
