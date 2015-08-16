@@ -47,8 +47,63 @@ The skills of Parkour are well aligned with our definition of agile motions
 because they require high momentum and dynamic planning to negotiate with the
 obstacles and features in the environment.
 
-The aim of this dissertation is to design a set of computational tools to
-develop agile motor skills on virtual and real humanoids.
+%% %% Begin original
+%% The aim of this dissertation is to design a set of computational tools to
+%% develop agile motor skills on virtual and real humanoids.
+%% Although the grand goal would be to achieve agile motor skills on humanoid
+%% robots, there are many unsolved practical issues to directly
+%% design agile motions on the hardware,
+%% such as control delays, sensor noises, or safety concerns.
+%% Unlike biped walking where adequate models and control theories are
+%% already available, agile motions have not been studied extensively in the
+%% literature of computer animation and robotics.
+%% Therefore, the appropriate approach toward agile real humanoids is to first
+%% develop theoretical models and control algorithms on the physics-based
+%% simulation, where researchers in computer graphics can
+%% %% accomplish complex and stunning tasks,
+%% generate complex and impressive motions;
+%% then the next step is to transfer the solution to real hardware
+%% %% with the careful adjustment.
+%% with additional processes, such as tuning parameters
+%% or revising control mechanisms.
+%% Simulation-developed solutions will
+%% greatly reduce the expensive cost of hardware experiments and prevent
+%% unexpected dangerous situations.
+
+%% Agile motor skills are difficult tasks for humanoids.
+%% General characteristics of agile motions, high momentum or frequent changes
+%% of contacts, increase difficulties of most existing issues in motor control
+%% problems tremendously
+%% by requiring accurate control routines and efficient planning algorithms.
+%% In addition to the existing issues, agile motions generate few more unique
+%% challenges that need to be addressed. 
+%% % First: falling and landing motions
+%% The first issue is to ensure the safety of humanoids.
+%% Because learning and executing agile motions often accompany both intentional
+%% and inadvertent falls, it is necessary to learn how to fall safely without
+%% introducing large damage.
+%% % Second: general learning
+%% Secondly, agile motions are not well-understood unlike other motions,
+%% such as running or reaching.
+%% They cover a wide range of diverse skills, such as jumping, vaulting, or
+%% rolling which are governed by different control mechanisms and principles.
+%% We want to develop a set of general computational tools for designing
+%% a variety of agile motion controllers, instead of manually designing all
+%% controllers individually.  
+%% % Third: export
+%% Finally, simple agile motion trajectories that are developed in virtual
+%% simulation are less likely to work on physical systems
+%% because small errors can be quickly accumulated and result in drastic deviations
+%% from the original agile motions.
+%% The discrepancy between virtual and real systems must be handled
+%% systematically for utilizing simulation-optimized solutions.
+%% % Therefore..
+%% These additional, unique challenges motivated us to address the following 
+%% problems in this dissertation, as steps to achieve agile motions 
+%% on virtual and real humanoids.
+%% %% End original
+
+Agile motor skills are difficult tasks for humanoids.
 Although the grand goal would be to achieve agile motor skills on humanoid
 robots, there are many unsolved practical issues to directly
 design agile motions on the hardware,
@@ -59,44 +114,57 @@ literature of computer animation and robotics.
 Therefore, the appropriate approach toward agile real humanoids is to first
 develop theoretical models and control algorithms on the physics-based
 simulation, where researchers in computer graphics can
-%% accomplish complex and stunning tasks,
 generate complex and impressive motions;
 then the next step is to transfer the solution to real hardware
-%% with the careful adjustment.
 with additional processes, such as tuning parameters
 or revising control mechanisms.
 Simulation-developed solutions will
 greatly reduce the expensive cost of hardware experiments and prevent
 unexpected dangerous situations.
 
-Agile motor skills are difficult tasks for humanoids.
-General characteristics of agile motions, high momentum or frequent changes
-of contacts, increase difficulties of most existing issues in motor control
-problems tremendously
-by requiring accurate control routines and efficient planning algorithms.
-In addition to the existing issues, agile motions generate few more unique
-challenges that need to be addressed. 
+\revised{The aim of this dissertation is to develop a set of computational tools
+  to expedite the design process of physics-based controllers that can execute
+  a variety of agile motor skills on virtual and real humanoids.
+  Especially, we are interested in three unique challenges for developing agile
+  motions on humanoids. } 
+
 % First: falling and landing motions
-The first issue is to ensure the safety of humanoids.
-Because learning and executing agile motions often accompany both intentional
-and inadvertent falls, it is necessary to learn how to fall safely without
-introducing large damage.
+\revised{The first goal is to develop falling and landing controllers for
+  virtual and real humanoids to ensure the safety.
+  Safe falling and landing motions are fundamental motor skills for real humans
+  when they learn agile motions,
+  because learning and executing agile motions often accompany both intentional
+  and inadvertent falls.
+  Similarly, safe falling and landing controllers are necessary for humanoids
+  to protect fragile body parts and joints.}
+
 % Second: general learning
-Secondly, agile motions are not well-understood unlike other motions,
-such as running or reaching.
-They cover a wide range of diverse skills, such as jumping, vaulting, or
-rolling which are governed by different control mechanisms and principles.
-We want to develop a set of general computational tools for designing
-a variety of agile motion controllers, instead of manually designing all
-controllers individually.  
+\revised{Secondly, we want to develop a set of general computational tools for
+  designing a variety of agile motion controllers in virtual simulation.
+  The tools include a new interface for easily developing adequate control
+  architectures and novel algorithms for efficiently finding the optimal
+  control parameters. 
+  The motivation of these tools is that designing and fine-tuning individual
+  controllers is not a practical approach for agile motions, 
+  which are not well-understood unlike other motions such as running or
+  reaching. 
+  Instead, agile motions cover a wide range of diverse skills, such as jumping,
+  vaulting, or rolling which are governed by different control mechanisms and
+  principles.}  
+
 % Third: export
-Finally, simple agile motion trajectories that are developed in virtual
-simulation are less likely to work on physical systems
-because small errors can be quickly accumulated and result in drastic deviations
-from the original agile motions.
-The discrepancy between virtual and real systems must be handled
-systematically for utilizing simulation-optimized solutions.
-% Therefore..
+\revised{The final topic is to design a new algorithm that help us to deploy a
+  control policy from simulation to  physical system by learning the
+  discrepancy between virtual and real systems.
+  Although tools from the second challenge help us to easily develop
+  controllers in simulation, simple agile motion trajectories that are
+  developed in simulation are less likely to work on physical systems
+  due to accumulated small errors.
+  This problem has been extensively studied from the standpoint of system
+  identification and state estimation in robotics,  
+  and limited success has been demonstrated on tasks like reaching, or walking.
+  }
+
 These additional, unique challenges motivated us to address the following 
 problems in this dissertation, as steps to achieve agile motions 
 on virtual and real humanoids.
@@ -111,35 +179,22 @@ how to absorb the shock at the landing moment and avoid damage to the body
 parts. 
 In addition, well-executed falling motions will lead a smooth transition to the
 next motion.
-%% %% Version 1.0
-%% In this dissertation, we will discuss two different falling scenarios, 
-%% of virtual and real humanoids.
-%% For a virtual humanoid, we will describe a physics-based controller that allows
-%% the character to fall from a wide range of heights and initial speed, 
-%% which are inspired by agile falling and landing of Parkour practitioners.
-%% For a real humanoid, we will propose a falling strategy for managing unexpected
-%% falls due to a wide range of perturbations.
 
-%% %% Version 1.1
-%% \revised{In this dissertation, we will describe two different falling
-%%   controllers for virtual and real humanoids.
-%%   For a virtual humanoid, the entire falling sequence from the airborne, 
-%%   the impact, and the rolling phases is discussed, which is inspired by agile
-%%   falls of Parkour practitioners.
-%%   For a real humanoid, we focused on falls on the ground, which are initiated
-%%   by unexpected perturbations.
-%%   In both scenarios, our falling controllers are able to handle a wide range of
-%%   initial conditions, including heights and initial speeds.}
-%% Version 1.2
 We discuss two different falling controllers for virtual and real
 humanoids. 
-In Chapter 3, we discuss falls with the airborne phases for a virtual
-humanoid, which are inspired by agile jumping and falling motions of Parkour
-practitioners. 
-On the other hand in Chapter 4, we focus on falls without the airborne
-phases for real humanoids, which can be initiated by unexpected perturbations.
-In both scenarios, our falling controllers are robust enough to handle a wide
-range of initial conditions, such as heights and speeds.
+\revised{In Chapter 3, we discuss falls with the airborne phases for a virtual
+  humanoid, which are inspired by agile jumping and falling motions of Parkour
+  practitioners. 
+  The main objective of this chapter is to develop a robust online algorithm
+  for generating natural and agile falling motions from a range of initial
+  conditions, such as heights and speeds.
+  However, it relies on the manually designed rolling controller, and does not
+  explicitly minimize the joint stress of virtual characters. 
+  In Chapter 4, we focus on falls without the airborne
+  phases for real humanoids, which can be initiated by unexpected perturbations.
+  The algorithm in this chapter attempts to find the optimal strategy
+  that reduces the maximum impact to body parts of robots, rather than to
+  simply use the rolling strategy as proposed in the Chapter 3.}
 The effectiveness of both presented strategies are validated by measuring
 amounts of joint stresses or contact forces to body parts in physics
 simulation, and experimentally tested on a small-size humanoid.
@@ -314,7 +369,7 @@ motions.
 % Goal, Method (Strength), Verification + Image
 In Chapter 6, we describe a new optimization algorithm for
 highly constrained problems, which are formulated when the user
-imposes a lot of instructions to the virtual character.
+imposes numerous instructions to the virtual character.
 A controller with many constraints is difficult to be optimized due to the
 relatively small feasible regions with many local minima.
 Our key idea comes from human’s ability to learn from failure. 

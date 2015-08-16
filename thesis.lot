@@ -1,13 +1,13 @@
-\contentsline {table}{\numberline {1}{\ignorespaces \leavevmode {\color {blue}Control parameters. } }}{33}
-\contentsline {table}{\numberline {2}{\ignorespaces Initial conditions of the examples shown in the video (in order of appearance) }}{36}
-\contentsline {table}{\numberline {3}{\ignorespaces The initial conditions and the results of BioloidGP simulations. }}{55}
-\contentsline {table}{\numberline {4}{\ignorespaces The initial conditions and the results of Atlas simulations.}}{57}
-\contentsline {table}{\numberline {5}{\ignorespaces Control rigs. \hspace *{\fill } }}{68}
-\contentsline {table}{\numberline {6}{\ignorespaces Interpretation of instructions. Each instruction is associated with a control rig, an objective term and/or a contraint. $\ensuremath {\mathbf {q}}_f$, $\ensuremath {\mathbf {q}}^{prev}_f$ : the final state of the current motion and the previous motion. $\ensuremath {\mathbf {C}}, \ensuremath {\mathbf {S}}, \ensuremath {\mathbf {P}},\ensuremath {\mathbf {L}}$ : the center of mass, center of pressure, linear momentum, and angular momentum. $\ensuremath {\mathbf {pos}}_{limb}$, $\ensuremath {\mathbf {rot}}_{limb}$ : the limb position and orientation. $q_{joint}, ks_{joint}$ : the joint angle and stiffness. \hspace *{\fill } }}{69}
-\contentsline {table}{\numberline {7}{\ignorespaces CMA-C evaluation on five problems. CMA-C improves the computation by four to five times. $\mu $, $\lambda $, and $\sigma $ represents CMA parent size, population size, and step size. $\mathaccentV {hat}05E{\ensuremath {\mathbf {C}}}$, $\mathaccentV {hat}05E{\ensuremath {\mathbf {P}}}$, $\mathaccentV {hat}05E{\ensuremath {\mathbf {L}}}$, and $\mathaccentV {hat}05E{\ensuremath {\mathbf {S}}}$ indicate the desired COM, linear momentum, angular momentum, and the COP. }}{73}
-\contentsline {table}{\numberline {8}{\ignorespaces CMA-C on the toy problem I (Table 7\hbox {}) with various ratios of the infeasible area to the feasible area. All other conditions are the same.}}{79}
-\contentsline {table}{\numberline {9}{\ignorespaces CMA-C on the toy problem II (Table 7\hbox {}) with various magnitude and frequency of noise. All other conditions are the same.}}{79}
-\contentsline {table}{\numberline {10}{\ignorespaces Instructions used to train a precision jump.}}{82}
-\contentsline {table}{\numberline {11}{\ignorespaces Results on Parameterized CEC'15 Problems}}{108}
-\contentsline {table}{\numberline {12}{\ignorespaces Parameters used for the experiments.}}{124}
-\contentsline {table}{\numberline {13}{\ignorespaces Average number of experiments required at different noise levels and inertial parameter errors.}}{126}
+\contentsline {table}{\numberline {1}{\ignorespaces \leavevmode {\color {blue}Control parameters. } }}{34}
+\contentsline {table}{\numberline {2}{\ignorespaces Initial conditions of the examples shown in the video (in order of appearance) }}{37}
+\contentsline {table}{\numberline {3}{\ignorespaces The initial conditions and the results of BioloidGP simulations. }}{56}
+\contentsline {table}{\numberline {4}{\ignorespaces The initial conditions and the results of Atlas simulations.}}{58}
+\contentsline {table}{\numberline {5}{\ignorespaces Control rigs. \hspace *{\fill } }}{69}
+\contentsline {table}{\numberline {6}{\ignorespaces Interpretation of instructions. Each instruction is associated with a control rig, an objective term and/or a contraint. $\ensuremath {\mathbf {q}}_f$, $\ensuremath {\mathbf {q}}^{prev}_f$ : the final state of the current motion and the previous motion. $\ensuremath {\mathbf {C}}, \ensuremath {\mathbf {S}}, \ensuremath {\mathbf {P}},\ensuremath {\mathbf {L}}$ : the center of mass, center of pressure, linear momentum, and angular momentum. $\ensuremath {\mathbf {pos}}_{limb}$, $\ensuremath {\mathbf {rot}}_{limb}$ : the limb position and orientation. $q_{joint}, ks_{joint}$ : the joint angle and stiffness. \hspace *{\fill } }}{70}
+\contentsline {table}{\numberline {7}{\ignorespaces CMA-C evaluation on five problems. CMA-C improves the computation by four to five times. $\mu $, $\lambda $, and $\sigma $ represents CMA parent size, population size, and step size. $\mathaccentV {hat}05E{\ensuremath {\mathbf {C}}}$, $\mathaccentV {hat}05E{\ensuremath {\mathbf {P}}}$, $\mathaccentV {hat}05E{\ensuremath {\mathbf {L}}}$, and $\mathaccentV {hat}05E{\ensuremath {\mathbf {S}}}$ indicate the desired COM, linear momentum, angular momentum, and the COP. }}{74}
+\contentsline {table}{\numberline {8}{\ignorespaces CMA-C on the toy problem I (Table 7\hbox {}) with various ratios of the infeasible area to the feasible area. All other conditions are the same.}}{80}
+\contentsline {table}{\numberline {9}{\ignorespaces CMA-C on the toy problem II (Table 7\hbox {}) with various magnitude and frequency of noise. All other conditions are the same.}}{80}
+\contentsline {table}{\numberline {10}{\ignorespaces Instructions used to train a precision jump.}}{83}
+\contentsline {table}{\numberline {11}{\ignorespaces Results on Parameterized CEC'15 Problems}}{109}
+\contentsline {table}{\numberline {12}{\ignorespaces Parameters used for the experiments.}}{125}
+\contentsline {table}{\numberline {13}{\ignorespaces Average number of experiments required at different noise levels and inertial parameter errors.}}{127}
