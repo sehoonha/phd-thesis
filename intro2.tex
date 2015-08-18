@@ -123,7 +123,7 @@ greatly reduce the expensive cost of hardware experiments and prevent
 unexpected dangerous situations.
 
 \revised{The aim of this dissertation is to develop a set of computational tools
-  to expedite the design process of physics-based controllers that can execute
+  to expedite design process of physics-based controllers that can execute
   a variety of agile motor skills on virtual and real humanoids.
   Especially, we are interested in three unique challenges for developing agile
   motions on humanoids. } 
@@ -135,7 +135,7 @@ unexpected dangerous situations.
   when they learn agile motions,
   because learning and executing agile motions often accompany both intentional
   and inadvertent falls.
-  Similarly, safe falling and landing controllers are necessary for humanoids
+  Similarly, falling and landing controllers are required for humanoids
   to protect fragile body parts and joints.}
 
 % Second: general learning
@@ -145,24 +145,24 @@ unexpected dangerous situations.
   architectures and novel algorithms for efficiently finding the optimal
   control parameters. 
   The motivation of these tools is that designing and fine-tuning individual
-  controllers is not a practical approach for agile motions, 
-  which are not well-understood unlike other motions such as running or
-  reaching. 
-  Instead, agile motions cover a wide range of diverse skills, such as jumping,
-  vaulting, or rolling which are governed by different control mechanisms and
-  principles.}  
+  controllers is not a practical approach for agile motions,  
+  which are not well-understood yet and cover a wide range of divers skills. }
+  %% %% unlike other motions such as running or reaching. 
+  %% Agile motions are not well-understood yet because they cover a wide range of
+  %% diverse skills, such as jumping, vaulting, or rolling which are governed by
+  %% different control mechanisms and  principles.}  
 
 % Third: export
 \revised{The final topic is to design a new algorithm that help us to deploy a
-  control policy from simulation to  physical system by learning the
-  discrepancy between virtual and real systems.
+  control policy from simulation to physical system.
   Although tools from the second challenge help us to easily develop
-  controllers in simulation, simple agile motion trajectories that are
-  developed in simulation are less likely to work on physical systems
-  due to accumulated small errors.
-  This problem has been extensively studied from the standpoint of system
-  identification and state estimation in robotics,  
-  and limited success has been demonstrated on tasks like reaching, or walking.
+  controllers in simulation, the developed controllers are less likely to work
+  on physical systems due to accumulated small errors.
+  Therefore, we develop a new algorithm that finds a control policy for
+  hardware by learning the discrepancy between virtual and real systems.
+  %% This problem has been extensively studied from the standpoint of system
+  %% identification and state estimation in robotics,  
+  %% and limited success has been demonstrated on tasks like reaching, or walking.
   }
 
 These additional, unique challenges motivated us to address the following 
