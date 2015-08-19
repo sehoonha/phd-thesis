@@ -136,26 +136,30 @@ unexpected dangerous situations.
   because learning and executing agile motions often accompany both intentional
   and inadvertent falls.
   Similarly, falling and landing controllers are required for humanoids
-  to protect fragile body parts and joints.}
+  to protect fragile body parts and joints, so that we can safely develop
+  controllers in the remaining chapters.}
 
 % Second: general learning
-\revised{Secondly, we want to develop a set of general computational tools for
+\revised{The second goal is to develop a set of general computational tools for
   designing a variety of agile motion controllers in virtual simulation.
   The tools include a new interface for easily developing adequate control
   architectures and novel algorithms for efficiently finding the optimal
   control parameters. 
   The motivation of these tools is that designing and fine-tuning individual
-  controllers is not a practical approach for agile motions,  
-  which are not well-understood yet and cover a wide range of divers skills. }
+  controllers is not a practical approach for agile motions:  
+  they are not well-understood unlike other motions such as running or
+  reaching,  
+  and cover a wide range of diverse skills which are governed by
+  different control mechanisms and  principles.}
   %% %% unlike other motions such as running or reaching. 
   %% Agile motions are not well-understood yet because they cover a wide range of
   %% diverse skills, such as jumping, vaulting, or rolling which are governed by
   %% different control mechanisms and  principles.}  
 
 % Third: export
-\revised{The final topic is to design a new algorithm that help us to deploy a
-  control policy from simulation to physical system.
-  Although tools from the second challenge help us to easily develop
+\revised{The final goal is to design a new algorithm that helps us deploy a
+  control policy from simulation to a physical system.
+  Although the tools from the second challenge help us to easily develop
   controllers in simulation, the developed controllers are less likely to work
   on physical systems due to accumulated small errors.
   Therefore, we develop a new algorithm that finds a control policy for
@@ -188,13 +192,14 @@ humanoids.
   The main objective of this chapter is to develop a robust online algorithm
   for generating natural and agile falling motions from a range of initial
   conditions, such as heights and speeds.
-  However, it relies on the manually designed rolling controller, and does not
-  explicitly minimize the joint stress of virtual characters. 
+  However, the proposed algorithm relies on the manually designed rolling
+  controller, and does not explicitly minimize the joint stress of virtual
+  characters.  
   In Chapter 4, we focus on falls without the airborne
   phases for real humanoids, which can be initiated by unexpected perturbations.
   The algorithm in this chapter attempts to find the optimal strategy
-  that reduces the maximum impact to body parts of robots, rather than to
-  simply use the rolling strategy as proposed in the Chapter 3.}
+  that reduces the maximum impact to body parts of robots, instead of simply
+  using the rolling strategy as proposed in the Chapter 3.}
 The effectiveness of both presented strategies are validated by measuring
 amounts of joint stresses or contact forces to body parts in physics
 simulation, and experimentally tested on a small-size humanoid.
