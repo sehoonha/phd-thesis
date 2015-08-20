@@ -1,5 +1,17 @@
 \section{Landing Strategy}
 
+\begin{figure}[ht]
+\center
+  \includegraphics[width=3.2in]{images/LandingPoses}
+  \caption{
+    The left and middle are the desired landing poses for the
+    hands-first strategy and the feet-first strategy, respectively.
+    The right is the ready-to-roll pose for the feet-first strategy,
+    which we track only the upper body.
+  }
+ \label{fig:landing_landingPoses}
+\end{figure}
+
 Given an initial condition at the beginning of a fall, the character
 can choose to land with the hands-first strategy or the feet-first
 strategy.  In general, the hands-first strategy is chosen only for
@@ -14,26 +26,13 @@ depending on whether the hands-first or the feet-first strategy is
 chosen. We manually specify this partial pose for each strategy
 (\figref{landing_landingPoses}).
 
-
-\begin{figure}[ht]
-\center
-  \includegraphics[width=3.2in]{images/LandingPoses}
-  \caption{
-    The left and middle are the desired landing poses for the
-    hands-first strategy and the feet-first strategy, respectively.
-    The right is the ready-to-roll pose for the feet-first strategy,
-    which we track only the upper body.
-  }
- \label{fig:landing_landingPoses}
-\end{figure}
-
-\begin{wrapfigure}{l}{0.5\textwidth}
+\begin{figure}[0.3\textwidth]
   \begin{center}
     \includegraphics[width=0.28\textwidth]{images/COM}
   \end{center}
-  \caption{\revised{Landing condition variables.}}
+  \caption{Landing condition variables.}
   \label{fig:landing_com}
-\end{wrapfigure}
+\end{figure}
 
 An integral part of our landing strategy is the landing condition, a
 simple equation that compactly characterizes successful landing
@@ -47,6 +46,7 @@ consider it successful.  Because a successful landing highly depends
 on whether the character is able to control the momentum
 at the moment of the first contact ($T$),
 %% the character's momentum at the moment of first contact ($T$), 
+
 our algorithm defines the landing condition as a relation between the
 global linear velocity $\vc{v}^{(T)}$, global angular velocity
 $\vc{\omega}^{(T)}$, and the angle of attack $\theta^{(T)}$, which

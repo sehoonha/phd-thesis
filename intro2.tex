@@ -122,14 +122,14 @@ Simulation-developed solutions will
 greatly reduce the expensive cost of hardware experiments and prevent
 unexpected dangerous situations.
 
-\revised{The aim of this dissertation is to develop a set of computational tools
+The aim of this dissertation is to develop a set of computational tools
   to expedite design process of physics-based controllers that can execute
   a variety of agile motor skills on virtual and real humanoids.
   Especially, we are interested in three unique challenges for developing agile
-  motions on humanoids. } 
+  motions on humanoids. 
 
 % First: falling and landing motions
-\revised{The first goal is to develop falling and landing controllers for
+The first goal is to develop falling and landing controllers for
   virtual and real humanoids to ensure the safety.
   Safe falling and landing motions are fundamental motor skills for real humans
   when they learn agile motions,
@@ -137,10 +137,10 @@ unexpected dangerous situations.
   and inadvertent falls.
   Similarly, falling and landing controllers are required for humanoids
   to protect fragile body parts and joints, so that we can safely develop
-  controllers in the remaining chapters.}
+  controllers in the remaining chapters.
 
 % Second: general learning
-\revised{The second goal is to develop a set of general computational tools for
+The second goal is to develop a set of general computational tools for
   designing a variety of agile motion controllers in virtual simulation.
   The tools include a new interface for easily developing adequate control
   architectures and novel algorithms for efficiently finding the optimal
@@ -150,14 +150,14 @@ unexpected dangerous situations.
   they are not well-understood unlike other motions such as running or
   reaching,  
   and cover a wide range of diverse skills which are governed by
-  different control mechanisms and  principles.}
+  different control mechanisms and  principles.
   %% %% unlike other motions such as running or reaching. 
   %% Agile motions are not well-understood yet because they cover a wide range of
   %% diverse skills, such as jumping, vaulting, or rolling which are governed by
   %% different control mechanisms and  principles.}  
 
 % Third: export
-\revised{The final goal is to design a new algorithm that helps us deploy a
+The final goal is to design a new algorithm that helps us deploy a
   control policy from simulation to a physical system.
   Although the tools from the second challenge help us to easily develop
   controllers in simulation, the developed controllers are less likely to work
@@ -167,7 +167,7 @@ unexpected dangerous situations.
   %% This problem has been extensively studied from the standpoint of system
   %% identification and state estimation in robotics,  
   %% and limited success has been demonstrated on tasks like reaching, or walking.
-  }
+
 
 These additional, unique challenges motivated us to address the following 
 problems in this dissertation, as steps to achieve agile motions 
@@ -186,7 +186,7 @@ next motion.
 
 We discuss two different falling controllers for virtual and real
 humanoids. 
-\revised{In Chapter 3, we discuss falls with the airborne phases for a virtual
+In Chapter 3, we discuss falls with the airborne phases for a virtual
   humanoid, which are inspired by agile jumping and falling motions of Parkour
   practitioners. 
   The main objective of this chapter is to develop a robust online algorithm
@@ -199,7 +199,7 @@ humanoids.
   phases for real humanoids, which can be initiated by unexpected perturbations.
   The algorithm in this chapter attempts to find the optimal strategy
   that reduces the maximum impact to body parts of robots, instead of simply
-  using the rolling strategy as proposed in the Chapter 3.}
+  using the rolling strategy as proposed in the Chapter 3.
 The effectiveness of both presented strategies are validated by measuring
 amounts of joint stresses or contact forces to body parts in physics
 simulation, and experimentally tested on a small-size humanoid.
@@ -207,23 +207,20 @@ simulation, and experimentally tested on a small-size humanoid.
 \subsection{Falling and Landing Motion Control for Virtual Characters}
 % Goal, Method (Strength), Verification + Image
 
+\begin{figure}[0.55\textwidth]
+  \begin{center}
+    %% \includegraphics[width=0.48\textwidth]{images/intro_landing.jpg}
+    \includegraphics[width=0.53\textwidth]{images/intro_falling_sequence.png}
+  \end{center}
+  \caption{A fall of a virtual character.}
+  \label{fig:intro_landing}
+\end{figure}
+
 In Chapter 3, we show how to create a robust controller for generating 
 agile and natural falling motions of the virtual character that can land from 
 various heights and velocities.
 The goals of the controller are to reduce the joint stress at the impact and
 get back on its feet to prepare the next action (\figref{intro_landing}).
-
-\begin{wrapfigure}{r}{0.5\textwidth}
- \vspace{-25pt}
-  \begin{center}
-    %% \includegraphics[width=0.48\textwidth]{images/intro_landing.jpg}
-    \includegraphics[width=0.48\textwidth]{images/intro_falling_sequence.png}
-  \end{center}
-   \vspace{-25pt}
-  \caption{A fall of a virtual character.}
-  \label{fig:intro_landing}
-   \vspace{-10pt}
-\end{wrapfigure}
 
 Inspired by falling skills of Parkour, 
 we formulate the falling problem
@@ -406,16 +403,13 @@ kicking, and walking.
 \section{Transferring Controllers from Simulation to Hardware}
 % Goal, Method (Strength), Verification + Images
 
-\begin{wrapfigure}{l}{0.5\textwidth}
- \vspace{-10pt}
+\begin{figure}[0.5\textwidth]
   \begin{center}
-    \includegraphics[width=0.35\textwidth]{images/intro_simple_robot.png}
+    \includegraphics[width=0.45\textwidth]{images/intro_simple_robot.png}
   \end{center}
-   \vspace{-25pt}
   \caption{A design of a simple legged robot on a bongoboard.}
   \label{fig:intro_bongo}
-   \vspace{-10pt}
-\end{wrapfigure}
+\end{figure}
 In Chapter 8, we describe an iterative approach for learning 
 hardware models and optimizing control policies using simulation.
 The proposed learning framework is designed for reducing the number of
