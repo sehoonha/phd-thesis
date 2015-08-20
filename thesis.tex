@@ -141,14 +141,35 @@ throughout my life.
 \end{vita}
 \end{postliminary}
 
-%% \begin{abstract}
-%%   This is the abstract that must be turned in as hard copy to the
-%%   thesis office to meet the UMI requirements. It should \emph{not} be
-%%   included when submitting your ETD. Comment out the abstract
-%%   environment before submitting. It is recommended that you simply
-%%   copy and paste the text you put in the summary environment into this
-%%   environment. The title, your name, the page count, and your
-%%   advisor's name will all be generated automatically.
-%% \end{abstract}
+\begin{abstract}
+Demonstrating strength and agility on virtual and real humanoids has
+been an important goal in computer graphics and robotics.
+However, developing physics-based controllers for various agile motor skills
+requires a tremendous amount of prior knowledge and manual labor due to
+complex mechanisms of the motor skills.
+The focus of the dissertation is to develop a set of computational tools to
+expedite the design process of physics-based controllers that can execute a
+variety of agile motor skills on virtual and real humanoids.
+Instead of designing directly controllers real humanoids, this
+dissertation takes an approach that develops appropriate theories and models in
+virtual simulation and systematically transfers the solutions to hardware systems.
+
+The algorithms and frameworks in this dissertation span various topics from
+specific physics-based controllers to general learning frameworks.
+We first present an online algorithm for controlling falling and landing
+motions of virtual characters.
+The proposed algorithm is effective and efficient enough to generate falling
+motions for a wide range of arbitrary initial conditions in real-time.
+Next, we present a robust falling strategy for real humanoids that can manage
+a wide range of perturbations by planning the optimal contact sequences.
+We then introduce an iterative learning framework to easily design
+various agile motions, which is inspired by human learning techniques.
+The proposed framework is followed by novel algorithms to
+efficiently optimize control parameters for the target tasks, especially when
+they have many constraints or parameterized goals.
+Finally, we introduce an iterative approach for exporting simulation-optimized
+control policies to hardware of robots to reduce the number of hardware
+experiments, that accompany expensive costs and labors.
+\end{abstract}
 
 \end{document}
